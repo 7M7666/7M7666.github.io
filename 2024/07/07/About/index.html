@@ -276,6 +276,24 @@
     </article>
 </div>
 
+{% elseif theme.gitalk.enable %}
+    <link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script type="text/javascript">
+    new Gitalk({
+        clientID: 'Ov23liPRbAmjj7IOhJhs',
+        clientSecret: '001ae28ec85a533a9fbf83be8946da7d7aa1781d',
+        repo: '7M7666.github.io',
+        owner: '7M7666',
+        admin: '7M7666',
+        id: md5(location.pathname),
+        distractionFreeMode: true
+    }).render('gitalk-container')
+</script>
+{% endif %}
+
+
             </div>
             <footer id="footer" class="footer">
     <div class="copyright">
