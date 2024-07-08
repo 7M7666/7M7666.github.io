@@ -130,202 +130,97 @@
     }
 </script>
             <div class="main">
-                <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
+                  
+ <div id="gitalk-container"></div>  
+ <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
 
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">fuck</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">7M7</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">七月 8, 2024&nbsp;&nbsp;17:38:45</a>
-                        </span>
-                    
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <h1 id="我就想测试这个评论功能"><a href="#我就想测试这个评论功能" class="headerlink" title="我就想测试这个评论功能"></a>我就想测试这个评论功能</h1><p>我靠我已经搞这个gitalk搞了三天了！！！凭啥不给我评论区啊啊啊</p>
-
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>7M7</span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>Permalink:</span>
-                        <span><a href="https://7m7666.github.io/2024/07/08/fuck/">https://7m7666.github.io/2024/07/08/fuck/</a></span>
-                    </p>
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
-                     <p class="copyright-item">
-                         <span>Slogan:</span>
-                         <span>Do you believe in <strong>DESTINY</strong>?</span>
-                     </p>
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/%E5%90%90%E6%A7%BD/"># 吐槽</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-            
-            <a class="next" rel="next" href="/2024/07/07/A%20Voyage%20of%20Discovery/">A Voyage of Discovery</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
 <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
 <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
 <div id="gitalk-container"></div>
+
 <script type="text/javascript">
-      var gitalk = new Gitalk({
-        clientID: 'Ov23liPRbAmjj7IOhJhs',
-        clientSecret: '2523e9c644a9b455717d77724d7716f996017f2f',
-        repo: '7M7666.github.io',
-        owner: '7M7666',
-        admin: '7M7666',
-        id: md5(location.pathname),      
-        labels: 'gitalk'.split(',').filter(l => l),
-        perPage: 10，
-        pagerDirection: 'last',
-        createIssueManually: true,
-        distractionFreeMode: true      })
-      gitalk.render('gitalk-container')
+
+ var gitalk = new Gitalk({
+
+ clientID: 'Ov23liPRbAmjj7IOhJhs',
+
+ clientSecret: '2523e9c644a9b455717d77724d7716f996017f2f',
+
+ repo: '7M7666.github.io',
+
+ owner: '7M7666',
+
+ admin: '7M7666',
+
+ id: md5(location.pathname), 
+
+ labels: 'gitalk'.split(',').filter(l => l),
+
+ perPage: 10,
+
+ pagerDirection: 'last',
+
+ createIssueManually: true,
+
+ distractionFreeMode: true
+
+ })
+
+ gitalk.render('gitalk-container')
+
 </script>
+  
 
 
             </div>
             <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© 7M7 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ <div class="copyright">
+
+ <span>© 7M7 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
+
+ |
+
+ <!-- 访客数量 -->
+
+ 
+
+ <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
 
 <span class="site-uv">
-    总访客量:
-    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+
+ 总访客量:
+
+ <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+
 </span>&nbsp;
 
 
+
+
+
 <span class="site-pv">
-    总访问量:
-    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+
+ | 总访问量:
+
+ <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+
 </span>
 
-2024
-</span>
-    </div>
+
+
+
+ 
+
+ </span>
+
+ </div>
+
 </footer>
-
     </div>
 </body>
 
