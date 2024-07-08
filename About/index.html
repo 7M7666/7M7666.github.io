@@ -168,11 +168,10 @@
         admin: '7M7666',
         id: md5(location.pathname),      
         labels: 'gitalk'.split(',').filter(l => l),
-        perPage: 10,
+        perPage: 10，
         pagerDirection: 'last',
         createIssueManually: true,
-        distractionFreeMode: true
-      })
+        distractionFreeMode: true      })
       gitalk.render('gitalk-container')
 </script>
 
