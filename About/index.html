@@ -145,9 +145,9 @@
 <li><img src="/img/qq.jpg" alt="QQ"></li>
 </ul>
 <h2 id="Email"><a href="#Email" class="headerlink" title="Email"></a>Email</h2><ul>
-<li><a href="mailto:&#108;&#105;&#119;&#x61;&#110;&#108;&#105;&#110;&#x37;&#x4d;&#x37;&#64;&#49;&#54;&#51;&#46;&#99;&#x6f;&#109;">&#108;&#105;&#119;&#x61;&#110;&#108;&#105;&#110;&#x37;&#x4d;&#x37;&#64;&#49;&#54;&#51;&#46;&#99;&#x6f;&#109;</a></li>
-<li><a href="mailto:&#108;&#105;&#119;&#x61;&#110;&#108;&#105;&#x6e;&#x40;&#x73;&#x74;&#x75;&#46;&#x6f;&#x75;&#x63;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;">&#108;&#105;&#119;&#x61;&#110;&#108;&#105;&#x6e;&#x40;&#x73;&#x74;&#x75;&#46;&#x6f;&#x75;&#x63;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;</a></li>
-<li><a href="mailto:&#50;&#51;&#55;&#49;&#x38;&#x39;&#51;&#x31;&#x35;&#64;&#x71;&#x71;&#x2e;&#99;&#x6f;&#x6d;">&#50;&#51;&#55;&#49;&#x38;&#x39;&#51;&#x31;&#x35;&#64;&#x71;&#x71;&#x2e;&#99;&#x6f;&#x6d;</a></li>
+<li><a href="mailto:&#108;&#x69;&#x77;&#97;&#x6e;&#108;&#105;&#x6e;&#55;&#77;&#x37;&#64;&#x31;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d;">&#108;&#x69;&#x77;&#97;&#x6e;&#108;&#105;&#x6e;&#55;&#77;&#x37;&#64;&#x31;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d;</a></li>
+<li><a href="mailto:&#x6c;&#x69;&#x77;&#97;&#x6e;&#x6c;&#105;&#x6e;&#x40;&#x73;&#x74;&#117;&#46;&#x6f;&#x75;&#99;&#x2e;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;">&#x6c;&#x69;&#x77;&#97;&#x6e;&#x6c;&#105;&#x6e;&#x40;&#x73;&#x74;&#117;&#46;&#x6f;&#x75;&#99;&#x2e;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
+<li><a href="mailto:&#50;&#x33;&#x37;&#49;&#x38;&#57;&#51;&#49;&#x35;&#64;&#113;&#113;&#46;&#x63;&#111;&#109;">&#50;&#x33;&#x37;&#49;&#x38;&#57;&#51;&#49;&#x35;&#64;&#113;&#113;&#46;&#x63;&#111;&#109;</a></li>
 </ul>
 
         </section>
@@ -155,46 +155,26 @@
 </div>
 
     <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
-
-<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
-
-<div id="gitalk-container"></div>
-
-<script type="text/javascript">
-
- var gitalk = new Gitalk({
-
- clientID: 'Ov23liPRbAmjj7IOhJhs',
-
- clientSecret: '2523e9c644a9b455717d77724d7716f996017f2f',
-
- repo: '7M7666.github.io',
-
- owner: '7M7666',
-
- admin: '7M7666',
-
- id: md5(location.pathname), 
-
- labels: 'gitalk'.split(',').filter(l => l),
-
- perPage: 10,
-
- pagerDirection: 'last',
-
- createIssueManually: true,
-
- distractionFreeMode: true
-
- })
-
- gitalk.render('gitalk-container')
-
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css">  
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>  
+<div id="gitalk-container"></div>  
+<script type="text/javascript">  
+ var gitalk = new Gitalk({  
+ clientID: 'Ov23liPRbAmjj7IOhJhs',  
+ clientSecret: '2523e9c644a9b455717d77724d7716f996017f2f',  
+ repo: '7M7666.github.io',  
+ owner: '7M7666',  
+ admin: '7M7666',  
+ id: location.pathname,  
+ labels: 'gitalk'.split(',').filter(l => l),  
+ perPage: 10,  
+ pagerDirection: 'last',  
+ createIssueManually: true,  
+ distractionFreeMode: true  
+ })  
+ gitalk.render('gitalk-container')  
 </script>
-
 
 
             </div>
