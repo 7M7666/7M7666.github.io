@@ -286,24 +286,63 @@
     </article>
 </div>
 
-<link rel="stylesheet" href="https://unpkg.com/gitalk@latest/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
-<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js" async></script>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.min.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js" async></script>
+
+<div id="gitalk-container"></div>
+
 <script type="text/javascript">
-    new Gitalk({
-        clientID: 'Ov23liPRbAmjj7IOhJhs',
-        clientSecret: '001ae28ec85a533a9fbf83be8946da7d7aa1781d',
-        repo: '7M7666.github.io',
-        owner: '7M7666',
-        admin: '7M7666',
-        id: window.location.hash, // 使用 md5 生成的唯一 ID
-        distractionFreeMode: true
-    }).render('gitalk-container') // 这里对应 post.ejs 中的评论容器 ID
+  window.onload = function() {
+    var gitalk = new Gitalk({
+      clientID: 'Ov23liPRbAmjj7IOhJhs',
+      clientSecret: '001ae28ec85a533a9fbf83be8946da7d7aa1781d',
+      repo: '7M7666.github.io',
+      owner: '7M7666',
+      admin: ['7M7666'],
+      id: md5(window.location.hash),      
+      labels: ['Gitalk', 'Comment'].filter(l => l), // 示例标签，应根据实际情况替换
+      perPage: 10,
+      pagerDirection: 'last', // 假设您希望新评论出现在顶部
+      createIssueManually: false,
+      distractionFreeMode: true
+    });
+    
+    gitalk.render('gitalk-container');
+  };
 </script>
 
 <!-- 文章内容 -->
 <div id="gitalk-container"></div>
 <!-- 其他可能的页脚内容 -->
+
+    <div id="gitalk-container"></div>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js" async></script>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.min.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js" async></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    var gitalk = new Gitalk({
+      clientID: 'Ov23liPRbAmjj7IOhJhs',
+      clientSecret: '001ae28ec85a533a9fbf83be8946da7d7aa1781d',
+      repo: '7M7666.github.io',
+      owner: '7M7666',
+      admin: ['7M7666'],
+      id: md5(window.location.hash),      
+      labels: ['Gitalk', 'Comment'].filter(l => l), // 示例标签，应根据实际情况替换
+      perPage: 10,
+      pagerDirection: 'last', // 假设您希望新评论出现在顶部
+      createIssueManually: true,
+      distractionFreeMode: true
+    });
+    
+    gitalk.render('gitalk-container');
+  };
+</script>
+
 
             </div>
             <footer id="footer" class="footer">
