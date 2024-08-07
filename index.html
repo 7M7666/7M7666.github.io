@@ -117,7 +117,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2024/08/04/cs50-5-10/">cs50.5-10</a>
+      <a class="article-title" href="/2024/08/04/cs50-5-10/">cs50.lecture5-10</a>
     </h1>
   
 
@@ -145,6 +145,28 @@
 
 
 
+<h1 id="lecture-6-python"><a href="#lecture-6-python" class="headerlink" title="lecture 6 python"></a>lecture 6 python</h1><p><strong><strong>python</strong> Object Oriented Programming 简称为OOP</strong><br>本节课大多数介绍了python与c的不同和python的优势<br>os：你py真还是nb的 同时学了c和py可以强烈感受到c和py底层建筑和瑞士军刀实际运用的利弊</p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。</p>
+<h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
+<li>py可能运行会比c慢 占用内存更多 因为py可以帮你<strong>管理内存</strong></li>
+<li>具有丰富的库生态系统 没有标准的头文件</li>
+<li>没有分号 不用声明变量类型</li>
+<li>get-string函数在py中 收益效益没这么高了 因为input（）函数</li>
+<li><strong>缩进尤为重要</strong></li>
+<li>py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在</li>
+<li>可以线性搜索 不用像c一样遍历数组</li>
+<li>用sys库可以做像c的事情 但是访问方式不一样<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">if len(sys.argv)!=2:</span><br><span class="line">        print(&quot;missing command-line argument&quot;)</span><br><span class="line">        sys.exit(1)</span><br><span class="line">print (f&quot;hello,&#123;sys.argv[1]&#125;&quot;)</span><br><span class="line">sys.exit(0)//可以用你想要的方式退出</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="其他语法"><a href="#其他语法" class="headerlink" title="其他语法"></a>其他语法</h3><ul>
+<li>for + else</li>
+<li>exception:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while Ture:</span><br><span class="line">        try:</span><br><span class="line">        blabla..</span><br><span class="line">        break</span><br><span class="line">        except NameError:</span><br><span class="line">        blabla..</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="有趣的库"><a href="#有趣的库" class="headerlink" title="有趣的库"></a>有趣的库</h2><ul>
+<li>cowsay（让小牛meow）<br><a href="/img/meow.png">meow</a></li>
+<li>qrcode<br><a href="/img/custom_qr.png">我的qrcode</a></li>
+</ul>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -171,7 +193,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2024/07/10/cs50/">cs50-lecture0-4</a>
+      <a class="article-title" href="/2024/07/10/cs50/">cs50.lecture0-4</a>
     </h1>
   
 
@@ -401,7 +423,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2024/08/04/cs50-5-10/">cs50.5-10</a></h6>
+              <h6 style="margin: 0;"><a href="/2024/08/04/cs50-5-10/">cs50.lecture5-10</a></h6>
               <span>八月 4, 2024</span>
             </div>
 
@@ -413,7 +435,7 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2024/07/10/cs50/">cs50-lecture0-4</a></h6>
+              <h6 style="margin: 0;"><a href="/2024/07/10/cs50/">cs50.lecture0-4</a></h6>
               <span>七月 10, 2024</span>
             </div>
 
