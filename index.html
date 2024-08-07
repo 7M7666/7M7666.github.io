@@ -163,9 +163,52 @@
 <li>exception:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while Ture:</span><br><span class="line">        try:</span><br><span class="line">        blabla..</span><br><span class="line">        break</span><br><span class="line">        except NameError:</span><br><span class="line">        blabla..</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="有趣的库"><a href="#有趣的库" class="headerlink" title="有趣的库"></a>有趣的库</h2><ul>
-<li>cowsay（让小牛meow）<br><a href="/img/meow.png">meow</a></li>
-<li>qrcode<br><a href="/img/custom_qr.png">我的qrcode</a></li>
+<li>cowsay（让小牛meow）<br><img src="/img/meow.png" alt="meow"></li>
+<li>qrcode<br><img src="/img/custom_qr.png" alt="我的qrcode"></li>
 </ul>
+<h1 id="lecture-7-SQL"><a href="#lecture-7-SQL" class="headerlink" title="lecture 7 SQL"></a>lecture 7 SQL</h1><h2 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h2><ul>
+<li>csv文件 通过逗号分隔值<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line">       </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line"></span><br><span class="line">       reader=csv.DictReader（file）</span><br><span class="line">       for row in reader：</span><br><span class="line">           print（row[“language”]）</span><br><span class="line">       /* or</span><br><span class="line">       reader=csv.reader(file)</span><br><span class="line">       next(reader)//跳过元数据 描述数据的各列表属性</span><br><span class="line">       */</span><br><span class="line">       cnts=&#123;&#125;</span><br><span class="line">       for row in reader:</span><br><span class="line">        favorites=row[&quot;language&quot;]</span><br><span class="line">        if favorites in cnts:</span><br><span class="line">          cnts[favorites]+=1</span><br><span class="line">        else:</span><br><span class="line">          cnts[favorites]=1</span><br><span class="line">for favorites in sorted(cnts,ket=cnts.get,reverse=True):</span><br><span class="line">    print(f&quot;&#123;favorites&#125;:&#123;cnts[favorites]&#125;&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="sql-语法"><a href="#sql-语法" class="headerlink" title="sql 语法"></a>sql 语法</h2><p><strong>CRUD</strong>语法 即：</p>
+<ul>
+<li>create insert</li>
+<li>read select</li>
+<li>update</li>
+<li>delete drop</li>
+</ul>
+<h3 id="由-csv-db"><a href="#由-csv-db" class="headerlink" title="由.csv-&gt;.db"></a>由.csv-&gt;.db</h3><p>cs50中用到splite3 但以前用的是Access 没有实践过以下终端命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">splite3 favorites.db</span><br><span class="line">.mode csv</span><br><span class="line">.import favorites.csv favorites</span><br><span class="line">.quit</span><br><span class="line">之后同时会有csv和db文件</span><br></pre></td></tr></table></figure>
+<h3 id="选取表示"><a href="#选取表示" class="headerlink" title="选取表示"></a>选取表示</h3><p><strong>注意用英文模式</strong></p>
+<ul>
+<li>select * from favorites；</li>
+<li>select * from favorites limit 10；</li>
+<li>AVG COUNT DISTINCT LOWER MAX MIN UPPER</li>
+<li>LIMIt 限制输出：<ul>
+<li>where </li>
+<li>like</li>
+<li>order by</li>
+<li>limit</li>
+<li>group by</li>
+</ul>
+</li>
+</ul>
+<h2 id="ACCESS思维导图和SQL语句练习题"><a href="#ACCESS思维导图和SQL语句练习题" class="headerlink" title="ACCESS思维导图和SQL语句练习题"></a>ACCESS思维导图和SQL语句练习题</h2>
+
+	<div class="row">
+    <embed src="/file/Access.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+
+
+	<div class="row">
+    <embed src="/file/sql习题课作业.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
 
       
     </div>
