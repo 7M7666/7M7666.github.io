@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>cs50.lecture5-10 | 7M7&#39;s Blog</title>
+  <title>cs50.lecture5-7 | 7M7&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="personal blog,note,projects" />
@@ -11,17 +11,18 @@
   
   
   
-  <meta name="description" content="lecture 5 Data Structures首先来链表的模板 123456789101112131415161718192021222324252627282930313233343536#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;typedef struct node&#123;    int value;    struct node">
+  <meta name="description" content="lecture 5 Data Structures首先来链表的模板 123456789101112131415161718192021222324252627282930313233343536#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;typedef struct node&#123;    int value;    struct nod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs50.lecture5-10">
+<meta property="og:title" content="cs50.lecture5-7">
 <meta property="og:url" content="https://7m7666.github.io/2024/08/04/cs50-5-10/index.html">
 <meta property="og:site_name" content="7M7&#39;s Blog">
-<meta property="og:description" content="lecture 5 Data Structures首先来链表的模板 123456789101112131415161718192021222324252627282930313233343536#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;typedef struct node&#123;    int value;    struct node">
+<meta property="og:description" content="lecture 5 Data Structures首先来链表的模板 123456789101112131415161718192021222324252627282930313233343536#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;typedef struct node&#123;    int value;    struct nod">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://7m7666.github.io/img/meow.png">
 <meta property="og:image" content="https://7m7666.github.io/img/custom_qr.png">
+<meta property="og:image" content="https://7m7666.github.io/img/lecture7.jpg">
 <meta property="article:published_time" content="2024-08-04T12:21:13.000Z">
-<meta property="article:modified_time" content="2024-08-07T08:55:42.463Z">
+<meta property="article:modified_time" content="2024-08-08T06:54:58.596Z">
 <meta property="article:author" content="7M7">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -120,7 +121,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      cs50.lecture5-10
+      cs50.lecture5-7
     </h1>
   
 
@@ -141,7 +142,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="lecture-5-Data-Structures"><a href="#lecture-5-Data-Structures" class="headerlink" title="lecture 5 Data Structures"></a>lecture 5 Data Structures</h1><p>首先来链表的模板</p>
+        <hr>
+<h1 id="lecture-5-Data-Structures"><a href="#lecture-5-Data-Structures" class="headerlink" title="lecture 5 Data Structures"></a>lecture 5 Data Structures</h1><p>首先来链表的模板</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">typedef struct node</span><br><span class="line">&#123;</span><br><span class="line">    int value;</span><br><span class="line">    struct node* next;</span><br><span class="line">&#125;node;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    node* head=NULL;</span><br><span class="line">    int number;</span><br><span class="line">    do&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;number);</span><br><span class="line">        if(number!=-1)&#123;</span><br><span class="line">            //add to linked-list</span><br><span class="line">            node*p =(node*)malloc(sizeof(node));//temp链表请求node结构的内存 包含value和下一个指针</span><br><span class="line">            p-&gt;value=number;</span><br><span class="line">            p-&gt;next=NULL;</span><br><span class="line">            node *last=head;//让一个名为last的链表成为head</span><br><span class="line">            //find the last</span><br><span class="line">            if(last)&#123;</span><br><span class="line">                while(last-&gt;next)//last 指的地址存在就下一个实现了遍历</span><br><span class="line">                &#123;</span><br><span class="line">                    last=last-&gt;next;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                last-&gt;next=p;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                head=p;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">    &#125;while(number!=-1);//读到-1就停止</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -152,42 +154,27 @@
 
 
 
+<hr>
 <h1 id="lecture-6-python"><a href="#lecture-6-python" class="headerlink" title="lecture 6 python"></a>lecture 6 python</h1><p><strong><strong>python</strong> Object Oriented Programming 简称为OOP</strong><br>本节课大多数介绍了python与c的不同和python的优势<br>os：你py真还是nb的 同时学了c和py可以强烈感受到c和py底层建筑和瑞士军刀实际运用的利弊</p>
-<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。</p>
-<h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
-<li>py可能运行会比c慢 占用内存更多 因为py可以帮你<strong>管理内存</strong></li>
-<li>具有丰富的库生态系统 没有标准的头文件</li>
-<li>没有分号 不用声明变量类型</li>
-<li>get-string函数在py中 收益效益没这么高了 因为input（）函数</li>
-<li><strong>缩进尤为重要</strong></li>
-<li>py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在</li>
-<li>可以线性搜索 不用像c一样遍历数组</li>
-<li>用sys库可以做像c的事情 但是访问方式不一样<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">if len(sys.argv)!=2:</span><br><span class="line">        print(&quot;missing command-line argument&quot;)</span><br><span class="line">        sys.exit(1)</span><br><span class="line">print (f&quot;hello,&#123;sys.argv[1]&#125;&quot;)</span><br><span class="line">sys.exit(0)//可以用你想要的方式退出</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="其他语法"><a href="#其他语法" class="headerlink" title="其他语法"></a>其他语法</h3><ul>
-<li>for + else</li>
-<li>exception:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while Ture:</span><br><span class="line">        try:</span><br><span class="line">        blabla..</span><br><span class="line">        break</span><br><span class="line">        except NameError:</span><br><span class="line">        blabla..</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="有趣的库"><a href="#有趣的库" class="headerlink" title="有趣的库"></a>有趣的库</h2><ul>
-<li>cowsay（让小牛meow）<br><img src="/img/meow.png" alt="meow"></li>
-<li>qrcode<br><img src="/img/custom_qr.png" alt="我的qrcode"></li>
-</ul>
-<h1 id="lecture-7-SQL"><a href="#lecture-7-SQL" class="headerlink" title="lecture 7 SQL"></a>lecture 7 SQL</h1><h2 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h2><ul>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h2 id="面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。-面向过程面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。-区别-py可能运行会比c慢-占用内存更多-因为py可以帮你管理内存-具有丰富的库生态系统-没有标准的头文件-没有分号-不用声明变量类型-get-string函数在py中-收益效益没这么高了-因为input（）函数-缩进尤为重要-py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在-可以线性搜索-不用像c一样遍历数组-用sys库可以做像c的事情-但是访问方式不一样-其他语法-for-else-exception-有趣的库-cowsay（让小牛meow）-qrcode"><a href="#面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。-面向过程面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。-区别-py可能运行会比c慢-占用内存更多-因为py可以帮你管理内存-具有丰富的库生态系统-没有标准的头文件-没有分号-不用声明变量类型-get-string函数在py中-收益效益没这么高了-因为input（）函数-缩进尤为重要-py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在-可以线性搜索-不用像c一样遍历数组-用sys库可以做像c的事情-但是访问方式不一样-其他语法-for-else-exception-有趣的库-cowsay（让小牛meow）-qrcode" class="headerlink" title="面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。## 面向过程面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。## 区别- py可能运行会比c慢 占用内存更多 因为py可以帮你管理内存- 具有丰富的库生态系统 没有标准的头文件- 没有分号 不用声明变量类型- get-string函数在py中 收益效益没这么高了 因为input（）函数- 缩进尤为重要- py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在- 可以线性搜索 不用像c一样遍历数组- 用sys库可以做像c的事情 但是访问方式不一样### 其他语法- for + else- exception:## 有趣的库- cowsay（让小牛meow）- qrcode"></a>面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。<br>## 面向过程<br>面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。<br>## 区别<br>- py可能运行会比c慢 占用内存更多 因为py可以帮你<strong>管理内存</strong><br>- 具有丰富的库生态系统 没有标准的头文件<br>- 没有分号 不用声明变量类型<br>- get-string函数在py中 收益效益没这么高了 因为input（）函数<br>- <strong>缩进尤为重要</strong><br>- py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在<br>- 可以线性搜索 不用像c一样遍历数组<br>- 用sys库可以做像c的事情 但是访问方式不一样<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">if len(sys.argv)!=2:</span><br><span class="line">        print(&quot;missing command-line argument&quot;)</span><br><span class="line">        sys.exit(1)</span><br><span class="line">print (f&quot;hello,&#123;sys.argv[1]&#125;&quot;)</span><br><span class="line">sys.exit(0)//可以用你想要的方式退出</span><br></pre></td></tr></table></figure><br>### 其他语法<br>- for + else<br>- exception:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while Ture:</span><br><span class="line">        try:</span><br><span class="line">        blabla..</span><br><span class="line">        break</span><br><span class="line">        except NameError:</span><br><span class="line">        blabla..</span><br></pre></td></tr></table></figure><br>## 有趣的库<br>- cowsay（让小牛meow）<br><img src="/img/meow.png" alt="meow"><br>- qrcode<br><img src="/img/custom_qr.png" alt="我的qrcode"></h2><h1 id="lecture-7-SQL"><a href="#lecture-7-SQL" class="headerlink" title="lecture 7 SQL"></a>lecture 7 SQL</h1><h2 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h2><ul>
 <li>csv文件 通过逗号分隔值<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line">       </span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line"></span><br><span class="line">       reader=csv.DictReader（file）</span><br><span class="line">       for row in reader：</span><br><span class="line">           print（row[“language”]）</span><br><span class="line">       /* or</span><br><span class="line">       reader=csv.reader(file)</span><br><span class="line">       next(reader)//跳过元数据 描述数据的各列表属性</span><br><span class="line">       */</span><br><span class="line">       cnts=&#123;&#125;</span><br><span class="line">       for row in reader:</span><br><span class="line">        favorites=row[&quot;language&quot;]</span><br><span class="line">        if favorites in cnts:</span><br><span class="line">          cnts[favorites]+=1</span><br><span class="line">        else:</span><br><span class="line">          cnts[favorites]=1</span><br><span class="line">for favorites in sorted(cnts,ket=cnts.get,reverse=True):</span><br><span class="line">    print(f&quot;&#123;favorites&#125;:&#123;cnts[favorites]&#125;&quot;)</span><br></pre></td></tr></table></figure>
 <h2 id="sql-语法"><a href="#sql-语法" class="headerlink" title="sql 语法"></a>sql 语法</h2><p><strong>CRUD</strong>语法 即：</p>
 <ul>
-<li>create insert</li>
-<li>read select</li>
-<li>update</li>
-<li>delete drop</li>
+<li>create ：insert</li>
+<li>read ：select sth from </li>
+<li>update sth set value</li>
+<li>delete from sth where condition、 drop</li>
+<li>减少冗余</li>
+<li>one to many</li>
+<li>many to many</li>
 </ul>
 <h3 id="由-csv-db"><a href="#由-csv-db" class="headerlink" title="由.csv-&gt;.db"></a>由.csv-&gt;.db</h3><p>cs50中用到splite3 但以前用的是Access 没有实践过以下终端命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">splite3 favorites.db</span><br><span class="line">.mode csv</span><br><span class="line">.import favorites.csv favorites</span><br><span class="line">.quit</span><br><span class="line">之后同时会有csv和db文件</span><br></pre></td></tr></table></figure>
 <h3 id="选取表示"><a href="#选取表示" class="headerlink" title="选取表示"></a>选取表示</h3><p><strong>注意用英文模式</strong></p>
 <ul>
+<li>NULL 表示没有数据</li>
 <li>select * from favorites；</li>
 <li>select * from favorites limit 10；</li>
 <li>AVG COUNT DISTINCT LOWER MAX MIN UPPER</li>
@@ -197,6 +184,13 @@
 <li>order by</li>
 <li>limit</li>
 <li>group by</li>
+<li>join：select * <strong>from</strong> a <strong>join</strong> b <strong>on</strong> a.id&#x3D;b.id</li>
+<li><ul>
+<li><img src="/img/lecture7.jpg" alt="嵌套语句"></li>
+</ul>
+</li>
+<li>又或者一次性连接多个表<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT title FROM shows</span><br><span class="line">JOIN stars ON shows.id=stars.show_id</span><br><span class="line">JOIN people ON stars.person_id=people.id;</span><br></pre></td></tr></table></figure></li>
+<li>便利的<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT title FROM shows,stars,people</span><br><span class="line">WHERE shows.id=stars.show_id</span><br><span class="line">AND people.id=stars.person_id</span><br><span class="line">AND name=&quot;STEVE CARELL&quot;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -216,6 +210,9 @@
 	</div>
 
 
+
+
+<p><strong>os</strong>：一下子写完lecture5-10似乎太多，于是决定把8-10的笔记放到另外一篇文章</p>
 
       
     </div>
@@ -258,6 +255,15 @@
     
 <nav id="article-nav">
   
+    <a href="/2024/08/08/cs50-lecture8-10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          cs50.lecture8-10
+        
+      </div>
+    </a>
+  
   
     <a href="/2024/07/10/cs50/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
@@ -275,7 +281,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5-Data-Structures"><span class="nav-number">1.</span> <span class="nav-text">lecture 5 Data Structures</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6-python"><span class="nav-number">2.</span> <span class="nav-text">lecture 6 python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.1.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">面向过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%AF%AD%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">其他语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E8%B6%A3%E7%9A%84%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">有趣的库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-7-SQL"><span class="nav-number">3.</span> <span class="nav-text">lecture 7 SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96csv%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">读取csv文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted"><span class="nav-number">3.2.</span> <span class="nav-text">sorted</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql-%E8%AF%AD%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">sql 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B1-csv-db"><span class="nav-number">3.3.1.</span> <span class="nav-text">由.csv-&gt;.db</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E5%8F%96%E8%A1%A8%E7%A4%BA"><span class="nav-number">3.3.2.</span> <span class="nav-text">选取表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACCESS%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%92%8CSQL%E8%AF%AD%E5%8F%A5%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">3.4.</span> <span class="nav-text">ACCESS思维导图和SQL语句练习题</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-5-Data-Structures"><span class="nav-number">1.</span> <span class="nav-text">lecture 5 Data Structures</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-6-python"><span class="nav-number">2.</span> <span class="nav-text">lecture 6 python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.1.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%B0%B1%E6%98%AF%E5%B0%86%E9%97%AE%E9%A2%98%E5%88%86%E8%A7%A3%E6%88%90%E4%B8%80%E4%B8%AA%E4%B8%80%E4%B8%AA%E6%AD%A5%E9%AA%A4%EF%BC%8C%E5%AF%B9%E6%AF%8F%E4%B8%AA%E6%AD%A5%E9%AA%A4%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%BA%94%E7%9A%84%E6%8A%BD%E8%B1%A1%EF%BC%8C%E5%BD%A2%E6%88%90%E5%AF%B9%E8%B1%A1%EF%BC%8C%E9%80%9A%E8%BF%87%E4%B8%8D%E5%90%8C%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B0%83%E7%94%A8%EF%BC%8C%E7%BB%84%E5%90%88%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E3%80%82-%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E6%98%AF%E4%B8%80%E7%A7%8D%E8%87%AA%E9%A1%B6%E8%80%8C%E4%B8%8B%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F%E3%80%82%E6%8A%8A%E9%97%AE%E9%A2%98%E5%88%86%E8%A7%A3%E6%88%90%E4%B8%80%E4%B8%AA%E4%B8%80%E4%B8%AA%E6%AD%A5%E9%AA%A4%EF%BC%8C%E6%AF%8F%E4%B8%AA%E6%AD%A5%E9%AA%A4%E7%94%A8%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%BE%9D%E6%AC%A1%E8%B0%83%E7%94%A8%E5%8D%B3%E5%8F%AF%E3%80%82-%E5%8C%BA%E5%88%AB-py%E5%8F%AF%E8%83%BD%E8%BF%90%E8%A1%8C%E4%BC%9A%E6%AF%94c%E6%85%A2-%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E6%9B%B4%E5%A4%9A-%E5%9B%A0%E4%B8%BApy%E5%8F%AF%E4%BB%A5%E5%B8%AE%E4%BD%A0%E7%AE%A1%E7%90%86%E5%86%85%E5%AD%98-%E5%85%B7%E6%9C%89%E4%B8%B0%E5%AF%8C%E7%9A%84%E5%BA%93%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F-%E6%B2%A1%E6%9C%89%E6%A0%87%E5%87%86%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6-%E6%B2%A1%E6%9C%89%E5%88%86%E5%8F%B7-%E4%B8%8D%E7%94%A8%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B-get-string%E5%87%BD%E6%95%B0%E5%9C%A8py%E4%B8%AD-%E6%94%B6%E7%9B%8A%E6%95%88%E7%9B%8A%E6%B2%A1%E8%BF%99%E4%B9%88%E9%AB%98%E4%BA%86-%E5%9B%A0%E4%B8%BAinput%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0-%E7%BC%A9%E8%BF%9B%E5%B0%A4%E4%B8%BA%E9%87%8D%E8%A6%81-py%E4%B8%8D%E7%94%A8%E6%8B%85%E5%BF%83%E6%95%B4%E5%BD%A2%E6%95%B0%E6%BA%A2%E5%87%BA%EF%BC%88%E8%B6%85%E5%87%BA%E9%99%90%E5%BA%A6%E5%8F%98%E6%88%900%EF%BC%89%E4%BD%86%E6%98%AF%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E7%B2%BE%E7%A1%AE%E5%BA%A6%E4%B8%80%E7%9B%B4%E5%AD%98%E5%9C%A8-%E5%8F%AF%E4%BB%A5%E7%BA%BF%E6%80%A7%E6%90%9C%E7%B4%A2-%E4%B8%8D%E7%94%A8%E5%83%8Fc%E4%B8%80%E6%A0%B7%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84-%E7%94%A8sys%E5%BA%93%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%83%8Fc%E7%9A%84%E4%BA%8B%E6%83%85-%E4%BD%86%E6%98%AF%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F%E4%B8%8D%E4%B8%80%E6%A0%B7-%E5%85%B6%E4%BB%96%E8%AF%AD%E6%B3%95-for-else-exception-%E6%9C%89%E8%B6%A3%E7%9A%84%E5%BA%93-cowsay%EF%BC%88%E8%AE%A9%E5%B0%8F%E7%89%9Bmeow%EF%BC%89-qrcode"><span class="nav-number">2.2.</span> <span class="nav-text">面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。## 面向过程面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。## 区别- py可能运行会比c慢 占用内存更多 因为py可以帮你管理内存- 具有丰富的库生态系统 没有标准的头文件- 没有分号 不用声明变量类型- get-string函数在py中 收益效益没这么高了 因为input（）函数- 缩进尤为重要- py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在- 可以线性搜索 不用像c一样遍历数组- 用sys库可以做像c的事情 但是访问方式不一样123456import sysif len(sys.argv)!&#x3D;2:        print(&quot;missing command-line argument&quot;)        sys.exit(1)print (f&quot;hello,{sys.argv[1]}&quot;)sys.exit(0)&#x2F;&#x2F;可以用你想要的方式退出### 其他语法- for + else- exception:123456while Ture:        try:        blabla..        break        except NameError:        blabla..## 有趣的库- cowsay（让小牛meow）- qrcode</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-7-SQL"><span class="nav-number">3.</span> <span class="nav-text">lecture 7 SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96csv%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">读取csv文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sorted"><span class="nav-number">3.2.</span> <span class="nav-text">sorted</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql-%E8%AF%AD%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">sql 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B1-csv-db"><span class="nav-number">3.3.1.</span> <span class="nav-text">由.csv-&gt;.db</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E5%8F%96%E8%A1%A8%E7%A4%BA"><span class="nav-number">3.3.2.</span> <span class="nav-text">选取表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACCESS%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E5%92%8CSQL%E8%AF%AD%E5%8F%A5%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">3.4.</span> <span class="nav-text">ACCESS思维导图和SQL语句练习题</span></a></li></ol></li></ol>
     
     </div>
   </aside>
