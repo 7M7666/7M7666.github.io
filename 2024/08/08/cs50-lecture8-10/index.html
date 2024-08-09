@@ -19,7 +19,7 @@
 <meta property="og:description" content="lecture 8 HTML,CSS,JavaScriptTCP&#x2F;IP IP Internet Protocol： #.#.#.# （0-255）使用这种格式的数字来唯一代表计算机，4字节or32bit  但是由于2^^32 大约为40亿远远少于地球用户的需求量，我们正从IPV4&gt;IPV6：2^^128位  信封（数据包）的封装需要提供源地址和目的地址 但由于cpu和内存受限有时">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-08T06:52:22.000Z">
-<meta property="article:modified_time" content="2024-08-09T18:05:59.360Z">
+<meta property="article:modified_time" content="2024-08-09T18:09:16.606Z">
 <meta property="article:author" content="7M7">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -244,18 +244,6 @@
         function greet(){
             alert("hello,"+document.querySelector("#name").value);
         }
-        function blink(){
-            let body=document.querySelector("body");
-            if (body.style.visibility=="hidden")
-            {
-                body.style.visibility="visible";
-            }
-            else
-            {
-                body.style.visibility="hidden";
-            }
-        }
-        window.setInterval(blink,500);
     </script>
 </head>
 <body style="text-align: center;" >
