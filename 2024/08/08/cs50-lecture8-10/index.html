@@ -19,7 +19,7 @@
 <meta property="og:description" content="lecture 8 HTML,CSS,JavaScriptTCP&#x2F;IP IP Internet Protocol： #.#.#.# （0-255）使用这种格式的数字来唯一代表计算机，4字节or32bit  但是由于2^^32 大约为40亿远远少于地球用户的需求量，我们正从IPV4&gt;IPV6：2^^128位  信封（数据包）的封装需要提供源地址和目的地址 但由于cpu和内存受限有时">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-08T06:52:22.000Z">
-<meta property="article:modified_time" content="2024-08-08T07:44:51.126Z">
+<meta property="article:modified_time" content="2024-08-09T18:05:59.360Z">
 <meta property="article:author" content="7M7">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -159,6 +159,117 @@
 </ul>
 <p>TCP&#x2F;IP是一对协议，互联网使用它们将数据从A点传输到B点<br>&emsp;IP规范了地址的工作方式<br>&emsp;TCP通过序列号保证数据的传输，同时帮助服务器进行多任务处理，帮助他们复用，通过使用端口号在电子邮件、网页、视频会议之间切换</p>
 <h2 id="DNS-域名系统服务器"><a href="#DNS-域名系统服务器" class="headerlink" title="DNS 域名系统服务器"></a>DNS 域名系统服务器</h2><p>它用来回答一个问题：这个域名的IP地址是什么 -&gt;解析域名<br>像一个哈希表，左列是域名，右列是实际IP地址</p>
+<h2 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h2><p>动态主机配置协议：回答诸如“你的路由器或者DNS的哪个IP地址应该被使用”的问题，不用手动配置</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>https：&#x2F;&#x2F;<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com/</a><br>https：&#x2F;&#x2F;协议 通过https安全访问服务器而不是http<br>www.主机名<br>.com 商业域名 </p>
+<h2 id="格式化请求网站"><a href="#格式化请求网站" class="headerlink" title="格式化请求网站"></a>格式化请求网站</h2><ul>
+<li>GET 完全获取信息</li>
+<li>POST 发送信息</li>
+</ul>
+<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p><strong>浏览器-&gt;服务器</strong><br>GET&#x2F;HTTP&#x2F;2<br>Host：<a target="_blank" rel="noopener" href="http://www.harvard.edu/">www.Harvard.edu</a><br><strong>服务器-&gt;浏览器</strong><br>HTTP&#x2F;2 200<br>Content-Type：text&#x2F;html</p>
+<h3 id="服务器状态"><a href="#服务器状态" class="headerlink" title="服务器状态"></a>服务器状态</h3><ul>
+<li>200 ok<br>3s 重定向：用不同的方式将用户从一个地方重新定向的另外的地方</li>
+<li>301 moved permanently</li>
+<li>302 found</li>
+<li>304 not modified</li>
+<li>307 temporary redirect<br>4s 用户或者浏览器不知道咋的出现了某种问题：</li>
+<li>401 unauthorized</li>
+<li>403 forbidden</li>
+<li>404 not found</li>
+<li>418 i m a teapot<br>5s 代码错误</li>
+<li>500 Internet server error</li>
+<li>503 service unavailable</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
+<li>tags 标签</li>
+<li>attributes 属性<br>ex：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">   &lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--zhushi--&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta property=&quot;og:title&quot; content=&quot;html notes&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:description&quot;content=&quot;haha&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:image&quot;content=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;</span><br><span class="line">        &lt;title&gt;html notes&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">     &lt;p&gt;</span><br><span class="line">        hello</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">        段落生成</span><br><span class="line">     &lt;h1&gt;one&lt;/h1&gt;&lt;!--一级标题--&gt;</span><br><span class="line">     &lt;ul&gt;&lt;!--无序列表--&gt;</span><br><span class="line">        list</span><br><span class="line">        &lt;li&gt;foo&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;bar&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;baz&lt;/li&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line">     &lt;ol&gt;&lt;!--有序列表--&gt;</span><br><span class="line">        list</span><br><span class="line">        &lt;li&gt;foo&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;bar&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;baz&lt;/li&gt;</span><br><span class="line">     &lt;/ol&gt;</span><br><span class="line">     &lt;img alt=&quot;cat&quot; src=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;&lt;!--图片显示--&gt;</span><br><span class="line">     &lt;video controls muted&gt;</span><br><span class="line">        &lt;source src=&quot;&quot; type=&quot;&quot;&gt;</span><br><span class="line">     &lt;/video&gt;</span><br><span class="line">     &lt;p&gt;</span><br><span class="line">        visit &lt;a href=&quot;https://7m7666.github.io&quot;&gt;my blog&lt;/a&gt;</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">     &lt;form action=&quot;https://www.bing.com/hp/?mkt=zh-CN&quot; method=&quot;get&quot;&gt;</span><br><span class="line">        &lt;input name=&quot;q&quot; type=&quot;search&quot; autofocus autocomplete=&quot;off&quot; placeholder=&quot;TEXT&quot;&gt;</span><br><span class="line">        &lt;button&gt;search&lt;/button&gt;</span><br><span class="line">     &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+<li>搜索&#x2F;path？key&#x3D;value&amp;key&#x3D;value<br>也就是可以这样搜索 search？q&#x3D;dogs</li>
+<li>pattern&#x3D;”.+@.+.edu”在input框里加入 正则表达式<ul>
+<li>[0123456789]</li>
+<li>[0-9]</li>
+<li>\d 数字</li>
+<li>\D 非十进制数字</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
+<li>type selector</li>
+<li>class selector</li>
+<li>ID selector</li>
+<li>attribute selector</li>
+</ul>
+<p><strong>连接css文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>css的基础体现</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--zhushi--&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta property=&quot;og:title&quot; content=&quot;html notes&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:description&quot;content=&quot;haha&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:image&quot;content=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;</span><br><span class="line">        &lt;title&gt;html notes&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            #my//我设置的链接id名&#123;</span><br><span class="line">                color: rgb(82, 243, 160)//骚骚的绿色;</span><br><span class="line">            &#125;</span><br><span class="line">            a&#123;</span><br><span class="line">                text-decoration: double;</span><br><span class="line">            &#125;</span><br><span class="line">            a:hover&#123;</span><br><span class="line">                text-decoration: underline;</span><br><span class="line">            &#125;//css的基础体现条件后要加入；</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">         &lt;/head&gt;</span><br><span class="line">         &lt;body&gt;    </span><br><span class="line">&lt;p&gt;</span><br><span class="line">        visit &lt;a href=&quot;https://7m7666.github.io&quot; id=&quot;my&quot;&gt;my blog&lt;/a&gt;</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">     &lt;form action=&quot;https://www.bing.com/hp/?mkt=zh-CN&quot; method=&quot;get&quot;&gt;</span><br><span class="line">        &lt;input name=&quot;q&quot; type=&quot;search&quot; autofocus autocomplete=&quot;off&quot; placeholder=&quot;TEXT&quot;&gt;</span><br><span class="line">        &lt;button&gt;search&lt;/button&gt;</span><br><span class="line">     &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>因为哈哈md可以内置html 所以效果如下<br><!DOCTYPE html></p>
+<!--zhushi-->
+<html lang="en">
+    <head>
+        <meta property="og:title" content="html notes">
+        <meta property="og:description"content="haha">
+        <meta property="og:image"content="W:/lwl/blog/blog/source/img/cat.jpg">
+        <title>html notes</title>
+        <style>
+            #my{
+                color: rgb(82, 243, 160);
+            }
+            a{
+                text-decoration: double;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+        </style>
+         </head>
+         <body>    
+<p>
+        visit <a href="https://7m7666.github.io" id="my">my blog</a>
+     </p>
+     <form action="https://www.bing.com/hp/?mkt=zh-CN" method="get">
+        <input name="q" type="search" autofocus autocomplete="off" placeholder="TEXT">
+        <button>search</button>
+     </form>
+    </body>
+</html>
+
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>像python一样的编程语言</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;JAVASCRIPT&lt;/title&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function greet()&#123;</span><br><span class="line">            alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">        &#125;</span><br><span class="line">        function blink()&#123;</span><br><span class="line">            let body=document.querySelector(&quot;body&quot;);</span><br><span class="line">            if (body.style.visibility==&quot;hidden&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;visible&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;hidden&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        window.setInterval(blink,500);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body style=&quot;text-align: center;&quot; &gt;</span><br><span class="line">    &lt;form onsubmit=&quot;greet();return false;&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; autofocus id=&quot;name&quot; placeholder=&quot;NAME&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT</title>
+    <script>
+        function greet(){
+            alert("hello,"+document.querySelector("#name").value);
+        }
+        function blink(){
+            let body=document.querySelector("body");
+            if (body.style.visibility=="hidden")
+            {
+                body.style.visibility="visible";
+            }
+            else
+            {
+                body.style.visibility="hidden";
+            }
+        }
+        window.setInterval(blink,500);
+    </script>
+</head>
+<body style="text-align: center;" >
+    <form onsubmit="greet();return false;">
+        <input type="text" autofocus id="name" placeholder="NAME">
+        <input type="submit">
+    </form>
+</body>
+</html>
+更常见的是
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        document.addEventListener(&quot;DOMContentLoaded&quot;,function())&#123;</span><br><span class="line">          document.querySelector(&#x27;form&#x27;).addEventListener(&#x27;submit&#x27;,function(e)&#123;</span><br><span class="line">          alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h1 id="lecture-9-Flask"><a href="#lecture-9-Flask" class="headerlink" title="lecture 9 Flask"></a>lecture 9 Flask</h1><hr>
 <h1 id="lecture-10-Cybersecurity"><a href="#lecture-10-Cybersecurity" class="headerlink" title="lecture 10 Cybersecurity"></a>lecture 10 Cybersecurity</h1><hr>
@@ -223,7 +334,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-8-HTML-CSS-JavaScript"><span class="nav-number">1.</span> <span class="nav-text">lecture 8 HTML,CSS,JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP"><span class="nav-number">1.1.</span> <span class="nav-text">TCP&#x2F;IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">DNS 域名系统服务器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-9-Flask"><span class="nav-number">2.</span> <span class="nav-text">lecture 9 Flask</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10-Cybersecurity"><span class="nav-number">3.</span> <span class="nav-text">lecture 10 Cybersecurity</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-8-HTML-CSS-JavaScript"><span class="nav-number">1.</span> <span class="nav-text">lecture 8 HTML,CSS,JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP"><span class="nav-number">1.1.</span> <span class="nav-text">TCP&#x2F;IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">DNS 域名系统服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DHCP"><span class="nav-number">1.3.</span> <span class="nav-text">DHCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">1.4.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%AF%B7%E6%B1%82%E7%BD%91%E7%AB%99"><span class="nav-number">1.5.</span> <span class="nav-text">格式化请求网站</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET"><span class="nav-number">1.5.1.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8A%B6%E6%80%81"><span class="nav-number">1.5.2.</span> <span class="nav-text">服务器状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">1.6.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">1.7.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.8.</span> <span class="nav-text">JavaScript</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-9-Flask"><span class="nav-number">2.</span> <span class="nav-text">lecture 9 Flask</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lecture-10-Cybersecurity"><span class="nav-number">3.</span> <span class="nav-text">lecture 10 Cybersecurity</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol>
     
     </div>
   </aside>
