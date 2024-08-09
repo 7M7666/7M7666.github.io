@@ -219,7 +219,7 @@
          </head>
          <body>    
 <p>
-        visit <a href="https://7m7666.github.io" id="my">my blog</a>
+        visit <a style=“center” href="https://7m7666.github.io" id="my">my blog</a>
      </p>
      <form action="https://www.bing.com/hp/?mkt=zh-CN" method="get">
         <input name="q" type="search" autofocus autocomplete="off" placeholder="TEXT">
@@ -230,27 +230,7 @@
 
 <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>像python一样的编程语言</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;JAVASCRIPT&lt;/title&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function greet()&#123;</span><br><span class="line">            alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">        &#125;</span><br><span class="line">        function blink()&#123;</span><br><span class="line">            let body=document.querySelector(&quot;body&quot;);</span><br><span class="line">            if (body.style.visibility==&quot;hidden&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;visible&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;hidden&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        window.setInterval(blink,500);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body style=&quot;text-align: center;&quot; &gt;</span><br><span class="line">    &lt;form onsubmit=&quot;greet();return false;&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; autofocus id=&quot;name&quot; placeholder=&quot;NAME&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAVASCRIPT</title>
-    <script>
-        function greet(){
-            alert("hello,"+document.querySelector("#name").value);
-        }
-    </script>
-</head>
-<body style="text-align: center;" >
-    <form onsubmit="greet();return false;">
-        <input type="text" autofocus id="name" placeholder="NAME">
-        <input type="submit">
-    </form>
-</body>
-</html>
-更常见的是
-
+<p>更常见的是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        document.addEventListener(&quot;DOMContentLoaded&quot;,function())&#123;</span><br><span class="line">          document.querySelector(&#x27;form&#x27;).addEventListener(&#x27;submit&#x27;,function(e)&#123;</span><br><span class="line">          alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 
