@@ -1,83 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>cs50.lecture8-10</title>
-      <link href="/2024/08/08/cs50-lecture8-10/"/>
-      <url>/2024/08/08/cs50-lecture8-10/</url>
-      
-        <content type="html"><![CDATA[<hr><h1 id="lecture-8-HTML-CSS-JavaScript"><a href="#lecture-8-HTML-CSS-JavaScript" class="headerlink" title="lecture 8 HTML,CSS,JavaScript"></a>lecture 8 HTML,CSS,JavaScript</h1><h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP&#x2F;IP"></a>TCP&#x2F;IP</h2><ul><li>IP Internet Protocol：<br> #.#.#.# （0-255）使用这种格式的数字来唯一代表计算机，4字节or32bit</li></ul><p>但是由于2^^32 大约为40亿远远少于地球用户的需求量，我们正从IPV4&gt;IPV6：2^^128位</p><ul><li>信封（数据包）的封装需要提供源地址和目的地址</li><li>但由于cpu和内存受限有时候信封不能成功传递，超出负荷，信封就会drop</li><li>TCP其一功能是在信封上标记序列号 ex：文件（1&#x2F;2）文件（2&#x2F;2）来增加投送成功率</li><li>TCP其二功能是提供端口，给接收者小小提示说明信封里是什么数据类型<ul><li>常见端口1：80 HTTP</li><li>常见端口2：443 HTTPS（HTTP的某个安全版本）</li></ul></li><li>于是最后信封上就会有：<blockquote><p>源地址 目的地址 序列号  目的地端口 源地址端口</p></blockquote></li></ul><p>TCP&#x2F;IP是一对协议，互联网使用它们将数据从A点传输到B点<br>&emsp;IP规范了地址的工作方式<br>&emsp;TCP通过序列号保证数据的传输，同时帮助服务器进行多任务处理，帮助他们复用，通过使用端口号在电子邮件、网页、视频会议之间切换</p><h2 id="DNS-域名系统服务器"><a href="#DNS-域名系统服务器" class="headerlink" title="DNS 域名系统服务器"></a>DNS 域名系统服务器</h2><p>它用来回答一个问题：这个域名的IP地址是什么 -&gt;解析域名<br>像一个哈希表，左列是域名，右列是实际IP地址</p><h2 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h2><p>动态主机配置协议：回答诸如“你的路由器或者DNS的哪个IP地址应该被使用”的问题，不用手动配置</p><h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>https：&#x2F;&#x2F;<a href="http://www.example.com/">www.example.com/</a><br>https：&#x2F;&#x2F;协议 通过https安全访问服务器而不是http<br>www.主机名<br>.com 商业域名 </p><h2 id="格式化请求网站"><a href="#格式化请求网站" class="headerlink" title="格式化请求网站"></a>格式化请求网站</h2><ul><li>GET 完全获取信息</li><li>POST 发送信息</li></ul><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p><strong>浏览器-&gt;服务器</strong><br>GET&#x2F;HTTP&#x2F;2<br>Host：<a href="http://www.harvard.edu/">www.Harvard.edu</a><br><strong>服务器-&gt;浏览器</strong><br>HTTP&#x2F;2 200<br>Content-Type：text&#x2F;html</p><h3 id="服务器状态"><a href="#服务器状态" class="headerlink" title="服务器状态"></a>服务器状态</h3><ul><li>200 ok<br>3s 重定向：用不同的方式将用户从一个地方重新定向的另外的地方</li><li>301 moved permanently</li><li>302 found</li><li>304 not modified</li><li>307 temporary redirect<br>4s 用户或者浏览器不知道咋的出现了某种问题：</li><li>401 unauthorized</li><li>403 forbidden</li><li>404 not found</li><li>418 i m a teapot<br>5s 代码错误</li><li>500 Internet server error</li><li>503 service unavailable</li></ul><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul><li>tags 标签</li><li>attributes 属性<br>ex：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">   &lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--zhushi--&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta property=&quot;og:title&quot; content=&quot;html notes&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:description&quot;content=&quot;haha&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:image&quot;content=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;</span><br><span class="line">        &lt;title&gt;html notes&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">     &lt;p&gt;</span><br><span class="line">        hello</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">        段落生成</span><br><span class="line">     &lt;h1&gt;one&lt;/h1&gt;&lt;!--一级标题--&gt;</span><br><span class="line">     &lt;ul&gt;&lt;!--无序列表--&gt;</span><br><span class="line">        list</span><br><span class="line">        &lt;li&gt;foo&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;bar&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;baz&lt;/li&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line">     &lt;ol&gt;&lt;!--有序列表--&gt;</span><br><span class="line">        list</span><br><span class="line">        &lt;li&gt;foo&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;bar&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;baz&lt;/li&gt;</span><br><span class="line">     &lt;/ol&gt;</span><br><span class="line">     &lt;img alt=&quot;cat&quot; src=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;&lt;!--图片显示--&gt;</span><br><span class="line">     &lt;video controls muted&gt;</span><br><span class="line">        &lt;source src=&quot;&quot; type=&quot;&quot;&gt;</span><br><span class="line">     &lt;/video&gt;</span><br><span class="line">     &lt;p&gt;</span><br><span class="line">        visit &lt;a href=&quot;https://7m7666.github.io&quot;&gt;my blog&lt;/a&gt;</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">     &lt;form action=&quot;https://www.bing.com/hp/?mkt=zh-CN&quot; method=&quot;get&quot;&gt;</span><br><span class="line">        &lt;input name=&quot;q&quot; type=&quot;search&quot; autofocus autocomplete=&quot;off&quot; placeholder=&quot;TEXT&quot;&gt;</span><br><span class="line">        &lt;button&gt;search&lt;/button&gt;</span><br><span class="line">     &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li><li>搜索&#x2F;path？key&#x3D;value&amp;key&#x3D;value<br>也就是可以这样搜索 search？q&#x3D;dogs</li><li>pattern&#x3D;”.+@.+.edu”在input框里加入 正则表达式<ul><li>[0123456789]</li><li>[0-9]</li><li>\d 数字</li><li>\D 非十进制数字</li></ul></li></ul><h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul><li>type selector</li><li>class selector</li><li>ID selector</li><li>attribute selector</li></ul><p><strong>连接css文件</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure><p><strong>css的基础体现</strong><br>样式美观</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--zhushi--&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta property=&quot;og:title&quot; content=&quot;html notes&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:description&quot;content=&quot;haha&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:image&quot;content=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;</span><br><span class="line">        &lt;title&gt;html notes&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            #my//我设置的链接id名&#123;</span><br><span class="line">                color: rgb(82, 243, 160)//骚骚的绿色;</span><br><span class="line">            &#125;</span><br><span class="line">            a&#123;</span><br><span class="line">                text-decoration: double;</span><br><span class="line">            &#125;</span><br><span class="line">            a:hover&#123;</span><br><span class="line">                text-decoration: underline;</span><br><span class="line">            &#125;//css的基础体现条件后要加入；</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">         &lt;/head&gt;</span><br><span class="line">         &lt;body&gt;    </span><br><span class="line">&lt;p&gt;</span><br><span class="line">        visit &lt;a href=&quot;https://7m7666.github.io&quot; id=&quot;my&quot;&gt;my blog&lt;/a&gt;</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">     &lt;form action=&quot;https://www.bing.com/hp/?mkt=zh-CN&quot; method=&quot;get&quot;&gt;</span><br><span class="line">        &lt;input name=&quot;q&quot; type=&quot;search&quot; autofocus autocomplete=&quot;off&quot; placeholder=&quot;TEXT&quot;&gt;</span><br><span class="line">        &lt;button&gt;search&lt;/button&gt;</span><br><span class="line">     &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><p>因为哈哈md可以内置html 所以效果如下<br><!DOCTYPE html></p><!--zhushi--><html lang="en">    <head>        <meta property="og:title" content="html notes">        <meta property="og:description"content="haha">        <meta property="og:image"content="W:/lwl/blog/blog/source/img/cat.jpg">        <title>html notes</title>        <style>            #my{                color: rgb(82, 243, 160);            }            a{                text-decoration: double;            }            a:hover{                text-decoration: underline;            }        </style>         </head>         <body>    <p>        visit <a style=“center” href="https://7m7666.github.io" id="my">my blog</a>     </p>     <form action="https://www.bing.com/hp/?mkt=zh-CN" method="get">        <input name="q" type="search"  autocomplete="off" placeholder="TEXT">        <button>search</button>     </form>    </body></html><h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>像python一样的编程语言 可以定义函数和监听</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;JAVASCRIPT&lt;/title&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function greet()&#123;</span><br><span class="line">            alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">        &#125;</span><br><span class="line">        function blink()&#123;</span><br><span class="line">            let body=document.querySelector(&quot;body&quot;);</span><br><span class="line">            if (body.style.visibility==&quot;hidden&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;visible&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;hidden&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        window.setInterval(blink,500);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body style=&quot;text-align: center;&quot; &gt;</span><br><span class="line">    &lt;form onsubmit=&quot;greet();return false;&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; autofocus id=&quot;name&quot; placeholder=&quot;NAME&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><p>更常见的是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        document.addEventListener(&quot;DOMContentLoaded&quot;,function())&#123;</span><br><span class="line">          document.querySelector(&#x27;form&#x27;).addEventListener(&#x27;submit&#x27;,function(e)&#123;</span><br><span class="line">          alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure><p><strong>os</strong>：这节课真是收获满满 前端三件套的确实很好玩 简单的html语言被David由浅入深讲解进入css和JavaScript修饰网页的功能 真是不由得赞叹人类大脑的强大 逻辑世界很美丽 特别是最后JavaScript的blink功能 带我梦回90年代网页广告太好玩了！！</p><hr><h1 id="lecture-9-Flask"><a href="#lecture-9-Flask" class="headerlink" title="lecture 9 Flask"></a>lecture 9 Flask</h1><hr><h1 id="lecture-10-Cybersecurity"><a href="#lecture-10-Cybersecurity" class="headerlink" title="lecture 10 Cybersecurity"></a>lecture 10 Cybersecurity</h1><hr><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>&emsp;在短短两周内完成MIT的CS50课程，是一次难忘的学习体验。David Malan教授的课程设计得非常精彩，总能将复杂的计算机科学概念讲解得深入浅出，像唠家常一样。CS50不仅涵盖了多种编程语言（比如C、Python、SQL、Access和HTML），而且还教授了数据结构和算法、软件工程、网络安全的关键概念。集大成的教学方式，让我对计算机世界有了更系统的认识与归纳o(<em>￣▽￣</em>)ブ。</p><p>&emsp;感谢David！感谢MIT！感谢知识畅通直达的现在！</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> cs50 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>cs50.lecture5-7</title>
-      <link href="/2024/08/04/cs50-5-10/"/>
-      <url>/2024/08/04/cs50-5-10/</url>
-      
-        <content type="html"><![CDATA[<hr><h1 id="lecture-5-Data-Structures"><a href="#lecture-5-Data-Structures" class="headerlink" title="lecture 5 Data Structures"></a>lecture 5 Data Structures</h1><p>首先来链表的模板</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">typedef struct node</span><br><span class="line">&#123;</span><br><span class="line">    int value;</span><br><span class="line">    struct node* next;</span><br><span class="line">&#125;node;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    node* head=NULL;</span><br><span class="line">    int number;</span><br><span class="line">    do&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;number);</span><br><span class="line">        if(number!=-1)&#123;</span><br><span class="line">            //add to linked-list</span><br><span class="line">            node*p =(node*)malloc(sizeof(node));//temp链表请求node结构的内存 包含value和下一个指针</span><br><span class="line">            p-&gt;value=number;</span><br><span class="line">            p-&gt;next=NULL;</span><br><span class="line">            node *last=head;//让一个名为last的链表成为head</span><br><span class="line">            //find the last</span><br><span class="line">            if(last)&#123;</span><br><span class="line">                while(last-&gt;next)//last 指的地址存在就下一个实现了遍历</span><br><span class="line">                &#123;</span><br><span class="line">                    last=last-&gt;next;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                last-&gt;next=p;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                head=p;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">    &#125;while(number!=-1);//读到-1就停止</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><div class="row">    <embed src="/file/cs50-5.pdf" width="100%" height="550" type="application/pdf"></div><hr><h1 id="lecture-6-python"><a href="#lecture-6-python" class="headerlink" title="lecture 6 python"></a>lecture 6 python</h1><p><strong><strong>python</strong> Object Oriented Programming 简称为OOP</strong><br>本节课大多数介绍了python与c的不同和python的优势<br>os：你py真还是nb的 同时学了c和py可以强烈感受到c和py底层建筑和瑞士军刀实际运用的利弊</p><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。</p><h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。</p><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul><li>py可能运行会比c慢 占用内存更多 因为py可以帮你<strong>管理内存</strong></li><li>具有丰富的库生态系统 没有标准的头文件</li><li>没有分号 不用声明变量类型</li><li>get-string函数在py中 收益效益没这么高了 因为input（）函数</li><li><strong>缩进尤为重要</strong></li><li>py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在</li><li>可以线性搜索 不用像c一样遍历数组</li><li>用sys库可以做像c的事情 但是访问方式不一样<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">if len(sys.argv)!=2:</span><br><span class="line">        print(&quot;missing command-line argument&quot;)</span><br><span class="line">        sys.exit(1)</span><br><span class="line">print (f&quot;hello,&#123;sys.argv[1]&#125;&quot;)</span><br><span class="line">sys.exit(0)//可以用你想要的方式退出</span><br></pre></td></tr></table></figure></li></ul><h3 id="其他语法"><a href="#其他语法" class="headerlink" title="其他语法"></a>其他语法</h3><ul><li>for + else</li><li>exception:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while Ture:</span><br><span class="line">        try:</span><br><span class="line">        blabla..</span><br><span class="line">        break</span><br><span class="line">        except NameError:</span><br><span class="line">        blabla..</span><br></pre></td></tr></table></figure></li></ul><h2 id="有趣的库"><a href="#有趣的库" class="headerlink" title="有趣的库"></a>有趣的库</h2><ul><li>cowsay（让小牛meow）<br><img src="/img/meow.png" alt="meow"></li><li>qrcode<br><img src="/img/custom_qr.png" alt="我的qrcode"></li></ul><hr><h1 id="lecture-7-SQL"><a href="#lecture-7-SQL" class="headerlink" title="lecture 7 SQL"></a>lecture 7 SQL</h1><h2 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h2><ul><li>csv文件 通过逗号分隔值<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line">       </span><br></pre></td></tr></table></figure></li></ul><h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line"></span><br><span class="line">       reader=csv.DictReader（file）</span><br><span class="line">       for row in reader：</span><br><span class="line">           print（row[“language”]）</span><br><span class="line">       /* or</span><br><span class="line">       reader=csv.reader(file)</span><br><span class="line">       next(reader)//跳过元数据 描述数据的各列表属性</span><br><span class="line">       */</span><br><span class="line">       cnts=&#123;&#125;</span><br><span class="line">       for row in reader:</span><br><span class="line">        favorites=row[&quot;language&quot;]</span><br><span class="line">        if favorites in cnts:</span><br><span class="line">          cnts[favorites]+=1</span><br><span class="line">        else:</span><br><span class="line">          cnts[favorites]=1</span><br><span class="line">for favorites in sorted(cnts,ket=cnts.get,reverse=True):</span><br><span class="line">    print(f&quot;&#123;favorites&#125;:&#123;cnts[favorites]&#125;&quot;)</span><br></pre></td></tr></table></figure><h2 id="sql-语法"><a href="#sql-语法" class="headerlink" title="sql 语法"></a>sql 语法</h2><p><strong>CRUD</strong>语法 即：</p><ul><li>create ：insert</li><li>read ：select sth from </li><li>update sth set value</li><li>delete from sth where condition、 drop</li><li>减少冗余</li><li>one to many</li><li>many to many</li></ul><h3 id="由-csv-db"><a href="#由-csv-db" class="headerlink" title="由.csv-&gt;.db"></a>由.csv-&gt;.db</h3><p>cs50中用到splite3 但以前用的是Access 没有实践过以下终端命令</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">splite3 favorites.db</span><br><span class="line">.mode csv</span><br><span class="line">.import favorites.csv favorites</span><br><span class="line">.quit</span><br><span class="line">之后同时会有csv和db文件</span><br></pre></td></tr></table></figure><h3 id="选取表示"><a href="#选取表示" class="headerlink" title="选取表示"></a>选取表示</h3><p><strong>注意用英文模式</strong></p><ul><li>NULL 表示没有数据</li><li>select * from favorites；</li><li>select * from favorites limit 10；</li><li>AVG COUNT DISTINCT LOWER MAX MIN UPPER</li><li>LIMIt 限制输出：<ul><li>where </li><li>like</li><li>order by</li><li>limit</li><li>group by</li><li>join：select * <strong>from</strong> a <strong>join</strong> b <strong>on</strong> a.id&#x3D;b.id</li><li><ul><li><img src="/img/lecture7.jpg" alt="嵌套语句"></li></ul></li><li>又或者一次性连接多个表<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT title FROM shows</span><br><span class="line">JOIN stars ON shows.id=stars.show_id</span><br><span class="line">JOIN people ON stars.person_id=people.id;</span><br></pre></td></tr></table></figure></li><li>便利的<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT title FROM shows,stars,people</span><br><span class="line">WHERE shows.id=stars.show_id</span><br><span class="line">AND people.id=stars.person_id</span><br><span class="line">AND name=&quot;STEVE CARELL&quot;;</span><br></pre></td></tr></table></figure></li></ul></li></ul><h2 id="ACCESS思维导图和SQL语句练习题"><a href="#ACCESS思维导图和SQL语句练习题" class="headerlink" title="ACCESS思维导图和SQL语句练习题"></a>ACCESS思维导图和SQL语句练习题</h2><div class="row">    <embed src="/file/Access.pdf" width="100%" height="550" type="application/pdf"></div><div class="row">    <embed src="/file/sql习题课作业.pdf" width="100%" height="550" type="application/pdf"></div><p><strong>os</strong>：一下子写完lecture5-10似乎太多，于是决定把8-10的笔记放到另外一篇文章</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> cs50 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>cs50.lecture0-4</title>
-      <link href="/2024/07/10/cs50/"/>
-      <url>/2024/07/10/cs50/</url>
-      
-        <content type="html"><![CDATA[<hr><h1 id="lecture-0-Sratch"><a href="#lecture-0-Sratch" class="headerlink" title="lecture 0 -Sratch"></a>lecture 0 -Sratch</h1><p><img src="/img/lecture0-1.png" alt="引言"></p><h2 id="Binary-二进制"><a href="#Binary-二进制" class="headerlink" title="Binary-二进制"></a>Binary-二进制</h2><h3 id="首先问题抛出：一个手指可以最多表示几位数？"><a href="#首先问题抛出：一个手指可以最多表示几位数？" class="headerlink" title="首先问题抛出：一个手指可以最多表示几位数？"></a>首先问题抛出：一个手指可以最多表示几位数？</h3><ul><li>直观的使用肉眼，利用普遍十进制的思想我们可以很快说出5</li><li>通过0也是一个数字，想到：为什么我们伸出1的时候不是“2”呢？</li><li>31&#x3D;2* * 5-1</li></ul><p><code>太聪明了！！</code><br>但是我下意识的反应是5的4321次方，后面一想也可以是5的4的3的21次方的次方的次方<br>–也就是5 * * {4* * （3* * 21）}</p><h3 id="为什么使用二进制"><a href="#为什么使用二进制" class="headerlink" title="为什么使用二进制"></a>为什么使用二进制</h3><ul><li>简易信息操作及指示 –<strong>开关</strong></li><li>bit ：表示单位</li><li>byte：八个bit</li></ul><h2 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h2><p><img src="/img/lecture0-2.png" alt="ASCII"></p><h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><ul><li>超过8byte</li><li>包括非英语</li><li>大集合（近40亿）</li><li>十六进制！</li></ul><h3 id="emoji"><a href="#emoji" class="headerlink" title="emoji"></a>emoji</h3><ul><li>零宽度连接符（ZWJ）</li><li>unicode：U+200D</li><li>通过组合学把表情的信息表达多样化</li><li>每个像素三个字节</li></ul><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul><li>效率</li><li>二分法&#x2F;猜数游戏的精髓：100个数里面猜出炸弹的次数最多有7次–2**7&#x3D;128&gt;100</li><li>n</li><li>n&#x2F;2</li><li>log2 n</li></ul><h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><ul><li><img src="/img/lecture0-3.png" alt="伪代码"></li><li>布尔表达式</li><li>function loop condition</li></ul><h2 id="LLM-large-language-model"><a href="#LLM-large-language-model" class="headerlink" title="LLM large-language model"></a>LLM large-language model</h2><ul><li>不是给具体值 是给人类语言</li><li>reasonable</li></ul><hr><h2 id="这是0-4课在平板上的笔记"><a href="#这是0-4课在平板上的笔记" class="headerlink" title="这是0-4课在平板上的笔记"></a>这是0-4课在平板上的笔记</h2><div class="row">    <embed src="/file/cs50.pdf" width="100%" height="550" type="application/pdf"></div><hr><h1 id="可变数组的自动增长"><a href="#可变数组的自动增长" class="headerlink" title="可变数组的自动增长"></a>可变数组的自动增长</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">typedef struct </span><br><span class="line">&#123;</span><br><span class="line">    int *array;</span><br><span class="line">    int size;</span><br><span class="line">&#125;Array;//首先定义了一个结构 结构里面有一个数组/指针和一个int类型的大小</span><br><span class="line">const blocks=20;</span><br><span class="line">Array arraycreate(int insize)</span><br><span class="line">&#123;</span><br><span class="line">    Array a;</span><br><span class="line">    a.size=insize;</span><br><span class="line">    a.array=(int*)malloc(sizeof (int)*a.size);</span><br><span class="line">    return a;//返回一个本地变量的结构</span><br><span class="line">&#125;//malloc是动态内存分配 一定要记得free！！！！</span><br><span class="line">void arrayfree(Array *a)</span><br><span class="line">&#123;</span><br><span class="line">    free(a-&gt;array);</span><br><span class="line">    a-&gt;array=NULL;</span><br><span class="line">    a-&gt;size=0;</span><br><span class="line">&#125;//封装 保密权在我 解释权在我 开后门在我</span><br><span class="line">int arraysize(const Array *a)</span><br><span class="line">&#123;</span><br><span class="line">    return a-&gt;size;</span><br><span class="line">&#125;</span><br><span class="line">int arrayget(Array *a,int indenx)</span><br><span class="line">&#123;</span><br><span class="line">    if (indenx&gt;=a-&gt;size)</span><br><span class="line">    &#123;</span><br><span class="line">        arrayinflate(a,(indenx/blocks+1)*blocks-a-&gt;size);//把数组分成若干个blocks 然后看这个数组需要几个blocks 减去a-》size是因为inflate接受的参数是增长空间</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return a-&gt;array[indenx];</span><br><span class="line">&#125;</span><br><span class="line">int arrayset(Array *a,int indenx,int value)</span><br><span class="line">&#123;</span><br><span class="line">    a-&gt;array[indenx]=value;</span><br><span class="line">&#125;</span><br><span class="line">void arrayinflate(Array *a,int moresize)</span><br><span class="line">&#123;</span><br><span class="line">    int *p=(int*)malloc(sizeof((int)(a-&gt;size+moresize)));//给这个数组定义申请一个空间</span><br><span class="line">    for(int i=0;i&lt;a-&gt;size;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i]=a-&gt;array[i];//数组的复制</span><br><span class="line">    &#125;</span><br><span class="line">    free(a-&gt;array);</span><br><span class="line">    a-&gt;array=p;</span><br><span class="line">    a-&gt;size+=moresize;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    Array a=arraycreate(5);</span><br><span class="line">    printf(&quot;%d&quot;,arraysize(&amp;a));</span><br><span class="line">    int number=0;</span><br><span class="line">    int cnt=0;</span><br><span class="line">    while (number!=-1)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;number);</span><br><span class="line">        if(number!=-1)</span><br><span class="line">        &#123;</span><br><span class="line">            arrayset(&amp;a,cnt++,number);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;//一个无限数组出来了</span><br><span class="line">    </span><br><span class="line">    arrayfree(&amp;a);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在数据结构之后 链表的引入让以上写法变得简略 详情要见cs50.5-10</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> cs50 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>A Voyage of Discovery</title>
-      <link href="/2024/07/07/A%20Voyage%20of%20Discovery/"/>
-      <url>/2024/07/07/A%20Voyage%20of%20Discovery/</url>
-      
-        <content type="html"><![CDATA[<h1 id="欢迎来到我的博客！"><a href="#欢迎来到我的博客！" class="headerlink" title="欢迎来到我的博客！"></a>欢迎来到我的博客！</h1><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>作为中国海洋大学的一名学生，我身处一个充满活力的学术社区，毗邻风景如画的海岸线。我对计算机科学与技术（以下简称CS）的热情点燃了我探索和发现的旅程。这个博客记录了我的经历、抱负以及我在研究领域积累的知识。</p><h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><p>在我的学术生涯中，我有机会参与各种迷人的项目。这些项目涵盖了CS的各个领域，不仅磨练了我的技能，也拓宽了我对计算的理解。我将分享这些项目的详细洞察，聚焦于我所面临的挑战、提出的解决方案以及学到的宝贵教训。</p><h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><p>学习是一个持续的过程，CS领域广阔且不断发展。在这一部分，我将总结我在学习中获得的关键知识点。这份总结将作为一个简洁而全面的指南，带你探索代码之下的迷人世界。<br>我邀请你加入我这段激动人心的探索之旅。你的评论、问题和见解都非常欢迎，因为它们将丰富你我的学习体验。让我们一起深入计算机的奇迹吧！<br><strong>诚挚问候，</strong><br><strong>7M7</strong></p><hr><h1 id="Welcome-to-My-Blog"><a href="#Welcome-to-My-Blog" class="headerlink" title="Welcome to My Blog!"></a>Welcome to My Blog!</h1><h2 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h2><p>I am a student at China University of Oceanography, immersed in a vibrant academic community that borders a beautiful coastline. My passion for <strong>Computer Science and Technology</strong> (<strong>CS</strong>) has ignited a journey of exploration and discovery. This blog captures my experiences, aspirations, and the knowledge I’ve amassed in my field.</p><h2 id="Projects"><a href="#Projects" class="headerlink" title="Projects"></a>Projects</h2><p>My academic journey has afforded me the chance to participate in various intriguing projects across <strong>CS</strong>. These projects have honed my skills and expanded my understanding of computing. I’ll share detailed insights into these projects, focusing on the challenges I faced, the solutions I proposed, and the valuable lessons I learned.</p><h2 id="Knowledge-Points-Summary"><a href="#Knowledge-Points-Summary" class="headerlink" title="Knowledge Points Summary"></a>Knowledge Points Summary</h2><p>As <strong>CS</strong> is a vast and continuously evolving field, I’ll summarize key knowledge points I’ve acquired during my studies. This summary will serve as a guide to explore the fascinating world beneath the code.<br>I welcome you to join me on this thrilling exploration. Your comments, questions, and insights are greatly appreciated, as they will enhance our learning experiences. Let’s dive into the marvels of computing together!<br><strong>Warm regards,</strong><br><strong>7M7</strong></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> SELF INTRODUCTION </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title>A Voyage of Discovery</title>
+    <url>/2024/07/07/A%20Voyage%20of%20Discovery/</url>
+    <content><![CDATA[<h1 id="欢迎来到我的博客！"><a href="#欢迎来到我的博客！" class="headerlink" title="欢迎来到我的博客！"></a>欢迎来到我的博客！</h1><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>作为中国海洋大学的一名学生，我身处一个充满活力的学术社区，毗邻风景如画的海岸线。我对计算机科学与技术（以下简称CS）的热情点燃了我探索和发现的旅程。这个博客记录了我的经历、抱负以及我在研究领域积累的知识。</p>
+<h2 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h2><p>在我的学术生涯中，我有机会参与各种迷人的项目。这些项目涵盖了CS的各个领域，不仅磨练了我的技能，也拓宽了我对计算的理解。我将分享这些项目的详细洞察，聚焦于我所面临的挑战、提出的解决方案以及学到的宝贵教训。</p>
+<h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><p>学习是一个持续的过程，CS领域广阔且不断发展。在这一部分，我将总结我在学习中获得的关键知识点。这份总结将作为一个简洁而全面的指南，带你探索代码之下的迷人世界。<br>我邀请你加入我这段激动人心的探索之旅。你的评论、问题和见解都非常欢迎，因为它们将丰富你我的学习体验。让我们一起深入计算机的奇迹吧！<br><strong>诚挚问候，</strong><br><strong>7M7</strong></p>
+<hr>
+<h1 id="Welcome-to-My-Blog"><a href="#Welcome-to-My-Blog" class="headerlink" title="Welcome to My Blog!"></a>Welcome to My Blog!</h1><h2 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h2><p>I am a student at China University of Oceanography, immersed in a vibrant academic community that borders a beautiful coastline. My passion for <strong>Computer Science and Technology</strong> (<strong>CS</strong>) has ignited a journey of exploration and discovery. This blog captures my experiences, aspirations, and the knowledge I’ve amassed in my field.</p>
+<h2 id="Projects"><a href="#Projects" class="headerlink" title="Projects"></a>Projects</h2><p>My academic journey has afforded me the chance to participate in various intriguing projects across <strong>CS</strong>. These projects have honed my skills and expanded my understanding of computing. I’ll share detailed insights into these projects, focusing on the challenges I faced, the solutions I proposed, and the valuable lessons I learned.</p>
+<h2 id="Knowledge-Points-Summary"><a href="#Knowledge-Points-Summary" class="headerlink" title="Knowledge Points Summary"></a>Knowledge Points Summary</h2><p>As <strong>CS</strong> is a vast and continuously evolving field, I’ll summarize key knowledge points I’ve acquired during my studies. This summary will serve as a guide to explore the fascinating world beneath the code.<br>I welcome you to join me on this thrilling exploration. Your comments, questions, and insights are greatly appreciated, as they will enhance our learning experiences. Let’s dive into the marvels of computing together!<br><strong>Warm regards,</strong><br><strong>7M7</strong></p>
+]]></content>
+      <tags>
+        <tag>SELF INTRODUCTION</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cs50.lecture0-4</title>
+    <url>/2024/07/10/cs50/</url>
+    <content><![CDATA[<hr>
+<h1 id="lecture-0-Sratch"><a href="#lecture-0-Sratch" class="headerlink" title="lecture 0 -Sratch"></a>lecture 0 -Sratch</h1><p><img src="/img/lecture0-1.png" alt="引言"></p>
+<h2 id="Binary-二进制"><a href="#Binary-二进制" class="headerlink" title="Binary-二进制"></a>Binary-二进制</h2><h3 id="首先问题抛出：一个手指可以最多表示几位数？"><a href="#首先问题抛出：一个手指可以最多表示几位数？" class="headerlink" title="首先问题抛出：一个手指可以最多表示几位数？"></a>首先问题抛出：一个手指可以最多表示几位数？</h3><ul>
+<li>直观的使用肉眼，利用普遍十进制的思想我们可以很快说出5</li>
+<li>通过0也是一个数字，想到：为什么我们伸出1的时候不是“2”呢？</li>
+<li>31&#x3D;2* * 5-1</li>
+</ul>
+<p><code>太聪明了！！</code><br>但是我下意识的反应是5的4321次方，后面一想也可以是5的4的3的21次方的次方的次方<br>–也就是5 * * {4* * （3* * 21）}</p>
+<h3 id="为什么使用二进制"><a href="#为什么使用二进制" class="headerlink" title="为什么使用二进制"></a>为什么使用二进制</h3><ul>
+<li>简易信息操作及指示 –<strong>开关</strong></li>
+<li>bit ：表示单位</li>
+<li>byte：八个bit</li>
+</ul>
+<h2 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h2><p><img src="/img/lecture0-2.png" alt="ASCII"></p>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><ul>
+<li>超过8byte</li>
+<li>包括非英语</li>
+<li>大集合（近40亿）</li>
+<li>十六进制！</li>
+</ul>
+<h3 id="emoji"><a href="#emoji" class="headerlink" title="emoji"></a>emoji</h3><ul>
+<li>零宽度连接符（ZWJ）</li>
+<li>unicode：U+200D</li>
+<li>通过组合学把表情的信息表达多样化</li>
+<li>每个像素三个字节</li>
+</ul>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li>效率</li>
+<li>二分法&#x2F;猜数游戏的精髓：100个数里面猜出炸弹的次数最多有7次–2**7&#x3D;128&gt;100</li>
+<li>n</li>
+<li>n&#x2F;2</li>
+<li>log2 n</li>
+</ul>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><ul>
+<li><img src="/img/lecture0-3.png" alt="伪代码"></li>
+<li>布尔表达式</li>
+<li>function loop condition</li>
+</ul>
+<h2 id="LLM-large-language-model"><a href="#LLM-large-language-model" class="headerlink" title="LLM large-language model"></a>LLM large-language model</h2><ul>
+<li>不是给具体值 是给人类语言</li>
+<li>reasonable</li>
+</ul>
+<hr>
+<h2 id="这是0-4课在平板上的笔记"><a href="#这是0-4课在平板上的笔记" class="headerlink" title="这是0-4课在平板上的笔记"></a>这是0-4课在平板上的笔记</h2>
+
+	<div class="row">
+    <embed src="/file/cs50.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+<hr>
+<h1 id="可变数组的自动增长"><a href="#可变数组的自动增长" class="headerlink" title="可变数组的自动增长"></a>可变数组的自动增长</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">typedef struct </span><br><span class="line">&#123;</span><br><span class="line">    int *array;</span><br><span class="line">    int size;</span><br><span class="line">&#125;Array;//首先定义了一个结构 结构里面有一个数组/指针和一个int类型的大小</span><br><span class="line">const blocks=20;</span><br><span class="line">Array arraycreate(int insize)</span><br><span class="line">&#123;</span><br><span class="line">    Array a;</span><br><span class="line">    a.size=insize;</span><br><span class="line">    a.array=(int*)malloc(sizeof (int)*a.size);</span><br><span class="line">    return a;//返回一个本地变量的结构</span><br><span class="line">&#125;//malloc是动态内存分配 一定要记得free！！！！</span><br><span class="line">void arrayfree(Array *a)</span><br><span class="line">&#123;</span><br><span class="line">    free(a-&gt;array);</span><br><span class="line">    a-&gt;array=NULL;</span><br><span class="line">    a-&gt;size=0;</span><br><span class="line">&#125;//封装 保密权在我 解释权在我 开后门在我</span><br><span class="line">int arraysize(const Array *a)</span><br><span class="line">&#123;</span><br><span class="line">    return a-&gt;size;</span><br><span class="line">&#125;</span><br><span class="line">int arrayget(Array *a,int indenx)</span><br><span class="line">&#123;</span><br><span class="line">    if (indenx&gt;=a-&gt;size)</span><br><span class="line">    &#123;</span><br><span class="line">        arrayinflate(a,(indenx/blocks+1)*blocks-a-&gt;size);//把数组分成若干个blocks 然后看这个数组需要几个blocks 减去a-》size是因为inflate接受的参数是增长空间</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return a-&gt;array[indenx];</span><br><span class="line">&#125;</span><br><span class="line">int arrayset(Array *a,int indenx,int value)</span><br><span class="line">&#123;</span><br><span class="line">    a-&gt;array[indenx]=value;</span><br><span class="line">&#125;</span><br><span class="line">void arrayinflate(Array *a,int moresize)</span><br><span class="line">&#123;</span><br><span class="line">    int *p=(int*)malloc(sizeof((int)(a-&gt;size+moresize)));//给这个数组定义申请一个空间</span><br><span class="line">    for(int i=0;i&lt;a-&gt;size;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i]=a-&gt;array[i];//数组的复制</span><br><span class="line">    &#125;</span><br><span class="line">    free(a-&gt;array);</span><br><span class="line">    a-&gt;array=p;</span><br><span class="line">    a-&gt;size+=moresize;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    Array a=arraycreate(5);</span><br><span class="line">    printf(&quot;%d&quot;,arraysize(&amp;a));</span><br><span class="line">    int number=0;</span><br><span class="line">    int cnt=0;</span><br><span class="line">    while (number!=-1)</span><br><span class="line">    &#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;number);</span><br><span class="line">        if(number!=-1)</span><br><span class="line">        &#123;</span><br><span class="line">            arrayset(&amp;a,cnt++,number);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;//一个无限数组出来了</span><br><span class="line">    </span><br><span class="line">    arrayfree(&amp;a);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在数据结构之后 链表的引入让以上写法变得简略 详情要见cs50.5-10</p>
+]]></content>
+      <tags>
+        <tag>cs50</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cs50.lecture5-7</title>
+    <url>/2024/08/04/cs50-5-10/</url>
+    <content><![CDATA[<hr>
+<h1 id="lecture-5-Data-Structures"><a href="#lecture-5-Data-Structures" class="headerlink" title="lecture 5 Data Structures"></a>lecture 5 Data Structures</h1><p>首先来链表的模板</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">typedef struct node</span><br><span class="line">&#123;</span><br><span class="line">    int value;</span><br><span class="line">    struct node* next;</span><br><span class="line">&#125;node;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    node* head=NULL;</span><br><span class="line">    int number;</span><br><span class="line">    do&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;number);</span><br><span class="line">        if(number!=-1)&#123;</span><br><span class="line">            //add to linked-list</span><br><span class="line">            node*p =(node*)malloc(sizeof(node));//temp链表请求node结构的内存 包含value和下一个指针</span><br><span class="line">            p-&gt;value=number;</span><br><span class="line">            p-&gt;next=NULL;</span><br><span class="line">            node *last=head;//让一个名为last的链表成为head</span><br><span class="line">            //find the last</span><br><span class="line">            if(last)&#123;</span><br><span class="line">                while(last-&gt;next)//last 指的地址存在就下一个实现了遍历</span><br><span class="line">                &#123;</span><br><span class="line">                    last=last-&gt;next;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                last-&gt;next=p;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                head=p;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">    &#125;while(number!=-1);//读到-1就停止</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+	<div class="row">
+    <embed src="/file/cs50-5.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+<hr>
+<h1 id="lecture-6-python"><a href="#lecture-6-python" class="headerlink" title="lecture 6 python"></a>lecture 6 python</h1><p><strong><strong>python</strong> Object Oriented Programming 简称为OOP</strong><br>本节课大多数介绍了python与c的不同和python的优势<br>os：你py真还是nb的 同时学了c和py可以强烈感受到c和py底层建筑和瑞士军刀实际运用的利弊</p>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象就是将问题分解成一个一个步骤，对每个步骤进行相应的抽象，形成对象，通过不同对象之间的调用，组合解决问题。</p>
+<h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程是一种自顶而下的编程模式。把问题分解成一个一个步骤，每个步骤用函数实现，依次调用即可。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ul>
+<li>py可能运行会比c慢 占用内存更多 因为py可以帮你<strong>管理内存</strong></li>
+<li>具有丰富的库生态系统 没有标准的头文件</li>
+<li>没有分号 不用声明变量类型</li>
+<li>get-string函数在py中 收益效益没这么高了 因为input（）函数</li>
+<li><strong>缩进尤为重要</strong></li>
+<li>py不用担心整形数溢出（超出限度变成0）但是浮点数的精确度一直存在</li>
+<li>可以线性搜索 不用像c一样遍历数组</li>
+<li>用sys库可以做像c的事情 但是访问方式不一样<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import sys</span><br><span class="line">if len(sys.argv)!=2:</span><br><span class="line">        print(&quot;missing command-line argument&quot;)</span><br><span class="line">        sys.exit(1)</span><br><span class="line">print (f&quot;hello,&#123;sys.argv[1]&#125;&quot;)</span><br><span class="line">sys.exit(0)//可以用你想要的方式退出</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="其他语法"><a href="#其他语法" class="headerlink" title="其他语法"></a>其他语法</h3><ul>
+<li>for + else</li>
+<li>exception:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while Ture:</span><br><span class="line">        try:</span><br><span class="line">        blabla..</span><br><span class="line">        break</span><br><span class="line">        except NameError:</span><br><span class="line">        blabla..</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="有趣的库"><a href="#有趣的库" class="headerlink" title="有趣的库"></a>有趣的库</h2><ul>
+<li>cowsay（让小牛meow）<br><img src="/img/meow.png" alt="meow"></li>
+<li>qrcode<br><img src="/img/custom_qr.png" alt="我的qrcode"></li>
+</ul>
+<hr>
+<h1 id="lecture-7-SQL"><a href="#lecture-7-SQL" class="headerlink" title="lecture 7 SQL"></a>lecture 7 SQL</h1><h2 id="读取csv文件"><a href="#读取csv文件" class="headerlink" title="读取csv文件"></a>读取csv文件</h2><ul>
+<li>csv文件 通过逗号分隔值<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line">       </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import csv</span><br><span class="line">with open (&quot;favorites.csv,&quot;r&quot;)as file:</span><br><span class="line"></span><br><span class="line">       reader=csv.DictReader（file）</span><br><span class="line">       for row in reader：</span><br><span class="line">           print（row[“language”]）</span><br><span class="line">       /* or</span><br><span class="line">       reader=csv.reader(file)</span><br><span class="line">       next(reader)//跳过元数据 描述数据的各列表属性</span><br><span class="line">       */</span><br><span class="line">       cnts=&#123;&#125;</span><br><span class="line">       for row in reader:</span><br><span class="line">        favorites=row[&quot;language&quot;]</span><br><span class="line">        if favorites in cnts:</span><br><span class="line">          cnts[favorites]+=1</span><br><span class="line">        else:</span><br><span class="line">          cnts[favorites]=1</span><br><span class="line">for favorites in sorted(cnts,ket=cnts.get,reverse=True):</span><br><span class="line">    print(f&quot;&#123;favorites&#125;:&#123;cnts[favorites]&#125;&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="sql-语法"><a href="#sql-语法" class="headerlink" title="sql 语法"></a>sql 语法</h2><p><strong>CRUD</strong>语法 即：</p>
+<ul>
+<li>create ：insert</li>
+<li>read ：select sth from </li>
+<li>update sth set value</li>
+<li>delete from sth where condition、 drop</li>
+<li>减少冗余</li>
+<li>one to many</li>
+<li>many to many</li>
+</ul>
+<h3 id="由-csv-db"><a href="#由-csv-db" class="headerlink" title="由.csv-&gt;.db"></a>由.csv-&gt;.db</h3><p>cs50中用到splite3 但以前用的是Access 没有实践过以下终端命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">splite3 favorites.db</span><br><span class="line">.mode csv</span><br><span class="line">.import favorites.csv favorites</span><br><span class="line">.quit</span><br><span class="line">之后同时会有csv和db文件</span><br></pre></td></tr></table></figure>
+<h3 id="选取表示"><a href="#选取表示" class="headerlink" title="选取表示"></a>选取表示</h3><p><strong>注意用英文模式</strong></p>
+<ul>
+<li>NULL 表示没有数据</li>
+<li>select * from favorites；</li>
+<li>select * from favorites limit 10；</li>
+<li>AVG COUNT DISTINCT LOWER MAX MIN UPPER</li>
+<li>LIMIt 限制输出：<ul>
+<li>where </li>
+<li>like</li>
+<li>order by</li>
+<li>limit</li>
+<li>group by</li>
+<li>join：select * <strong>from</strong> a <strong>join</strong> b <strong>on</strong> a.id&#x3D;b.id</li>
+<li><ul>
+<li><img src="/img/lecture7.jpg" alt="嵌套语句"></li>
+</ul>
+</li>
+<li>又或者一次性连接多个表<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT title FROM shows</span><br><span class="line">JOIN stars ON shows.id=stars.show_id</span><br><span class="line">JOIN people ON stars.person_id=people.id;</span><br></pre></td></tr></table></figure></li>
+<li>便利的<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT title FROM shows,stars,people</span><br><span class="line">WHERE shows.id=stars.show_id</span><br><span class="line">AND people.id=stars.person_id</span><br><span class="line">AND name=&quot;STEVE CARELL&quot;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="ACCESS思维导图和SQL语句练习题"><a href="#ACCESS思维导图和SQL语句练习题" class="headerlink" title="ACCESS思维导图和SQL语句练习题"></a>ACCESS思维导图和SQL语句练习题</h2>
+
+	<div class="row">
+    <embed src="/file/Access.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+
+
+	<div class="row">
+    <embed src="/file/sql习题课作业.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+<p><strong>os</strong>：一下子写完lecture5-10似乎太多，于是决定把8-10的笔记放到另外一篇文章</p>
+]]></content>
+      <tags>
+        <tag>cs50</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cs50.lecture8-10</title>
+    <url>/2024/08/08/cs50-lecture8-10/</url>
+    <content><![CDATA[<hr>
+<h1 id="lecture-8-HTML-CSS-JavaScript"><a href="#lecture-8-HTML-CSS-JavaScript" class="headerlink" title="lecture 8 HTML,CSS,JavaScript"></a>lecture 8 HTML,CSS,JavaScript</h1><h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP&#x2F;IP"></a>TCP&#x2F;IP</h2><ul>
+<li>IP Internet Protocol：<br> #.#.#.# （0-255）使用这种格式的数字来唯一代表计算机，4字节or32bit</li>
+</ul>
+<p>但是由于2^^32 大约为40亿远远少于地球用户的需求量，我们正从IPV4&gt;IPV6：2^^128位</p>
+<ul>
+<li>信封（数据包）的封装需要提供源地址和目的地址</li>
+<li>但由于cpu和内存受限有时候信封不能成功传递，超出负荷，信封就会drop</li>
+<li>TCP其一功能是在信封上标记序列号 ex：文件（1&#x2F;2）文件（2&#x2F;2）来增加投送成功率</li>
+<li>TCP其二功能是提供端口，给接收者小小提示说明信封里是什么数据类型<ul>
+<li>常见端口1：80 HTTP</li>
+<li>常见端口2：443 HTTPS（HTTP的某个安全版本）</li>
+</ul>
+</li>
+<li>于是最后信封上就会有：<blockquote>
+<p>源地址 目的地址 序列号  目的地端口 源地址端口</p>
+</blockquote>
+</li>
+</ul>
+<p>TCP&#x2F;IP是一对协议，互联网使用它们将数据从A点传输到B点<br>&emsp;IP规范了地址的工作方式<br>&emsp;TCP通过序列号保证数据的传输，同时帮助服务器进行多任务处理，帮助他们复用，通过使用端口号在电子邮件、网页、视频会议之间切换</p>
+<h2 id="DNS-域名系统服务器"><a href="#DNS-域名系统服务器" class="headerlink" title="DNS 域名系统服务器"></a>DNS 域名系统服务器</h2><p>它用来回答一个问题：这个域名的IP地址是什么 -&gt;解析域名<br>像一个哈希表，左列是域名，右列是实际IP地址</p>
+<h2 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h2><p>动态主机配置协议：回答诸如“你的路由器或者DNS的哪个IP地址应该被使用”的问题，不用手动配置</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>https：&#x2F;&#x2F;<a href="http://www.example.com/">www.example.com/</a><br>https：&#x2F;&#x2F;协议 通过https安全访问服务器而不是http<br>www.主机名<br>.com 商业域名 </p>
+<h2 id="格式化请求网站"><a href="#格式化请求网站" class="headerlink" title="格式化请求网站"></a>格式化请求网站</h2><ul>
+<li>GET 完全获取信息</li>
+<li>POST 发送信息</li>
+</ul>
+<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p><strong>浏览器-&gt;服务器</strong><br>GET&#x2F;HTTP&#x2F;2<br>Host：<a href="http://www.harvard.edu/">www.Harvard.edu</a><br><strong>服务器-&gt;浏览器</strong><br>HTTP&#x2F;2 200<br>Content-Type：text&#x2F;html</p>
+<h3 id="服务器状态"><a href="#服务器状态" class="headerlink" title="服务器状态"></a>服务器状态</h3><ul>
+<li>200 ok<br>3s 重定向：用不同的方式将用户从一个地方重新定向的另外的地方</li>
+<li>301 moved permanently</li>
+<li>302 found</li>
+<li>304 not modified</li>
+<li>307 temporary redirect<br>4s 用户或者浏览器不知道咋的出现了某种问题：</li>
+<li>401 unauthorized</li>
+<li>403 forbidden</li>
+<li>404 not found</li>
+<li>418 i m a teapot<br>5s 代码错误</li>
+<li>500 Internet server error</li>
+<li>503 service unavailable</li>
+</ul>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
+<li>tags 标签</li>
+<li>attributes 属性<br>ex：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   &lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--zhushi--&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta property=&quot;og:title&quot; content=&quot;html notes&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:description&quot;content=&quot;haha&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:image&quot;content=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;</span><br><span class="line">        &lt;title&gt;html notes&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">     &lt;p&gt;</span><br><span class="line">        hello</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">        段落生成</span><br><span class="line">     &lt;h1&gt;one&lt;/h1&gt;&lt;!--一级标题--&gt;</span><br><span class="line">     &lt;ul&gt;&lt;!--无序列表--&gt;</span><br><span class="line">        list</span><br><span class="line">        &lt;li&gt;foo&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;bar&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;baz&lt;/li&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line">     &lt;ol&gt;&lt;!--有序列表--&gt;</span><br><span class="line">        list</span><br><span class="line">        &lt;li&gt;foo&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;bar&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;baz&lt;/li&gt;</span><br><span class="line">     &lt;/ol&gt;</span><br><span class="line">     &lt;img alt=&quot;cat&quot; src=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;&lt;!--图片显示--&gt;</span><br><span class="line">     &lt;video controls muted&gt;</span><br><span class="line">        &lt;source src=&quot;&quot; type=&quot;&quot;&gt;</span><br><span class="line">     &lt;/video&gt;</span><br><span class="line">     &lt;p&gt;</span><br><span class="line">        visit &lt;a href=&quot;https://7m7666.github.io&quot;&gt;my blog&lt;/a&gt;</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">     &lt;form action=&quot;https://www.bing.com/hp/?mkt=zh-CN&quot; method=&quot;get&quot;&gt;</span><br><span class="line">        &lt;input name=&quot;q&quot; type=&quot;search&quot; autofocus autocomplete=&quot;off&quot; placeholder=&quot;TEXT&quot;&gt;</span><br><span class="line">        &lt;button&gt;search&lt;/button&gt;</span><br><span class="line">     &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+<li>搜索&#x2F;path？key&#x3D;value&amp;key&#x3D;value<br>也就是可以这样搜索 search？q&#x3D;dogs</li>
+<li>pattern&#x3D;”.+@.+.edu”在input框里加入 正则表达式<ul>
+<li>[0123456789]</li>
+<li>[0-9]</li>
+<li>\d 数字</li>
+<li>\D 非十进制数字</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
+<li>type selector</li>
+<li>class selector</li>
+<li>ID selector</li>
+<li>attribute selector</li>
+</ul>
+<p><strong>连接css文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>css的基础体现</strong><br>样式美观</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--zhushi--&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta property=&quot;og:title&quot; content=&quot;html notes&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:description&quot;content=&quot;haha&quot;&gt;</span><br><span class="line">        &lt;meta property=&quot;og:image&quot;content=&quot;W:/lwl/blog/blog/source/img/cat.jpg&quot;&gt;</span><br><span class="line">        &lt;title&gt;html notes&lt;/title&gt;</span><br><span class="line">        &lt;style&gt;</span><br><span class="line">            #my//我设置的链接id名&#123;</span><br><span class="line">                color: rgb(82, 243, 160)//骚骚的绿色;</span><br><span class="line">            &#125;</span><br><span class="line">            a&#123;</span><br><span class="line">                text-decoration: double;</span><br><span class="line">            &#125;</span><br><span class="line">            a:hover&#123;</span><br><span class="line">                text-decoration: underline;</span><br><span class="line">            &#125;//css的基础体现条件后要加入；</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">         &lt;/head&gt;</span><br><span class="line">         &lt;body&gt;    </span><br><span class="line">&lt;p&gt;</span><br><span class="line">        visit &lt;a href=&quot;https://7m7666.github.io&quot; id=&quot;my&quot;&gt;my blog&lt;/a&gt;</span><br><span class="line">     &lt;/p&gt;</span><br><span class="line">     &lt;form action=&quot;https://www.bing.com/hp/?mkt=zh-CN&quot; method=&quot;get&quot;&gt;</span><br><span class="line">        &lt;input name=&quot;q&quot; type=&quot;search&quot; autofocus autocomplete=&quot;off&quot; placeholder=&quot;TEXT&quot;&gt;</span><br><span class="line">        &lt;button&gt;search&lt;/button&gt;</span><br><span class="line">     &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>因为哈哈md可以内置html 所以效果如下<br><!DOCTYPE html></p>
+<!--zhushi-->
+<html lang="en">
+    <head>
+        <meta property="og:title" content="html notes">
+        <meta property="og:description"content="haha">
+        <meta property="og:image"content="W:/lwl/blog/blog/source/img/cat.jpg">
+        <title>html notes</title>
+        <style>
+            #my{
+                color: rgb(82, 243, 160);
+            }
+            a{
+                text-decoration: double;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+        </style>
+         </head>
+         <body>    
+<p>
+        visit <a style=“center” href="https://7m7666.github.io" id="my">my blog</a>
+     </p>
+     <form action="https://www.bing.com/hp/?mkt=zh-CN" method="get">
+        <input name="q" type="search" placeholder="TEXT">
+        <button>search</button>
+     </form>
+    </body>
+</html>
+
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>像python一样的编程语言 可以定义函数和监听</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;JAVASCRIPT&lt;/title&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function greet()&#123;</span><br><span class="line">            alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">        &#125;</span><br><span class="line">        function blink()&#123;</span><br><span class="line">            let body=document.querySelector(&quot;body&quot;);</span><br><span class="line">            if (body.style.visibility==&quot;hidden&quot;)</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;visible&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                body.style.visibility=&quot;hidden&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        window.setInterval(blink,500);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body style=&quot;text-align: center;&quot; &gt;</span><br><span class="line">    &lt;form onsubmit=&quot;greet();return false;&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; autofocus id=&quot;name&quot; placeholder=&quot;NAME&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>更常见的是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        document.addEventListener(&quot;DOMContentLoaded&quot;,function())&#123;</span><br><span class="line">          document.querySelector(&#x27;form&#x27;).addEventListener(&#x27;submit&#x27;,function(e)&#123;</span><br><span class="line">          alert(&quot;hello,&quot;+document.querySelector(&quot;#name&quot;).value);</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>os</strong>：这节课真是收获满满 前端三件套的确实很好玩 简单的html语言被David由浅入深讲解进入css和JavaScript修饰网页的功能 真是不由得赞叹人类大脑的强大 逻辑世界很美丽 特别是最后JavaScript的blink功能 带我梦回90年代网页广告太好玩了！！</p>
+<hr>
+<h1 id="lecture-9-Flask"><a href="#lecture-9-Flask" class="headerlink" title="lecture 9 Flask"></a>lecture 9 Flask</h1><hr>
+<h1 id="lecture-10-Cybersecurity"><a href="#lecture-10-Cybersecurity" class="headerlink" title="lecture 10 Cybersecurity"></a>lecture 10 Cybersecurity</h1><hr>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>&emsp;在短短两周内完成MIT的CS50课程，是一次难忘的学习体验。David Malan教授的课程设计得非常精彩，总能将复杂的计算机科学概念讲解得深入浅出，像唠家常一样。CS50不仅涵盖了多种编程语言（比如C、Python、SQL、Access和HTML），而且还教授了数据结构和算法、软件工程、网络安全的关键概念。集大成的教学方式，让我对计算机世界有了更系统的认识与归纳o(<em>￣▽￣</em>)ブ。</p>
+<p>&emsp;感谢David！感谢MIT！感谢知识畅通直达的现在！</p>
+]]></content>
+      <tags>
+        <tag>cs50</tag>
+      </tags>
+  </entry>
 </search>
