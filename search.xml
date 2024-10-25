@@ -416,4 +416,22 @@
         <tag>计算机二级</tag>
       </tags>
   </entry>
+  <entry>
+    <title>虚拟机下载和ubuntu安装</title>
+    <url>/2024/10/06/%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%92%8Cubuntu%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="虚拟机VMware和Linux系统安装实验报告"><a href="#虚拟机VMware和Linux系统安装实验报告" class="headerlink" title="虚拟机VMware和Linux系统安装实验报告"></a>虚拟机VMware和Linux系统安装实验报告</h1><hr>
+<h2 id="VMware下载及安装"><a href="#VMware下载及安装" class="headerlink" title="VMware下载及安装"></a>VMware下载及安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><ul>
+<li>上<strong>GitHub</strong><br>因为官网太卡了，决定去GitHub把VMware下回来<a href="https://github.com/201853910/VMwareWorkstation">https://github.com/201853910/VMwareWorkstation</a><br>推荐一个好用的代理，让下载速度直接飞升 （<a href="https://ghp.ci/%EF%BC%89">https://ghp.ci/）</a></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>用管理员权限运行VMware安装程序</li>
+<li>取消勾选检查更新和用户改进计划，输入密钥，我用的密钥是<code>MC60H-DWHD5-H80U9-6V85M-8280D</code></li>
+<li>完成</li>
+</ul>
+<h2 id="Ubuntu下载及安装"><a href="#Ubuntu下载及安装" class="headerlink" title="Ubuntu下载及安装"></a>Ubuntu下载及安装</h2><h3 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h3><p><a href="http://mirrors.ustc.edu.cn/ubuntu-releases/">http://mirrors.ustc.edu.cn/ubuntu-releases/</a></p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3>]]></content>
+      <tags>
+        <tag>计算机导论实验</tag>
+      </tags>
+  </entry>
 </search>
