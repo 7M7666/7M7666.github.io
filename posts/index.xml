@@ -8,14 +8,22 @@
     <language>en</language>
     <managingEditor>237189315@qq.com (7M7)</managingEditor>
     <webMaster>237189315@qq.com (7M7)</webMaster>
-    <lastBuildDate>Mon, 17 Nov 2025 21:14:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 17 Nov 2025 21:25:39 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java笔记3.0</title>
+      <link>http://localhost:1313/posts/86f3bbb/</link>
+      <pubDate>Mon, 17 Nov 2025 21:25:39 +0800</pubDate>
+      <guid>http://localhost:1313/posts/86f3bbb/</guid>
+      <category domain="http://localhost:1313/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <description>Java笔记3.0</description>
+    </item>
     <item>
       <title>Java笔记2.0</title>
       <link>http://localhost:1313/posts/54c6db0/</link>
       <pubDate>Mon, 17 Nov 2025 21:14:46 +0800</pubDate>
       <guid>http://localhost:1313/posts/54c6db0/</guid>
-      <category domain="http://localhost:1313/categories/draft/">Draft</category>
+      <category domain="http://localhost:1313/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
       <description>Java笔记2.0</description>
     </item>
     <item>

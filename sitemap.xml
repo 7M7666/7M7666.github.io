@@ -7,37 +7,43 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-11-17T21:25:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/86f3bbb/</loc>
+    <lastmod>2025-11-17T21:25:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-11-17T21:25:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-11-17T21:14:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://localhost:1313/categories/draft/</loc>
-    <lastmod>2025-11-17T21:14:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://localhost:1313/posts/54c6db0/</loc>
-    <lastmod>2025-11-17T21:14:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-11-17T21:14:46+08:00</lastmod>
+    <lastmod>2025-11-17T21:25:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/categories/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2025-11-17T21:25:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://localhost:1313/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2025-11-17T21:25:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://localhost:1313/posts/54c6db0/</loc>
     <lastmod>2025-11-17T21:14:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
