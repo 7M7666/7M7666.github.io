@@ -1,0 +1,13 @@
+/* assets/css/custom.css */
+
+/* 鼠标选中文字时的颜色 */
+::selection {
+    background: #ff79c6;
+    color: #fff;
+}
+
+/* 给所有图片加一点阴影和圆角 */
+img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
