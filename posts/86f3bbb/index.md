@@ -737,6 +737,6 @@ Java 核心知识
 
 ---
 
-> Author: <no value>  
+> Author: 7M7  
 > URL: http://localhost:1313/posts/86f3bbb/  
 

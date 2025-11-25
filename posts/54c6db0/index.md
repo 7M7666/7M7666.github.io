@@ -1418,6 +1418,6 @@ java.util
 
 ---
 
-> Author: <no value>  
+> Author: 7M7  
 > URL: http://localhost:1313/posts/54c6db0/  
 

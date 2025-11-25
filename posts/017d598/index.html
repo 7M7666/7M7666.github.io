@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记 - &lt;/&gt;7M7&#39;s blog</title><meta name="author" content="7M7">
+<meta name="description" content=" 8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记 1. 8086 的基本“世界观” 1.1 字长与内存 字节（Byte）：8 位，范围 0~255 (00H ~ FFH) 字（Word）：16 位，由 2 个字节组成 8086 特性：16 位 CPU 寄存器宽度一般是 16 位 部分寄存器可以拆成两个 8 位使用 内存模型： 内存可以想象成一条长长的字节数组：
+"><meta name="keywords" content='汇编语言, 8086, Debug, 计算机组成原理'>
+  <meta itemprop="name" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记">
+  <meta itemprop="description" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记 1. 8086 的基本“世界观” 1.1 字长与内存 字节（Byte）：8 位，范围 0~255 (00H ~ FFH) 字（Word）：16 位，由 2 个字节组成 8086 特性：16 位 CPU 寄存器宽度一般是 16 位 部分寄存器可以拆成两个 8 位使用 内存模型： 内存可以想象成一条长长的字节数组：">
+  <meta itemprop="datePublished" content="2025-11-25T22:00:41+08:00">
+  <meta itemprop="dateModified" content="2025-11-25T22:00:41+08:00">
+  <meta itemprop="wordCount" content="796">
+  <meta itemprop="keywords" content="汇编语言,8086,Debug,计算机组成原理"><meta property="og:url" content="http://localhost:1313/posts/017d598/">
+  <meta property="og:site_name" content="&lt;/&gt;7M7&#39;s blog">
+  <meta property="og:title" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记">
+  <meta property="og:description" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记 1. 8086 的基本“世界观” 1.1 字长与内存 字节（Byte）：8 位，范围 0~255 (00H ~ FFH) 字（Word）：16 位，由 2 个字节组成 8086 特性：16 位 CPU 寄存器宽度一般是 16 位 部分寄存器可以拆成两个 8 位使用 内存模型： 内存可以想象成一条长长的字节数组：">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-25T22:00:41+08:00">
+    <meta property="article:modified_time" content="2025-11-25T22:00:41+08:00">
+    <meta property="article:tag" content="汇编语言">
+    <meta property="article:tag" content="8086">
+    <meta property="article:tag" content="Debug">
+    <meta property="article:tag" content="计算机组成原理">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记">
+  <meta name="twitter:description" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记 1. 8086 的基本“世界观” 1.1 字长与内存 字节（Byte）：8 位，范围 0~255 (00H ~ FFH) 字（Word）：16 位，由 2 个字节组成 8086 特性：16 位 CPU 寄存器宽度一般是 16 位 部分寄存器可以拆成两个 8 位使用 内存模型： 内存可以想象成一条长长的字节数组：">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/c.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/017d598/" title="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记 - &lt;/&gt;7M7&#39;s blog" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/86f3bbb/" title="Java笔记3.0" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/017d598/index.md" title="8086 汇编 + Debug 调试：TRUEAD 命令与常用指令系统笔记 - </>7M7's blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "8086 汇编 + Debug 调试：TRUEAD 命令与常用指令系统笔记",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/017d598\/"
+    },"genre": "posts","keywords": "汇编语言, 8086, Debug, 计算机组成原理","wordcount":  796 ,
+    "url": "http:\/\/localhost:1313\/posts\/017d598\/","datePublished": "2025-11-25T22:00:41+08:00","dateModified": "2025-11-25T22:00:41+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "7M7"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="left">
+    <div class="header-title">
+      <a href="/" title="&lt;/&gt;7M7&#39;s blog"><img class="logo" src='/img/c.jpg' alt="&lt;/&gt;7M7&#39;s blog" height="32" width="32"><span class="header-title-text">&lt;/&gt;7M7&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章.." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="&lt;/&gt;7M7&#39;s blog"><img class="logo" src='/img/c.jpg' alt="&lt;/&gt;7M7&#39;s blog" height="26" width="26"><span class="header-title-text">&lt;/&gt;7M7&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章.." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记</span>
+      </h1><p class="single-subtitle animate__animated animate__fadeIn">从零开始的 Debug 实战指南</p></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/a.jpg' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category" title="Category - 学习笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习笔记</a></span></div><div class="post-meta-line"><span title="published on 2025-11-25 22:00:41"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-25">2025-11-25</time></span>&nbsp;<span title="796 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 800 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-8086-的基本世界观">1. 8086 的基本“世界观”</a>
+      <ul>
+        <li><a href="#11-字长与内存">1.1 字长与内存</a></li>
+        <li><a href="#12-寄存器简表">1.2 寄存器简表</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-寻址公式逻辑地址--物理地址">2. 寻址公式：逻辑地址 → 物理地址</a></li>
+    <li><a href="#3-debug-环境与进入方式">3. Debug 环境与进入方式</a></li>
+    <li><a href="#4-truead--gqdebug-常用命令总览">4. TRUEAD + GQ：Debug 常用命令总览</a></li>
+    <li><a href="#5-命令详解">5. 命令详解</a>
+      <ul>
+        <li><a href="#51-ttrace--单步执行">5.1 T：Trace —— 单步执行</a></li>
+        <li><a href="#52-rregister--查看修改寄存器">5.2 R：Register —— 查看/修改寄存器</a></li>
+        <li><a href="#53-uunassemble--反汇编代码">5.3 U：Unassemble —— 反汇编代码</a></li>
+        <li><a href="#54-eenter--修改内存数据">5.4 E：Enter —— 修改内存数据</a></li>
+        <li><a href="#55-aassemble--汇编指令到内存">5.5 A：Assemble —— 汇编指令到内存</a></li>
+        <li><a href="#56-ddump--查看内存内容">5.6 D：Dump —— 查看内存内容</a></li>
+        <li><a href="#57-ggo--连续执行程序">5.7 G：Go —— 连续执行程序</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-核心指令与标志位实战">6. 核心指令与标志位实战</a>
+      <ul>
+        <li><a href="#61-add--sub加减法">6.1 ADD &amp; SUB：加减法</a></li>
+        <li><a href="#62-div无符号除法">6.2 DIV：无符号除法</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-综合实验模板">7. 综合实验模板</a>
+      <ul>
+        <li><a href="#模板一除法实验-a--g--r">模板一：除法实验 (A + G + R)</a></li>
+        <li><a href="#模板二内存读写实验-d--e">模板二：内存读写实验 (D + E)</a></li>
+        <li><a href="#模板三单步跟踪-a--t">模板三：单步跟踪 (A + T)</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-总结">8. 总结</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><hr>
+<h2 class="heading-element" id="8086-汇编--debug-调试truead-命令与常用指令系统笔记"><span>8086 汇编 + Debug 调试：TRUEAD 命令与常用指令系统笔记</span>
+  <a href="#8086-%e6%b1%87%e7%bc%96--debug-%e8%b0%83%e8%af%95truead-%e5%91%bd%e4%bb%a4%e4%b8%8e%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4%e7%b3%bb%e7%bb%9f%e7%ac%94%e8%ae%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h2 class="heading-element" id="1-8086-的基本世界观"><span>1. 8086 的基本“世界观”</span>
+  <a href="#1-8086-%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%b8%96%e7%95%8c%e8%a7%82" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="11-字长与内存"><span>1.1 字长与内存</span>
+  <a href="#11-%e5%ad%97%e9%95%bf%e4%b8%8e%e5%86%85%e5%ad%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><strong>字节（Byte）</strong>：8 位，范围 0~255 (<code>00H ~ FFH</code>)</li>
+<li><strong>字（Word）</strong>：16 位，由 2 个字节组成</li>
+<li><strong>8086 特性</strong>：16 位 CPU
+<ul>
+<li>寄存器宽度一般是 16 位</li>
+<li>部分寄存器可以拆成两个 8 位使用</li>
+</ul>
+</li>
+</ul>
+<p><strong>内存模型：</strong>
+内存可以想象成一条长长的字节数组：</p>
+<ul>
+<li>每个“格子”存 1 个字节</li>
+<li>每个格子有一个 <strong>物理地址</strong>：<code>0 ~ 1MB-1</code>（20 位地址线）</li>
+</ul>
+<h3 class="heading-element" id="12-寄存器简表"><span>1.2 寄存器简表</span>
+  <a href="#12-%e5%af%84%e5%ad%98%e5%99%a8%e7%ae%80%e8%a1%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><strong>通用寄存器（16 位）</strong>：
+<ul>
+<li><code>AX</code>, <code>BX</code>, <code>CX</code>, <code>DX</code></li>
+<li><strong>可拆分</strong>：
+<ul>
+<li><code>AX</code> = <code>AH</code> (高8位) + <code>AL</code> (低8位)</li>
+<li><code>BX</code> = <code>BH</code> + <code>BL</code></li>
+<li><code>CX</code> = <code>CH</code> + <code>CL</code></li>
+<li><code>DX</code> = <code>DH</code> + <code>DL</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>段寄存器</strong>：
+<ul>
+<li><code>CS</code> (代码段), <code>DS</code> (数据段), <code>SS</code> (栈段), <code>ES</code> (附加段)</li>
+</ul>
+</li>
+<li><strong>指令指针</strong>：
+<ul>
+<li><code>IP</code>：记录下一条要执行的指令在代码段中的<strong>偏移量</strong></li>
+</ul>
+</li>
+<li><strong>标志寄存器 (Flags)</strong> - 重点记这几个：
+<ul>
+<li><strong>ZF (Zero Flag)</strong>：结果为 0 置 1</li>
+<li><strong>CF (Carry Flag)</strong>：无符号运算进位/借位</li>
+<li><strong>OF (Overflow Flag)</strong>：有符号运算溢出</li>
+<li><strong>SF (Sign Flag)</strong>：结果最高位（符号位）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="heading-element" id="2-寻址公式逻辑地址--物理地址"><span>2. 寻址公式：逻辑地址 → 物理地址</span>
+  <a href="#2-%e5%af%bb%e5%9d%80%e5%85%ac%e5%bc%8f%e9%80%bb%e8%be%91%e5%9c%b0%e5%9d%80--%e7%89%a9%e7%90%86%e5%9c%b0%e5%9d%80" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>8086 不直接操作物理地址，而是使用 <strong>段地址 : 偏移地址 (Segment : Offset)</strong>。</p>
+<blockquote>
+<p><strong>📐 计算公式</strong></p>
+<p>$$\text{物理地址} = \text{段地址} \times 16 + \text{偏移地址}$$</p>
+<p>也就是：<code>Physical = (Segment &lt;&lt; 4) + Offset</code></p></blockquote>
+<p><strong>举例说明：</strong></p>
+<ul>
+<li><code>1000:0000</code>
+<ul>
+<li>物理地址 = $1000H \times 10H + 0000H$ = <strong>10000H</strong></li>
+</ul>
+</li>
+<li><code>1000:0009</code>
+<ul>
+<li>物理地址 = $1000H \times 10H + 0009H$ = <strong>10009H</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>在 Debug 输出中的样子：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1000:0000  41 42 43 44 00 00 00 00-00 00 00 00 00 00 00 00  ABCD............
+</span></span><span class="line"><span class="cl">|-------|  |---------------------------------------------|  |--------------|
+</span></span><span class="line"><span class="cl"> 段:偏移                  16个字节的十六进制数据                对应的 ASCII 字符</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 class="heading-element" id="3-debug-环境与进入方式"><span>3. Debug 环境与进入方式</span>
+  <a href="#3-debug-%e7%8e%af%e5%a2%83%e4%b8%8e%e8%bf%9b%e5%85%a5%e6%96%b9%e5%bc%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>通常在 DOSBox 中运行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\&gt;</span> debug
+</span></span><span class="line"><span class="cl">-</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>看到一行 <code>-</code> 提示符表示进入 debug 模式。</li>
+<li><strong>退出命令</strong>：输入 <code>q</code> 回车。</li>
+</ul>
+<hr>
+<h2 class="heading-element" id="4-truead--gqdebug-常用命令总览"><span>4. TRUEAD + GQ：Debug 常用命令总览</span>
+  <a href="#4-truead--gqdebug-%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4%e6%80%bb%e8%a7%88" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p><strong>🔥 记忆口诀：TRUEAD + GQ</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">命令</th>
+          <th style="text-align: left">全称</th>
+          <th style="text-align: left">作用</th>
+          <th style="text-align: left">助记</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>T</strong></td>
+          <td style="text-align: left"><strong>T</strong>race</td>
+          <td style="text-align: left">单步执行一条指令</td>
+          <td style="text-align: left">跟踪</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>R</strong></td>
+          <td style="text-align: left"><strong>R</strong>egister</td>
+          <td style="text-align: left">显示/修改寄存器</td>
+          <td style="text-align: left">寄存器</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>U</strong></td>
+          <td style="text-align: left"><strong>U</strong>nassemble</td>
+          <td style="text-align: left">反汇编机器码</td>
+          <td style="text-align: left">反汇编</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>E</strong></td>
+          <td style="text-align: left"><strong>E</strong>nter</td>
+          <td style="text-align: left">修改内存数据</td>
+          <td style="text-align: left">输入/编辑</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>A</strong></td>
+          <td style="text-align: left"><strong>A</strong>ssemble</td>
+          <td style="text-align: left">汇编指令到内存</td>
+          <td style="text-align: left">汇编</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>D</strong></td>
+          <td style="text-align: left"><strong>D</strong>ump</td>
+          <td style="text-align: left">显示内存内容</td>
+          <td style="text-align: left">倒出(数据)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>G</strong></td>
+          <td style="text-align: left"><strong>G</strong>o</td>
+          <td style="text-align: left">连续执行程序</td>
+          <td style="text-align: left">运行</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>Q</strong></td>
+          <td style="text-align: left"><strong>Q</strong>uit</td>
+          <td style="text-align: left">退出 debug</td>
+          <td style="text-align: left">退出</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 class="heading-element" id="5-命令详解"><span>5. 命令详解</span>
+  <a href="#5-%e5%91%bd%e4%bb%a4%e8%af%a6%e8%a7%a3" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="51-ttrace--单步执行"><span>5.1 T：Trace —— 单步执行</span>
+  <a href="#51-ttrace--%e5%8d%95%e6%ad%a5%e6%89%a7%e8%a1%8c" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>作用</strong>：按“机器指令”为单位，一条条执行，观察寄存器、标志位变化。</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-t              ; 从当前 CS:IP 单步执行一条
+</span></span><span class="line"><span class="cl">-t=1000:0000    ; 从 1000:0000 单步执行一条</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>常用 Debug 流程</strong>：</p>
+<ol>
+<li>用 <code>u</code> 看某地址上的代码。</li>
+<li>用 <code>r</code> 查看当前 <code>CS:IP</code>。</li>
+<li>用 <code>t</code> 一条条执行。</li>
+<li>每步后系统会自动显示寄存器状态，观察 <code>AX</code>、标志位的变化。</li>
+</ol>
+<hr>
+<h3 class="heading-element" id="52-rregister--查看修改寄存器"><span>5.2 R：Register —— 查看/修改寄存器</span>
+  <a href="#52-rregister--%e6%9f%a5%e7%9c%8b%e4%bf%ae%e6%94%b9%e5%af%84%e5%ad%98%e5%99%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>作用</strong>：显示或修改 CPU 寄存器值。</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-r              ; 显示所有寄存器及标志位
+</span></span><span class="line"><span class="cl">-r ax           ; 显示 AX 一个寄存器（随后输入新值）
+</span></span><span class="line"><span class="cl">-r ip 0100      ; (部分版本支持) 修改指令指针 IP</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>典型输出</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-r
+</span></span><span class="line"><span class="cl">AX=0000  BX=0000  CX=0000  DX=0000  SP=FFFE  BP=0000  SI=0000  DI=0000
+</span></span><span class="line"><span class="cl">DS=0F00  ES=0F00  SS=0F00  CS=1A2B  IP=0100   NV UP EI PL NZ NA PO NC</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>注意</strong>：最后一行大写字母是标志位状态。例如 <code>NZ</code> = Not Zero (ZF=0), <code>NC</code> = No Carry (CF=0)。</p></blockquote>
+<hr>
+<h3 class="heading-element" id="53-uunassemble--反汇编代码"><span>5.3 U：Unassemble —— 反汇编代码</span>
+  <a href="#53-uunassemble--%e5%8f%8d%e6%b1%87%e7%bc%96%e4%bb%a3%e7%a0%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>作用</strong>：把内存中的机器码反向翻译回汇编指令。</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-u              ; 从当前 CS:IP 开始反汇编
+</span></span><span class="line"><span class="cl">-u 1000:0000    ; 从 1000:0000 处反汇编</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>示例</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1000:0000 B8E803       MOV AX,03E8
+</span></span><span class="line"><span class="cl">1000:0003 B364         MOV BL,64
+</span></span><span class="line"><span class="cl">1000:0005 F6F3         DIV BL</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 class="heading-element" id="54-eenter--修改内存数据"><span>5.4 E：Enter —— 修改内存数据</span>
+  <a href="#54-eenter--%e4%bf%ae%e6%94%b9%e5%86%85%e5%ad%98%e6%95%b0%e6%8d%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>作用</strong>：从一个地址开始逐字节写入数据。</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-e 1000:0000 41 42 43 44    ; 写入十六进制
+</span></span><span class="line"><span class="cl">-e 1000:0000 &#39;A&#39; &#39;B&#39; &#39;C&#39;    ; 写入字符常量</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 class="heading-element" id="55-aassemble--汇编指令到内存"><span>5.5 A：Assemble —— 汇编指令到内存</span>
+  <a href="#55-aassemble--%e6%b1%87%e7%bc%96%e6%8c%87%e4%bb%a4%e5%88%b0%e5%86%85%e5%ad%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>作用</strong>：直接输入汇编助记符，Debug 自动将其转为机器码。</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-a 1000:0000
+</span></span><span class="line"><span class="cl">1000:0000 mov ax, 1000
+</span></span><span class="line"><span class="cl">1000:0003 mov bl, 60
+</span></span><span class="line"><span class="cl">1000:0005 div bl
+</span></span><span class="line"><span class="cl">1000:0007 int 3          ; 常用 int 3 作为断点
+</span></span><span class="line"><span class="cl">1000:0008 &lt;回车结束&gt;</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 class="heading-element" id="56-ddump--查看内存内容"><span>5.6 D：Dump —— 查看内存内容</span>
+  <a href="#56-ddump--%e6%9f%a5%e7%9c%8b%e5%86%85%e5%ad%98%e5%86%85%e5%ae%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>作用</strong>：以“十六进制 + ASCII”的形式显示内存。</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-d              ; 从当前 DS:offset 开始
+</span></span><span class="line"><span class="cl">-d 1000:0000    ; 从 1000:0000 显示一屏</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 class="heading-element" id="57-ggo--连续执行程序"><span>5.7 G：Go —— 连续执行程序</span>
+  <a href="#57-ggo--%e8%bf%9e%e7%bb%ad%e6%89%a7%e8%a1%8c%e7%a8%8b%e5%ba%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>作用</strong>：全速运行，直到程序结束或遇到断点（如 <code>INT 3</code>）。</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-g              ; 从当前 CS:IP 跑
+</span></span><span class="line"><span class="cl">-g=1000:0000    ; 设定入口地址并运行</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 class="heading-element" id="6-核心指令与标志位实战"><span>6. 核心指令与标志位实战</span>
+  <a href="#6-%e6%a0%b8%e5%bf%83%e6%8c%87%e4%bb%a4%e4%b8%8e%e6%a0%87%e5%bf%97%e4%bd%8d%e5%ae%9e%e6%88%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="61-add--sub加减法"><span>6.1 ADD &amp; SUB：加减法</span>
+  <a href="#61-add--sub%e5%8a%a0%e5%87%8f%e6%b3%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>示例 1：ADD 无溢出</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mov al, 0F0h     ; AL = 240
+</span></span><span class="line"><span class="cl">add al, 0Ah      ; AL = 240 + 10 = 250 (FAH)
+</span></span><span class="line"><span class="cl">; 结果：CF=0, ZF=0</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>示例 2：ADD 产生进位 (CF=1)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mov al, 0F0h     ; 240
+</span></span><span class="line"><span class="cl">add al, 20h      ; 240 + 32 = 272 (&gt;255)
+</span></span><span class="line"><span class="cl">; 结果：AL=10H (溢出部分丢弃), CF=1</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>示例 3：SUB 产生借位 (CF=1)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mov al, 20h      ; 32
+</span></span><span class="line"><span class="cl">sub al, 30h      ; 32 - 48
+</span></span><span class="line"><span class="cl">; 结果：AL=F0H, CF=1 (不够减，借位)</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 class="heading-element" id="62-div无符号除法"><span>6.2 DIV：无符号除法</span>
+  <a href="#62-div%e6%97%a0%e7%ac%a6%e5%8f%b7%e9%99%a4%e6%b3%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>DIV 指令根据除数的位数（8位或16位）有不同的行为：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">除数位数</th>
+          <th style="text-align: left">被除数位置</th>
+          <th style="text-align: left">商存储位置</th>
+          <th style="text-align: left">余数存储位置</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>8 位</strong> (<code>reg/mem8</code>)</td>
+          <td style="text-align: left"><strong>AX</strong> (16位)</td>
+          <td style="text-align: left"><strong>AL</strong></td>
+          <td style="text-align: left"><strong>AH</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>16 位</strong> (<code>reg/mem16</code>)</td>
+          <td style="text-align: left"><strong>DX:AX</strong> (32位)</td>
+          <td style="text-align: left"><strong>AX</strong></td>
+          <td style="text-align: left"><strong>DX</strong></td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>⚠️ 注意</strong>：<code>DX:AX</code> 表示高 16 位存 DX，低 16 位存 AX。</p></blockquote>
+<p><strong>典型实验案例：</strong></p>
+<ol>
+<li>
+<p><strong>8 位除法（整除）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mov ax, 1000    ; 03E8H
+</span></span><span class="line"><span class="cl">mov bl, 100     ; 64H
+</span></span><span class="line"><span class="cl">div bl          ; 1000 / 100
+</span></span><span class="line"><span class="cl">; 结果：AL = 0Ah (10), AH = 00h (0)</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>8 位除法（有余数）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mov ax, 1000
+</span></span><span class="line"><span class="cl">mov bl, 60
+</span></span><span class="line"><span class="cl">div bl
+</span></span><span class="line"><span class="cl">; 结果：AL = 10H (16), AH = 28H (40)</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>除法溢出 (Divide Error)</strong></p>
+<ul>
+<li>如果商超过了寄存器能表示的范围（例如 8 位除法商 &gt; 255），Debug 会报错 <code>Divide error</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="heading-element" id="7-综合实验模板"><span>7. 综合实验模板</span>
+  <a href="#7-%e7%bb%bc%e5%90%88%e5%ae%9e%e9%aa%8c%e6%a8%a1%e6%9d%bf" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="模板一除法实验-a--g--r"><span>模板一：除法实验 (A + G + R)</span>
+  <a href="#%e6%a8%a1%e6%9d%bf%e4%b8%80%e9%99%a4%e6%b3%95%e5%ae%9e%e9%aa%8c-a--g--r" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-a 1000:0
+</span></span><span class="line"><span class="cl">mov ax, 1000
+</span></span><span class="line"><span class="cl">mov bl, 60
+</span></span><span class="line"><span class="cl">div bl
+</span></span><span class="line"><span class="cl">int 3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-g=1000:0
+</span></span><span class="line"><span class="cl">-r
+</span></span><span class="line"><span class="cl">; 检查 AX 结果</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="模板二内存读写实验-d--e"><span>模板二：内存读写实验 (D + E)</span>
+  <a href="#%e6%a8%a1%e6%9d%bf%e4%ba%8c%e5%86%85%e5%ad%98%e8%af%bb%e5%86%99%e5%ae%9e%e9%aa%8c-d--e" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-d 1000:0          ; 查看原始内容
+</span></span><span class="line"><span class="cl">-e 1000:0 &#39;A&#39; &#39;B&#39; &#39;C&#39;
+</span></span><span class="line"><span class="cl">-d 1000:0          ; 验证修改结果</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="模板三单步跟踪-a--t"><span>模板三：单步跟踪 (A + T)</span>
+  <a href="#%e6%a8%a1%e6%9d%bf%e4%b8%89%e5%8d%95%e6%ad%a5%e8%b7%9f%e8%b8%aa-a--t" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-a 1000:0
+</span></span><span class="line"><span class="cl">mov al, F0
+</span></span><span class="line"><span class="cl">add al, 20
+</span></span><span class="line"><span class="cl">int 3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-r                 ; 看初始状态
+</span></span><span class="line"><span class="cl">-t=1000:0          ; 执行第一句
+</span></span><span class="line"><span class="cl">-r                 ; 检查
+</span></span><span class="line"><span class="cl">-t                 ; 执行第二句
+</span></span><span class="line"><span class="cl">-r                 ; 检查 CF 标志位</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 class="heading-element" id="8-总结"><span>8. 总结</span>
+  <a href="#8-%e6%80%bb%e7%bb%93" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li><strong>地址计算</strong>：物理地址 = $段 \times 16 + 偏移$。</li>
+<li><strong>七大命令</strong>：<code>T</code>(跟踪), <code>R</code>(寄存器), <code>U</code>(反汇编), <code>E</code>(改内存), <code>A</code>(写汇编), <code>D</code>(看内存), <code>G</code>(运行)。</li>
+<li><strong>DIV 规则</strong>：
+<ul>
+<li>除数 8 位 → 结果在 AX (商AL, 余AH)</li>
+<li>除数 16 位 → 结果在 AX, DX (商AX, 余DX)</li>
+</ul>
+</li>
+<li><strong>标志位</strong>：重点关注 <strong>CF</strong> (进位/借位) 和 <strong>ZF</strong> (零标志)。</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-11-25 22:00:41">Updated on 2025-11-25&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/017d598/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/W:%5ctool%5cblog%5c7M7%5ccontent%5cposts%5c%e6%b1%87%e7%bc%96%e7%ac%94%e8%ae%b0.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/017d598/" data-title="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记" data-hashtags="汇编语言,8086,Debug,计算机组成原理"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/017d598/" data-hashtag="汇编语言"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/017d598/" data-title="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" class="post-tag" title="Tags - 汇编语言">汇编语言</a><a href="/tags/8086/" class="post-tag" title="Tags - 8086">8086</a><a href="/tags/debug/" class="post-tag" title="Tags - Debug">Debug</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-tag" title="Tags - 计算机组成原理">计算机组成原理</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/86f3bbb/" class="post-nav-item" rel="prev" title="Java笔记3.0"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Java笔记3.0</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.150.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.20">FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">7M7</a></span></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div></div><a href="https://github.com/7M7666" title="View me on GitHub"target="_blank" rel="external nofollow" class="github-corner left d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true" width="56" height="56"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
+</html>

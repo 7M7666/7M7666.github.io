@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习笔记 - Category - &lt;/&gt;7M7&#39;s blog</title>
+    <link>http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>7M7的技术博客，分享编程知识和生活感悟</description>
+    <generator>Hugo 0.150.0 &amp; FixIt v0.3.20</generator>
+    <language>en</language>
+    <managingEditor>237189315@qq.com (7M7)</managingEditor>
+    <webMaster>237189315@qq.com (7M7)</webMaster>
+    <lastBuildDate>Tue, 25 Nov 2025 22:00:41 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记</title>
+      <link>http://localhost:1313/posts/017d598/</link>
+      <pubDate>Tue, 25 Nov 2025 22:00:41 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>http://localhost:1313/posts/017d598/</guid>
+      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <description>&lt;hr&gt;&#xA;&lt;h2 class=&#34;heading-element&#34; id=&#34;8086-汇编--debug-调试truead-命令与常用指令系统笔记&#34;&gt;&lt;span&gt;8086 汇编 + Debug 调试：TRUEAD 命令与常用指令系统笔记&lt;/span&gt;&#xA;  &lt;a href=&#34;#8086-%e6%b1%87%e7%bc%96--debug-%e8%b0%83%e8%af%95truead-%e5%91%bd%e4%bb%a4%e4%b8%8e%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4%e7%b3%bb%e7%bb%9f%e7%ac%94%e8%ae%b0&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;h2 class=&#34;heading-element&#34; id=&#34;1-8086-的基本世界观&#34;&gt;&lt;span&gt;1. 8086 的基本“世界观”&lt;/span&gt;&#xA;  &lt;a href=&#34;#1-8086-%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%b8%96%e7%95%8c%e8%a7%82&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;h3 class=&#34;heading-element&#34; id=&#34;11-字长与内存&#34;&gt;&lt;span&gt;1.1 字长与内存&lt;/span&gt;&#xA;  &lt;a href=&#34;#11-%e5%ad%97%e9%95%bf%e4%b8%8e%e5%86%85%e5%ad%98&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;字节（Byte）&lt;/strong&gt;：8 位，范围 0~255 (&lt;code&gt;00H ~ FFH&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;字（Word）&lt;/strong&gt;：16 位，由 2 个字节组成&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;8086 特性&lt;/strong&gt;：16 位 CPU&#xA;&lt;ul&gt;&#xA;&lt;li&gt;寄存器宽度一般是 16 位&lt;/li&gt;&#xA;&lt;li&gt;部分寄存器可以拆成两个 8 位使用&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;内存模型：&lt;/strong&gt;&#xA;内存可以想象成一条长长的字节数组：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Java笔记3.0</title>
+      <link>http://localhost:1313/posts/86f3bbb/</link>
+      <pubDate>Mon, 17 Nov 2025 21:25:39 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>http://localhost:1313/posts/86f3bbb/</guid>
+      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <description>Java笔记3.0</description>
+    </item>
+    <item>
+      <title>Java笔记2.0</title>
+      <link>http://localhost:1313/posts/54c6db0/</link>
+      <pubDate>Mon, 17 Nov 2025 21:14:46 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>http://localhost:1313/posts/54c6db0/</guid>
+      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <description>Java笔记2.0</description>
+    </item>
+  </channel>
+</rss>
