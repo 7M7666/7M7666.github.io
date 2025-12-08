@@ -8,8 +8,25 @@
     <language>en</language>
     <managingEditor>237189315@qq.com (7M7)</managingEditor>
     <webMaster>237189315@qq.com (7M7)</webMaster>
-    <lastBuildDate>Mon, 01 Dec 2025 19:23:27 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Dec 2025 17:16:33 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attacklab</title>
+      <link>http://localhost:1313/posts/02fead5/</link>
+      <pubDate>Mon, 08 Dec 2025 17:16:33 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>http://localhost:1313/posts/02fead5/</guid>
+      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <description>Attacklab</description>
+    </item>
+    <item>
+      <title>X命令解析</title>
+      <link>http://localhost:1313/posts/05592fe/</link>
+      <pubDate>Mon, 01 Dec 2025 21:07:51 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>http://localhost:1313/posts/05592fe/</guid>
+      <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
+      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <description>X命令解析</description>
+    </item>
     <item>
       <title>CSAPP Bomb Lab 详细解析与复习笔记</title>
       <link>http://localhost:1313/posts/017d597/</link>

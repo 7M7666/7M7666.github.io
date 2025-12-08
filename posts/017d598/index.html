@@ -12,7 +12,7 @@
   <meta itemprop="description" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记 1. 8086 的基本“世界观” 1.1 字长与内存 字节（Byte）：8 位，范围 0~255 (00H ~ FFH) 字（Word）：16 位，由 2 个字节组成 8086 特性：16 位 CPU 寄存器宽度一般是 16 位 部分寄存器可以拆成两个 8 位使用 内存模型： 内存可以想象成一条长长的字节数组：">
   <meta itemprop="datePublished" content="2025-11-25T22:00:41+08:00">
   <meta itemprop="dateModified" content="2025-11-25T22:00:41+08:00">
-  <meta itemprop="wordCount" content="796">
+  <meta itemprop="wordCount" content="755">
   <meta itemprop="keywords" content="汇编语言,8086,Debug,计算机组成原理"><meta property="og:url" content="http://localhost:1313/posts/017d598/">
   <meta property="og:site_name" content="&lt;/&gt;7M7&#39;s blog">
   <meta property="og:title" content="8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记">
@@ -42,7 +42,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/posts\/017d598\/"
-    },"genre": "posts","keywords": "汇编语言, 8086, Debug, 计算机组成原理","wordcount":  796 ,
+    },"genre": "posts","keywords": "汇编语言, 8086, Debug, 计算机组成原理","wordcount":  755 ,
     "url": "http:\/\/localhost:1313\/posts\/017d598\/","datePublished": "2025-11-25T22:00:41+08:00","dateModified": "2025-11-25T22:00:41+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -119,7 +119,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">从零开始的 Debug 实战指南</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/a.jpg' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category" title="Category - 学习笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习笔记</a></span></div><div class="post-meta-line"><span title="published on 2025-11-25 22:00:41"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-25">2025-11-25</time></span>&nbsp;<span title="796 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 800 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/a.jpg' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category" title="Category - 学习笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习笔记</a></span></div><div class="post-meta-line"><span title="published on 2025-11-25 22:00:41"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-25">2025-11-25</time></span>&nbsp;<span title="755 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 800 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -160,7 +160,6 @@
         <li><a href="#模板三单步跟踪-a--t">模板三：单步跟踪 (A + T)</a></li>
       </ul>
     </li>
-    <li><a href="#8-总结">8. 总结</a></li>
   </ul>
 </nav></div>
       </div><div class="content" id="content"><hr>
@@ -702,23 +701,7 @@
 </span></span><span class="line"><span class="cl">-t                 ; 执行第二句
 </span></span><span class="line"><span class="cl">-r                 ; 检查 CF 标志位</span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<h2 class="heading-element" id="8-总结"><span>8. 总结</span>
-  <a href="#8-%e6%80%bb%e7%bb%93" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h2><ol>
-<li><strong>地址计算</strong>：物理地址 = $段 \times 16 + 偏移$。</li>
-<li><strong>七大命令</strong>：<code>T</code>(跟踪), <code>R</code>(寄存器), <code>U</code>(反汇编), <code>E</code>(改内存), <code>A</code>(写汇编), <code>D</code>(看内存), <code>G</code>(运行)。</li>
-<li><strong>DIV 规则</strong>：
-<ul>
-<li>除数 8 位 → 结果在 AX (商AL, 余AH)</li>
-<li>除数 16 位 → 结果在 AX, DX (商AX, 余DX)</li>
-</ul>
-</li>
-<li><strong>标志位</strong>：重点关注 <strong>CF</strong> (进位/借位) 和 <strong>ZF</strong> (零标志)。</li>
-</ol>
-</div><div class="post-footer" id="post-footer">
+</div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">

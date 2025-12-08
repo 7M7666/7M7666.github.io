@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Attacklab - &lt;/&gt;7M7&#39;s blog</title><meta name="author" content="7M7">
+<meta name="description" content="7M7的技术博客，分享编程知识和生活感悟"><meta name="keywords" content='汇编语言, CSAPP'>
+  <meta itemprop="name" content="Attacklab">
+  <meta itemprop="description" content="7M7的技术博客，分享编程知识和生活感悟">
+  <meta itemprop="datePublished" content="2025-12-08T17:16:33+08:00">
+  <meta itemprop="dateModified" content="2025-12-08T17:16:33+08:00">
+  <meta itemprop="wordCount" content="500">
+  <meta itemprop="keywords" content="汇编语言,CSAPP"><meta property="og:url" content="http://localhost:1313/posts/02fead5/">
+  <meta property="og:site_name" content="&lt;/&gt;7M7&#39;s blog">
+  <meta property="og:title" content="Attacklab">
+  <meta property="og:description" content="7M7的技术博客，分享编程知识和生活感悟">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-08T17:16:33+08:00">
+    <meta property="article:modified_time" content="2025-12-08T17:16:33+08:00">
+    <meta property="article:tag" content="汇编语言">
+    <meta property="article:tag" content="CSAPP">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Attacklab">
+  <meta name="twitter:description" content="7M7的技术博客，分享编程知识和生活感悟">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/c.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/02fead5/" title="Attacklab - &lt;/&gt;7M7&#39;s blog" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/05592fe/" title="X命令解析" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/02fead5/index.md" title="Attacklab - </>7M7's blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Attacklab",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/02fead5\/"
+    },"genre": "posts","keywords": "汇编语言, CSAPP","wordcount":  500 ,
+    "url": "http:\/\/localhost:1313\/posts\/02fead5\/","datePublished": "2025-12-08T17:16:33+08:00","dateModified": "2025-12-08T17:16:33+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "7M7"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper" data-github-corner="left">
+    <div class="header-title">
+      <a href="/" title="&lt;/&gt;7M7&#39;s blog"><img class="logo" src='/img/c.jpg' alt="&lt;/&gt;7M7&#39;s blog" height="32" width="32"><span class="header-title-text">&lt;/&gt;7M7&#39;s blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章.." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="&lt;/&gt;7M7&#39;s blog"><img class="logo" src='/img/c.jpg' alt="&lt;/&gt;7M7&#39;s blog" height="26" width="26"><span class="header-title-text">&lt;/&gt;7M7&#39;s blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章.." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> Archives</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> Categories</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> Tags</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container sticky">
+    <ol class="breadcrumb"><li class="breadcrumb-item" data-separator="&gt;"><a href="/" title="&lt;/&gt;7M7&#39;s Blog">Home</a></li><li class="breadcrumb-item" data-separator="&gt;"><a href="/posts/" title="Posts">Posts</a></li><li class="breadcrumb-item active" data-separator="&gt;" aria-current="page">Attacklab</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Attacklab</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/a.jpg' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category" title="Category - 学习笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习笔记</a></span></div><div class="post-meta-line"><span title="published on 2025-12-08 17:16:33"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-12-08">2025-12-08</time></span>&nbsp;<span title="500 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 600 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>3 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一实验核心背景与期末考点框架">一、实验核心背景与期末考点框架</a>
+      <ul>
+        <li><a href="#1-实验核心目标">1. 实验核心目标</a></li>
+        <li><a href="#2-核心价值与期末必考维度">2. 核心价值与期末必考维度</a></li>
+      </ul>
+    </li>
+    <li><a href="#二分level实战拆解期末考点深度补充">二、分Level实战拆解+期末考点深度补充</a>
+      <ul>
+        <li><a href="#level-1入门级栈溢出覆盖返回地址期末基础必考题">Level 1：入门级栈溢出——覆盖返回地址（期末基础必考题）</a>
+          <ul>
+            <li><a href="#目标">目标</a></li>
+            <li><a href="#核心实战思路">核心实战思路</a></li>
+            <li><a href="#期末补充考点必考">期末补充考点（必考）</a></li>
+            <li><a href="#关键知识点实验考试重合点">关键知识点（实验+考试重合点）</a></li>
+          </ul>
+        </li>
+        <li><a href="#level-2代码注入传参攻克栈对齐陷阱abi规则核心考点">Level 2：代码注入+传参——攻克栈对齐陷阱（ABI规则核心考点）</a>
+          <ul>
+            <li><a href="#目标-1">目标</a></li>
+            <li><a href="#核心实战思路-1">核心实战思路</a></li>
+            <li><a href="#期末补充考点高频简答题计算题">期末补充考点（高频简答题+计算题）</a></li>
+            <li><a href="#踩坑与解决方案期末案例分析题">踩坑与解决方案（期末案例分析题）</a></li>
+          </ul>
+        </li>
+        <li><a href="#level-3字符串指针传递内存布局的博弈栈布局必考">Level 3：字符串指针传递——内存布局的博弈（栈布局必考）</a>
+          <ul>
+            <li><a href="#目标-2">目标</a></li>
+            <li><a href="#核心实战思路-2">核心实战思路</a></li>
+            <li><a href="#期末补充考点计算题简答题">期末补充考点（计算题+简答题）</a></li>
+            <li><a href="#关键知识点实验考试重合点-1">关键知识点（实验+考试重合点）</a></li>
+          </ul>
+        </li>
+        <li><a href="#level-4rop攻击入门栈不可执行下的借刀杀人rop核心考点">Level 4：ROP攻击入门——栈不可执行下的&quot;借刀杀人&quot;（ROP核心考点）</a>
+          <ul>
+            <li><a href="#目标-3">目标</a></li>
+            <li><a href="#核心实战思路-3">核心实战思路</a></li>
+            <li><a href="#期末补充考点选择题计算题">期末补充考点（选择题+计算题）</a></li>
+            <li><a href="#关键知识点实验考试重合点-2">关键知识点（实验+考试重合点）</a></li>
+          </ul>
+        </li>
+        <li><a href="#level-5地狱模式aslr下的相对定位rop期末压轴题">Level 5：地狱模式——ASLR下的相对定位ROP（期末压轴题）</a>
+          <ul>
+            <li><a href="#目标-4">目标</a></li>
+            <li><a href="#核心实战思路-4">核心实战思路</a></li>
+            <li><a href="#期末补充考点综合题计算题">期末补充考点（综合题+计算题）</a></li>
+            <li><a href="#踩坑与解决方案期末案例分析题-1">踩坑与解决方案（期末案例分析题）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#三实验核心收获与期末总复习清单">三、实验核心收获与期末总复习清单</a>
+      <ul>
+        <li><a href="#期末总复习核心清单">期末总复习核心清单</a>
+          <ul>
+            <li><a href="#1必须掌握的底层原理">（1）必须掌握的底层原理</a></li>
+            <li><a href="#2必须掌握的工具命令">（2）必须掌握的工具命令</a></li>
+            <li><a href="#3常见错误与排查案例分析题必考">（3）常见错误与排查（案例分析题必考）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 class="heading-element" id="深入csapp-attack-lab"><span>深入CS:APP Attack Lab</span>
+  <a href="#%e6%b7%b1%e5%85%a5csapp-attack-lab" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>作为计算机系统基础的核心实验与期末考试高频考点，CS:APP的Attack Lab让我彻底跳出高级语言抽象层，直面IA-32架构底层逻辑。从简单栈溢出跳转，到应对地址随机化的ROP高级攻击，五个阶段的攻关不仅锤炼了硬核技能，更完成了从&quot;写代码&quot;到&quot;懂机器&quot;的思维蜕变。本文将实战思路、踩坑经历与期末必考知识点深度融合，既还原攻击实现细节，又明确考点方向，助力备考与实战双重需求。</p>
+<h2 class="heading-element" id="一实验核心背景与期末考点框架"><span>一、实验核心背景与期末考点框架</span>
+  <a href="#%e4%b8%80%e5%ae%9e%e9%aa%8c%e6%a0%b8%e5%bf%83%e8%83%8c%e6%99%af%e4%b8%8e%e6%9c%9f%e6%9c%ab%e8%80%83%e7%82%b9%e6%a1%86%e6%9e%b6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="1-实验核心目标"><span>1. 实验核心目标</span>
+  <a href="#1-%e5%ae%9e%e9%aa%8c%e6%a0%b8%e5%bf%83%e7%9b%ae%e6%a0%87" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>对<code>ctarget</code>（无栈保护）和<code>rtarget</code>（栈不可执行+地址随机化）实施攻击，利用<strong>栈溢出漏洞</strong>篡改栈帧数据，劫持程序执行流，成功调用<code>touch1/touch2/touch3</code>函数。</p>
+<h3 class="heading-element" id="2-核心价值与期末必考维度"><span>2. 核心价值与期末必考维度</span>
+  <a href="#2-%e6%a0%b8%e5%bf%83%e4%bb%b7%e5%80%bc%e4%b8%8e%e6%9c%9f%e6%9c%ab%e5%bf%85%e8%80%83%e7%bb%b4%e5%ba%a6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><table>
+  <thead>
+      <tr>
+          <th>核心维度</th>
+          <th>实验核心价值</th>
+          <th>期末考试高频考点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>架构与ABI规则</td>
+          <td>理解x86-64栈布局、函数调用约定</td>
+          <td>x86-64栈帧结构、寄存器传参规则、栈对齐要求、小端序存储</td>
+      </tr>
+      <tr>
+          <td>攻击技术</td>
+          <td>掌握代码注入、ROP攻击等底层攻击手段</td>
+          <td>代码注入原理、ROP攻击逻辑、Gadget选型与链构造、相对定位绕过ASLR</td>
+      </tr>
+      <tr>
+          <td>防御机制</td>
+          <td>认知系统安全防护的核心逻辑</td>
+          <td>NX/DEP（栈不可执行）、ASLR（地址随机化）、Stack Canary（栈Cookie）、RELRO</td>
+      </tr>
+      <tr>
+          <td>工具实操</td>
+          <td>熟练使用GDB、objdump等底层工具</td>
+          <td>GDB调试核心命令、objdump反汇编与Gadget搜索、hex2raw工具用途</td>
+      </tr>
+      <tr>
+          <td>错误分析</td>
+          <td>排查栈操作、内存布局相关问题</td>
+          <td>栈对齐失败、小端序错误、内存覆盖问题、ROP链偏移计算错误的排查</td>
+      </tr>
+  </tbody>
+</table>
+<h2 class="heading-element" id="二分level实战拆解期末考点深度补充"><span>二、分Level实战拆解+期末考点深度补充</span>
+  <a href="#%e4%ba%8c%e5%88%86level%e5%ae%9e%e6%88%98%e6%8b%86%e8%a7%a3%e6%9c%9f%e6%9c%ab%e8%80%83%e7%82%b9%e6%b7%b1%e5%ba%a6%e8%a1%a5%e5%85%85" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="level-1入门级栈溢出覆盖返回地址期末基础必考题"><span>Level 1：入门级栈溢出——覆盖返回地址（期末基础必考题）</span>
+  <a href="#level-1%e5%85%a5%e9%97%a8%e7%ba%a7%e6%a0%88%e6%ba%a2%e5%87%ba%e8%a6%86%e7%9b%96%e8%bf%94%e5%9b%9e%e5%9c%b0%e5%9d%80%e6%9c%9f%e6%9c%ab%e5%9f%ba%e7%a1%80%e5%bf%85%e8%80%83%e9%a2%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><h4 class="heading-element" id="目标"><span>目标</span>
+  <a href="#%e7%9b%ae%e6%a0%87" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>让<code>getbuf</code>执行完<code>ret</code>后，跳转到<code>touch1</code>而非原调用者<code>test</code>。</p>
+<h4 class="heading-element" id="核心实战思路"><span>核心实战思路</span>
+  <a href="#%e6%a0%b8%e5%bf%83%e5%ae%9e%e6%88%98%e6%80%9d%e8%b7%af" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li><strong>定位目标地址</strong>：通过GDB调试命令<code>p touch1</code>，获取<code>touch1</code>内存地址<code>0x4017c0</code>。</li>
+<li><strong>计算填充长度</strong>：分析<code>getbuf</code>汇编代码<code>sub $0x28, %rsp</code>，可知缓冲区大小为40字节（0x28转十进制），需先填充40字节垃圾数据占满缓冲区。</li>
+<li><strong>处理字节序</strong>：x86-64为小端序存储，需将地址<code>0x4017c0</code>反序拆分为<code>c0 17 40 00</code>，作为第41-48字节覆盖返回地址。</li>
+<li><strong>生成攻击数据</strong>：将十六进制数据写入<code>exploit.txt</code>，通过<code>./hex2raw &lt; exploit.txt &gt; ans.txt</code>转换为二进制流，传入<code>ctarget</code>执行攻击。</li>
+</ol>
+<h4 class="heading-element" id="期末补充考点必考"><span>期末补充考点（必考）</span>
+  <a href="#%e6%9c%9f%e6%9c%ab%e8%a1%a5%e5%85%85%e8%80%83%e7%82%b9%e5%bf%85%e8%80%83" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li>
+<p><strong>x86-64栈帧结构（画图/计算题）</strong></p>
+<ul>
+<li>栈帧组成（高地址→低地址）：<code>调用者栈帧（保存的RBP、局部变量）→ 被调用者栈帧（局部变量/缓冲区 → 保存的RBP → 返回地址）</code></li>
+<li>填充长度计算关键：实验中<code>getbuf</code>未使用RBP（编译器优化），故直接填充40字节覆盖返回地址；若函数保留RBP（<code>push %rbp; mov %rsp, %rbp</code>），则填充长度=缓冲区大小+8字节（保存的RBP），否则会覆盖错误位置。</li>
+<li>考试题型：给定函数汇编（含<code>sub $0xXX, %rsp</code>和帧指针操作），计算覆盖返回地址需填充的字节数。</li>
+</ul>
+</li>
+<li>
+<p><strong>小端序存储（填空题）</strong></p>
+<ul>
+<li>定义：多字节数据的<strong>低位字节存低地址，高位字节存高地址</strong>。</li>
+<li>考点实例：64位地址<code>0x00000000004017c0</code>，写入栈时需为<code>c0 17 40 00 00 00 00 00</code>；易错点为误写为大端序<code>00 00 00 00 00 40 17 c0</code>，导致跳转至无效地址。</li>
+</ul>
+</li>
+<li>
+<p><strong>工具命令考点（实操题）</strong></p>
+<ul>
+<li>GDB核心命令：<code>p 函数名</code>（查符号地址）、<code>info functions 函数名</code>（查函数详情）、<code>b 函数名</code>（设断点）。</li>
+<li>objdump反汇编：<code>objdump -d ctarget &gt; ctarget.asm</code>（导出汇编代码，分析栈分配）。</li>
+</ul>
+</li>
+</ol>
+<h4 class="heading-element" id="关键知识点实验考试重合点"><span>关键知识点（实验+考试重合点）</span>
+  <a href="#%e5%85%b3%e9%94%ae%e7%9f%a5%e8%af%86%e7%82%b9%e5%ae%9e%e9%aa%8c%e8%80%83%e8%af%95%e9%87%8d%e5%90%88%e7%82%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>栈溢出本质：利用函数不检查输入长度的漏洞，覆盖栈上返回地址。</li>
+<li>小端序规则：地址写入栈时必须字节反序，是后续所有实验的基础考点。</li>
+</ul>
+<h3 class="heading-element" id="level-2代码注入传参攻克栈对齐陷阱abi规则核心考点"><span>Level 2：代码注入+传参——攻克栈对齐陷阱（ABI规则核心考点）</span>
+  <a href="#level-2%e4%bb%a3%e7%a0%81%e6%b3%a8%e5%85%a5%e4%bc%a0%e5%8f%82%e6%94%bb%e5%85%8b%e6%a0%88%e5%af%b9%e9%bd%90%e9%99%b7%e9%98%b1abi%e8%a7%84%e5%88%99%e6%a0%b8%e5%bf%83%e8%80%83%e7%82%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><h4 class="heading-element" id="目标-1"><span>目标</span>
+  <a href="#%e7%9b%ae%e6%a0%87-1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>跳转到<code>touch2</code>，并将个人Cookie（<code>0x59b997fa</code>）传入<code>%rdi</code>寄存器（x86-64函数第一个参数默认寄存器）。</p>
+<h4 class="heading-element" id="核心实战思路-1"><span>核心实战思路</span>
+  <a href="#%e6%a0%b8%e5%bf%83%e5%ae%9e%e6%88%98%e6%80%9d%e8%b7%af-1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li><strong>定位关键地址</strong>：
+<ul>
+<li>用<code>objdump</code>反汇编获取<code>touch2</code>入口地址<code>0x4017ec</code>。</li>
+<li>GDB在<code>getbuf</code>设断点，查看<code>$rsp</code>得到栈顶地址<code>0x5561dca0</code>（注入代码起始位置）。</li>
+</ul>
+</li>
+<li><strong>编写注入汇编（踩坑与优化）</strong>：
+<ul>
+<li>初始方案：<code>mov $0x59b997fa, %rdi; ret</code>，机器码<code>48 c7 c7 fa 97 b9 59 c3</code>。</li>
+<li>问题：<code>ret</code>跳转后栈指针移动8字节，破坏16字节栈对齐规则，导致<code>touch2</code>崩溃（Segmentation Fault）。</li>
+<li>优化方案：<code>mov $0x59b997fa, %rdi; push $0x4017ec; ret</code>，通过<code>push+ret</code>组合修正栈指针，既实现跳转又满足对齐要求。</li>
+</ul>
+</li>
+<li><strong>构造攻击数据</strong>：13字节注入代码+填充数据+覆盖返回地址（指向注入代码起始地址<code>0x5561dca0</code>）。</li>
+</ol>
+<h4 class="heading-element" id="期末补充考点高频简答题计算题"><span>期末补充考点（高频简答题+计算题）</span>
+  <a href="#%e6%9c%9f%e6%9c%ab%e8%a1%a5%e5%85%85%e8%80%83%e7%82%b9%e9%ab%98%e9%a2%91%e7%ae%80%e7%ad%94%e9%a2%98%e8%ae%a1%e7%ae%97%e9%a2%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li>
+<p><strong>x86-64 ABI核心规则（简答题）</strong></p>
+<ul>
+<li>寄存器传参规则：前6个参数依次存入<code>%rdi、%rsi、%rdx、%rcx、%r8、%r9</code>，第7个及以后参数压栈（栈传参从右向左）。</li>
+<li>栈对齐要求：<strong>函数调用时（<code>call</code>指令执行后），%rsp必须是16字节的整数倍</strong>。
+<ul>
+<li>原理：<code>call</code>指令压入8字节返回地址，因此被调用者执行时<code>%rsp</code>（指向返回地址）需满足<code>%rsp mod 16 == 8</code>，执行<code>push %rbp</code>后<code>%rsp mod 16 == 0</code>，确保局部变量分配对齐。</li>
+<li>实验错误分析：初始方案<code>mov+ret</code>跳转后，<code>%rsp</code>=原栈顶+8，导致<code>touch2</code>调用时<code>%rsp mod 16 = 8</code>，违反ABI规则触发崩溃。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>汇编指令细节（指令分析题）</strong></p>
+<ul>
+<li><code>push $0x4017ec; ret</code>的栈操作：<code>push</code>使<code>%rsp -= 8</code>（压入目标地址），<code>ret</code>使<code>%rsp += 8</code>（弹出地址跳转），最终<code>%rsp</code>回到对齐状态。</li>
+<li>机器码转换：汇编<code>mov $0x59b997fa, %rdi</code>对应机器码<code>48 c7 c7 fa 97 b9 59</code>，其中<code>48</code>表示64位操作数（<code>movq</code>），<code>c7 c7</code>是<code>mov rdi, imm64</code>的操作码。</li>
+<li>考试题型：给定汇编指令写出机器码，或给定机器码反推汇编指令。</li>
+</ul>
+</li>
+<li>
+<p><strong>防御机制考点：NX/DEP（简答题）</strong></p>
+<ul>
+<li>原理：CPU标记栈内存为“不可执行”，阻止注入代码运行（<code>rtarget</code>启用，<code>ctarget</code>未启用）。</li>
+<li>考试提问：为何Level 2的代码注入在<code>rtarget</code>中失效？如何绕过？（答案：NX阻止栈执行，需用ROP攻击利用现有代码段指令）。</li>
+</ul>
+</li>
+</ol>
+<h4 class="heading-element" id="踩坑与解决方案期末案例分析题"><span>踩坑与解决方案（期末案例分析题）</span>
+  <a href="#%e8%b8%a9%e5%9d%91%e4%b8%8e%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88%e6%9c%9f%e6%9c%ab%e6%a1%88%e4%be%8b%e5%88%86%e6%9e%90%e9%a2%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>核心坑点：x86-64 ABI的16字节栈对齐要求，容易被忽略。</li>
+<li>解决思路：避免直接<code>ret</code>跳转，用<code>push</code>目标地址再<code>ret</code>的方式，手动修正栈指针偏移量。</li>
+</ul>
+<h3 class="heading-element" id="level-3字符串指针传递内存布局的博弈栈布局必考"><span>Level 3：字符串指针传递——内存布局的博弈（栈布局必考）</span>
+  <a href="#level-3%e5%ad%97%e7%ac%a6%e4%b8%b2%e6%8c%87%e9%92%88%e4%bc%a0%e9%80%92%e5%86%85%e5%ad%98%e5%b8%83%e5%b1%80%e7%9a%84%e5%8d%9a%e5%bc%88%e6%a0%88%e5%b8%83%e5%b1%80%e5%bf%85%e8%80%83" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><h4 class="heading-element" id="目标-2"><span>目标</span>
+  <a href="#%e7%9b%ae%e6%a0%87-2" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>调用<code>touch3</code>，传入Cookie对应的十六进制字符串指针（而非直接传数值）。</p>
+<h4 class="heading-element" id="核心实战思路-2"><span>核心实战思路</span>
+  <a href="#%e6%a0%b8%e5%bf%83%e5%ae%9e%e6%88%98%e6%80%9d%e8%b7%af-2" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li><strong>Cookie字符串转换</strong>：将<code>0x59b997fa</code>转为ASCII码字符串（如<code>35 39 62 39 39 37 66 61</code>）。</li>
+<li><strong>安全存储字符串（规避覆盖陷阱）</strong>：
+<ul>
+<li>陷阱：若字符串存于缓冲区（栈顶附近），<code>touch3</code>调用<code>hexmatch</code>时会压栈覆盖字符串。</li>
+<li>解决方案：利用栈向低地址生长的特性，将字符串藏在返回地址的&quot;大后方&quot;（<code>0x5561dca8</code>，即返回地址+8字节），该区域属于<code>getbuf</code>调用者栈帧，不会被覆盖。</li>
+</ul>
+</li>
+<li><strong>编写注入汇编</strong>：<code>lea 0x5561dca8, %rdi; push $0x4018fa; ret</code>（加载字符串地址到<code>%rdi</code>，跳转<code>touch3</code>）。</li>
+<li><strong>组装攻击数据</strong>：注入代码+填充数据+返回地址（指向注入代码）+ Cookie字符串（存于<code>0x5561dca8</code>）。</li>
+</ol>
+<h4 class="heading-element" id="期末补充考点计算题简答题"><span>期末补充考点（计算题+简答题）</span>
+  <a href="#%e6%9c%9f%e6%9c%ab%e8%a1%a5%e5%85%85%e8%80%83%e7%82%b9%e8%ae%a1%e7%ae%97%e9%a2%98%e7%ae%80%e7%ad%94%e9%a2%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li>
+<p><strong>栈生长方向与内存覆盖（计算题）</strong></p>
+<ul>
+<li>栈生长方向：<strong>向低地址生长</strong>（局部变量分配、函数调用压栈时<code>%rsp</code>递减）。</li>
+<li>安全区域计算：缓冲区起始<code>0x5561dc78</code>（高地址），大小40字节→缓冲区末端<code>0x5561dca0</code>（低地址），返回地址存于<code>0x5561dca0</code>，字符串存于<code>0x5561dca8</code>（更高地址，属于调用者栈帧）。</li>
+<li>考试题型：给定缓冲区起始地址<code>0x1000</code>、大小40字节，计算返回地址位置、字符串安全存储地址，并说明原因。</li>
+</ul>
+</li>
+<li>
+<p><strong>字符串指针传递的本质（简答题）</strong></p>
+<ul>
+<li><code>touch3</code>要求<code>%rdi</code>存储字符串的<strong>有效内存地址</strong>，且该地址在<code>hexmatch</code>执行期间需保持数据完整。</li>
+<li>易错点：直接将Cookie值<code>0x59b997fa</code>存入<code>%rdi</code>，导致<code>hexmatch</code>访问无效内存触发段错误。</li>
+</ul>
+</li>
+<li>
+<p><strong>Stack Canary防御机制（关联考点）</strong></p>
+<ul>
+<li>原理：编译器在返回地址前插入随机值（Canary），函数返回前检查Canary是否被篡改，若修改则触发崩溃（防止栈溢出覆盖返回地址）。</li>
+<li>考试提问：若<code>ctarget</code>启用Stack Canary，Level 1-3的攻击会如何失效？如何绕过？（答案：覆盖返回地址时破坏Canary，触发崩溃；绕过需泄露Canary值或利用ROP篡改Canary）。</li>
+</ul>
+</li>
+</ol>
+<h4 class="heading-element" id="关键知识点实验考试重合点-1"><span>关键知识点（实验+考试重合点）</span>
+  <a href="#%e5%85%b3%e9%94%ae%e7%9f%a5%e8%af%86%e7%82%b9%e5%ae%9e%e9%aa%8c%e8%80%83%e8%af%95%e9%87%8d%e5%90%88%e7%82%b9-1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>函数调用的栈帧影响：子函数压栈会覆盖低地址数据，需提前规划数据存储的安全区域。</li>
+<li>字符串指针传递：需确保指针指向的内存区域在函数执行期间不被篡改。</li>
+</ul>
+<h3 class="heading-element" id="level-4rop攻击入门栈不可执行下的借刀杀人rop核心考点"><span>Level 4：ROP攻击入门——栈不可执行下的&quot;借刀杀人&quot;（ROP核心考点）</span>
+  <a href="#level-4rop%e6%94%bb%e5%87%bb%e5%85%a5%e9%97%a8%e6%a0%88%e4%b8%8d%e5%8f%af%e6%89%a7%e8%a1%8c%e4%b8%8b%e7%9a%84%e5%80%9f%e5%88%80%e6%9d%80%e4%ba%barop%e6%a0%b8%e5%bf%83%e8%80%83%e7%82%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><h4 class="heading-element" id="目标-3"><span>目标</span>
+  <a href="#%e7%9b%ae%e6%a0%87-3" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>在<code>rtarget</code>（栈不可执行）中重现Level 2效果，不能注入新代码，仅利用程序现有指令片段（Gadget）。</p>
+<h4 class="heading-element" id="核心实战思路-3"><span>核心实战思路</span>
+  <a href="#%e6%a0%b8%e5%bf%83%e5%ae%9e%e6%88%98%e6%80%9d%e8%b7%af-3" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li><strong>ROP核心逻辑</strong>：寻找程序中以<code>ret</code>结尾的指令片段（Gadget），通过栈布局串联这些片段，实现参数传递和跳转。</li>
+<li><strong>寻找关键Gadget</strong>：
+<ul>
+<li>需求：需<code>pop %rdi; ret</code>指令（将栈中数据弹入<code>%rdi</code>传参）。</li>
+<li>查找：通过<code>objdump -d rtarget | grep -A1 &quot;ret&quot; | grep -B1 &quot;pop %rdi&quot;</code>，找到该Gadget地址<code>0x40141b</code>（字节序列<code>5f c3</code>）。</li>
+</ul>
+</li>
+<li><strong>构造ROP链（栈对齐优化）</strong>：
+<ul>
+<li>初始方案：填充数据 → <code>pop %rdi; ret</code>（<code>0x40141b</code>） → Cookie → <code>touch2</code>地址。</li>
+<li>问题：栈指针移动24字节（<code>getbuf</code>返回8+<code>pop</code>8+<code>ret</code>8），非16的倍数，栈对齐失败。</li>
+<li>优化方案：链首插入空Gadget<code>ret</code>（地址<code>0x40141c</code>），多移动8字节，总偏移量32字节（16的倍数）。</li>
+</ul>
+</li>
+<li><strong>最终ROP链</strong>：填充数据 → <code>ret</code>（<code>0x40141c</code>） → <code>pop %rdi; ret</code>（<code>0x40141b</code>） → Cookie → <code>touch2</code>地址。</li>
+</ol>
+<h4 class="heading-element" id="期末补充考点选择题计算题"><span>期末补充考点（选择题+计算题）</span>
+  <a href="#%e6%9c%9f%e6%9c%ab%e8%a1%a5%e5%85%85%e8%80%83%e7%82%b9%e9%80%89%e6%8b%a9%e9%a2%98%e8%ae%a1%e7%ae%97%e9%a2%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li>
+<p><strong>Gadget定义与分类（选择题/简答题）</strong></p>
+<ul>
+<li>定义：程序代码段中以<code>ret</code>结尾的指令序列，是ROP攻击的&quot;基本积木&quot;。</li>
+<li>分类：
+<ul>
+<li>寄存器操作Gadget：<code>pop %rdi; ret</code>（寄存器赋值）、<code>mov %rax, %rdi; ret</code>（寄存器搬运）。</li>
+<li>算术运算Gadget：<code>lea (%rdi, %rsi, 1), %rax</code>（加法）、<code>add %rax, %rdi; ret</code>（累加）。</li>
+<li>空操作Gadget：<code>ret</code>（仅修正栈指针，用于对齐）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>ROP链栈对齐计算（计算题）</strong></p>
+<ul>
+<li>实验链偏移计算（从<code>getbuf</code>执行<code>ret</code>开始）：
+<ol>
+<li><code>getbuf</code> ret：弹出返回地址（ret Gadget），<code>%rsp +=8</code>（总偏移+8）。</li>
+<li>执行ret Gadget：弹出自身地址，<code>%rsp +=8</code>（总偏移+16）。</li>
+<li>执行<code>pop %rdi; ret</code>：<code>pop</code> Cookie（<code>%rsp +=8</code>），<code>ret</code>弹出<code>touch2</code>地址（<code>%rsp +=8</code>），总偏移+32。</li>
+<li>调用<code>touch2</code>：<code>%rsp</code>为32字节（16的倍数），满足对齐要求。</li>
+</ol>
+</li>
+<li>考试题型：给定ROP链（含n个Gadget和参数），计算执行后<code>%rsp</code>偏移量，判断是否满足16字节对齐。</li>
+</ul>
+</li>
+<li>
+<p><strong>NX/DEP防御机制（简答题）</strong></p>
+<ul>
+<li>全称：No-eXecute/Data Execution Prevention（不可执行/数据执行保护）。</li>
+<li>原理：数据段（栈、堆）标记为&quot;不可执行&quot;，代码段标记为&quot;只读&quot;，阻止注入代码执行。</li>
+<li>绕过方式：ROP攻击（利用代码段中已有的可执行指令片段组合逻辑）。</li>
+</ul>
+</li>
+</ol>
+<h4 class="heading-element" id="关键知识点实验考试重合点-2"><span>关键知识点（实验+考试重合点）</span>
+  <a href="#%e5%85%b3%e9%94%ae%e7%9f%a5%e8%af%86%e7%82%b9%e5%ae%9e%e9%aa%8c%e8%80%83%e8%af%95%e9%87%8d%e5%90%88%e7%82%b9-2" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>栈不可执行保护的核心作用：阻断代码注入攻击，迫使攻击者转向ROP技术。</li>
+<li>ROP链构造核心：通过栈布局控制指令执行顺序，用现有Gadget组合实现复杂逻辑。</li>
+</ul>
+<h3 class="heading-element" id="level-5地狱模式aslr下的相对定位rop期末压轴题"><span>Level 5：地狱模式——ASLR下的相对定位ROP（期末压轴题）</span>
+  <a href="#level-5%e5%9c%b0%e7%8b%b1%e6%a8%a1%e5%bc%8faslr%e4%b8%8b%e7%9a%84%e7%9b%b8%e5%af%b9%e5%ae%9a%e4%bd%8drop%e6%9c%9f%e6%9c%ab%e5%8e%8b%e8%bd%b4%e9%a2%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><h4 class="heading-element" id="目标-4"><span>目标</span>
+  <a href="#%e7%9b%ae%e6%a0%87-4" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><p>在<code>rtarget</code>（开启ASLR地址随机化）中调用<code>touch3</code>，栈基址每次运行变化，无法使用绝对地址。</p>
+<h4 class="heading-element" id="核心实战思路-4"><span>核心实战思路</span>
+  <a href="#%e6%a0%b8%e5%bf%83%e5%ae%9e%e6%88%98%e6%80%9d%e8%b7%af-4" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li><strong>破局关键</strong>：ASLR仅改变栈基址，字符串与当前栈顶的<strong>相对偏移量恒定</strong>，核心公式：<code>目标地址 = 当前%rsp + 偏移量</code>。</li>
+<li><strong>寻找计算型Gadget</strong>：找到<code>lea (%rdi, %rsi, 1), %rax</code>（利用内存寻址完成<code>rax = rdi + rsi</code>，实现基址+偏移加法）。</li>
+<li><strong>构建数据传送带（解决寄存器赋值问题）</strong>：
+<ul>
+<li>问题：无直接给<code>%rsi</code>赋值的Gadget。</li>
+<li>解决方案：<code>pop %rax → mov %eax, %edx → mov %edx, %ecx → mov %ecx, %esi</code>，将偏移量从栈传递到<code>%rsi</code>。</li>
+</ul>
+</li>
+<li><strong>捕获栈基址</strong>：利用<code>mov %rsp, %rax → mov %rax, %rdi</code>，将当前栈顶地址存入<code>%rdi</code>（加法基址）。</li>
+<li><strong>精确计算偏移量</strong>：从获取栈指针到字符串存储位置，共9个8字节单位，偏移量<code>0x48</code>（72字节）。</li>
+<li><strong>最终ROP链</strong>：填充数据 → 偏移量<code>0x48</code> → 数据传送带Gadget → 栈基址捕获Gadget → 加法Gadget → 传参Gadget → <code>touch3</code>地址 → Cookie字符串。</li>
+</ol>
+<h4 class="heading-element" id="期末补充考点综合题计算题"><span>期末补充考点（综合题+计算题）</span>
+  <a href="#%e6%9c%9f%e6%9c%ab%e8%a1%a5%e5%85%85%e8%80%83%e7%82%b9%e7%bb%bc%e5%90%88%e9%a2%98%e8%ae%a1%e7%ae%97%e9%a2%98" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ol>
+<li>
+<p><strong>ASLR原理与作用范围（简答题）</strong></p>
+<ul>
+<li>原理：每次程序运行时，操作系统随机化栈基址、堆基址、共享库加载地址，使攻击者无法预测绝对地址。</li>
+<li>核心漏洞：相对偏移不受基址随机化影响（如字符串与当前<code>%rsp</code>的距离固定），是相对定位的核心依据。</li>
+<li>考试提问：ASLR对Level 3的攻击为何有效？Level 5如何绕过？（答案：Level 3依赖绝对地址，ASLR使地址失效；Level 5利用相对偏移恒定实现绕过）。</li>
+</ul>
+</li>
+<li>
+<p><strong>ROP链构造进阶（综合题）</strong></p>
+<ul>
+<li>多参数传递思路：调用<code>func(a,b,c)</code>需构造链：<code>ret（对齐）→ pop %rdi; ret → a → pop %rsi; ret → b → pop %rdx; ret → c → func地址</code>。</li>
+<li>实验链核心步骤（期末可能考链构造）：
+<ol>
+<li>读取偏移量：<code>pop %rax; ret</code> → 栈中存入<code>0x48</code>。</li>
+<li>寄存器搬运：<code>mov %eax, %edx; ret</code> → <code>mov %edx, %ecx; ret</code> → <code>mov %ecx, %esi; ret</code>（偏移量传入<code>%rsi</code>）。</li>
+<li>捕获栈基址：<code>mov %rsp, %rax; ret</code> → <code>mov %rax, %rdi; ret</code>（栈顶地址传入<code>%rdi</code>）。</li>
+<li>计算目标地址：<code>lea (%rdi, %rsi, 1), %rax; ret</code>（<code>rax = 栈基址 + 偏移量</code>）。</li>
+<li>传参调用：<code>mov %rax, %rdi; ret</code> → <code>touch3</code>地址（字符串地址传入<code>%rdi</code>）。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>偏移量计算（计算题）</strong></p>
+<ul>
+<li>实验<code>0x48</code>（72字节）计算逻辑：
+偏移量= 3个mov Gadget（3×8=24）+ pop偏移量（8）+ 栈基址捕获Gadget（2×8=16）+ 加法Gadget（8）+ 传参Gadget（8）+ 字符串与最后一个Gadget的距离（8）= 72字节。</li>
+<li>考试题型：给定ROP链组件（Gadget、参数、数据存储位置），计算所需相对偏移量。</li>
+</ul>
+</li>
+<li>
+<p><strong>RELRO防御机制（关联考点）</strong></p>
+<ul>
+<li>原理：Relocation Read-Only（重定位只读），将全局偏移表（GOT）标记为只读，防止篡改GOT表劫持函数调用。</li>
+<li>考试提问：若<code>rtarget</code>启用Full RELRO，对ROP攻击有何影响？（答案：不影响ROP链构造，因ROP利用代码段指令；但阻止GOT劫持攻击）。</li>
+</ul>
+</li>
+</ol>
+<h4 class="heading-element" id="踩坑与解决方案期末案例分析题-1"><span>踩坑与解决方案（期末案例分析题）</span>
+  <a href="#%e8%b8%a9%e5%9d%91%e4%b8%8e%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88%e6%9c%9f%e6%9c%ab%e6%a1%88%e4%be%8b%e5%88%86%e6%9e%90%e9%a2%98-1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>核心坑点：偏移量计算错误，导致指针指向无效内存，前功尽弃。</li>
+<li>解决思路：逐行梳理ROP链栈布局，精确统计每个Gadget和数据占用的8字节单位数，像解数学题一样推导偏移量。</li>
+</ul>
+<h2 class="heading-element" id="三实验核心收获与期末总复习清单"><span>三、实验核心收获与期末总复习清单</span>
+  <a href="#%e4%b8%89%e5%ae%9e%e9%aa%8c%e6%a0%b8%e5%bf%83%e6%94%b6%e8%8e%b7%e4%b8%8e%e6%9c%9f%e6%9c%ab%e6%80%bb%e5%a4%8d%e4%b9%a0%e6%b8%85%e5%8d%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="期末总复习核心清单"><span>期末总复习核心清单</span>
+  <a href="#%e6%9c%9f%e6%9c%ab%e6%80%bb%e5%a4%8d%e4%b9%a0%e6%a0%b8%e5%bf%83%e6%b8%85%e5%8d%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><h4 class="heading-element" id="1必须掌握的底层原理"><span>（1）必须掌握的底层原理</span>
+  <a href="#1%e5%bf%85%e9%a1%bb%e6%8e%8c%e6%8f%a1%e7%9a%84%e5%ba%95%e5%b1%82%e5%8e%9f%e7%90%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>x86-64栈帧结构（会画图、能计算地址）。</li>
+<li>小端序存储规则（会转换地址字节序列）。</li>
+<li>x86-64 ABI（寄存器传参、栈对齐）。</li>
+<li>三大防御机制：NX/DEP、ASLR、Stack Canary（原理+绕过方式）。</li>
+</ul>
+<h4 class="heading-element" id="2必须掌握的工具命令"><span>（2）必须掌握的工具命令</span>
+  <a href="#2%e5%bf%85%e9%a1%bb%e6%8e%8c%e6%8f%a1%e7%9a%84%e5%b7%a5%e5%85%b7%e5%91%bd%e4%bb%a4" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><table>
+  <thead>
+      <tr>
+          <th>工具</th>
+          <th>核心命令</th>
+          <th>用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>GDB</td>
+          <td><code>p 函数名</code>、<code>info registers</code>、<code>x/10x $rsp</code>、<code>b 函数名</code></td>
+          <td>调试、地址获取、栈帧查看</td>
+      </tr>
+      <tr>
+          <td>objdump</td>
+          <td><code>objdump -d 程序名</code>、<code>grep &quot;ret&quot; 汇编文件</code></td>
+          <td>反汇编、Gadget搜索</td>
+      </tr>
+      <tr>
+          <td>hex2raw</td>
+          <td><code>./hex2raw &lt; exploit.txt &gt; ans.txt</code></td>
+          <td>十六进制→二进制转换</td>
+      </tr>
+  </tbody>
+</table>
+<h4 class="heading-element" id="3常见错误与排查案例分析题必考"><span>（3）常见错误与排查（案例分析题必考）</span>
+  <a href="#3%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af%e4%b8%8e%e6%8e%92%e6%9f%a5%e6%a1%88%e4%be%8b%e5%88%86%e6%9e%90%e9%a2%98%e5%bf%85%e8%80%83" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>小端序错误：地址写入顺序颠倒，跳转无效地址。</li>
+<li>栈对齐失败：ROP链偏移量非16的倍数，触发段错误。</li>
+<li>内存覆盖：字符串存储位置不当，被函数调用压栈覆盖。</li>
+<li>偏移量计算错误：相对定位时指针指向无效内存。</li>
+</ul></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2025-12-08 17:16:33">Updated on 2025-12-08&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/02fead5/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file/W:%5ctool%5cblog%5c7M7%5ccontent%5cposts%5cattacklab.md" title="Open in editor"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/02fead5/" data-title="Attacklab"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" class="post-tag" title="Tags - 汇编语言">汇编语言</a><a href="/tags/csapp/" class="post-tag" title="Tags - CSAPP">CSAPP</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/05592fe/" class="post-nav-item" rel="prev" title="X命令解析"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>X命令解析</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.150.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.20">FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="/">7M7</a></span></div><div class="footer-line visitor">
+          <span id="busuanzi_container_site_uv" title='Total visitors'><i class="fa-regular fa-user fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span><span id="busuanzi_container_site_pv" class="footer-divider" title='Total visits'><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span></span>
+        </div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric">0%</span>
+        </div></div><a href="https://github.com/7M7666" title="View me on GitHub"target="_blank" rel="external nofollow" class="github-corner left d-none-mobile"><svg viewBox="0 0 250 250" aria-hidden="true" width="56" height="56"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="/lib/pace/themes/black/pace-theme-minimal.css"><link rel="stylesheet" href="/css/custom.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/lightgallery/lightgallery.min.js" defer></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js" defer></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script src="/lib/pace/pace.min.js" async defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"pangu":{"enable":true,"selector":"article"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script><script src="/js/custom.min.js" defer></script></body>
+</html>
