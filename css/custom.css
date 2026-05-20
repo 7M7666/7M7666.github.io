@@ -6,8 +6,40 @@
     color: #fff;
 }
 
-/* 给所有图片加一点阴影和圆角 */
-img {
+/* 正文图片做轻微修饰，不影响头像和站点 Logo */
+.content img {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.home-avatar img,
+.author .avatar {
+    object-fit: cover;
+    object-position: 50% 68%;
+    background: #fff;
+    box-shadow: none;
+}
+
+.home-avatar,
+.home-avatar a {
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.home-avatar a {
+    display: inline-block;
+    width: 96px;
+    height: 96px;
+}
+
+.home-avatar img {
+    width: 100%;
+    height: 100%;
+    object-position: 50% 72%;
+    transform: scale(1.75);
+    transform-origin: 50% 72%;
+}
+
+.header-title .logo {
+    box-shadow: none;
 }

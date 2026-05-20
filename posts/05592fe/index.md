@@ -1,8 +1,9 @@
 # X命令解析
 
 
-<!--more-->
+从 `x/24dw` 这个例子切入，整理 GDB `x` 命令的格式、单位、显示方式和内存查看技巧。
 
+<!--more-->
 
 # 【GDB 进阶】x 命令完全解析
 
@@ -139,6 +140,6 @@ struct Node {
 
 ---
 
-> Author: 7M7  
+> 作者: 7M7  
 > URL: http://localhost:1313/posts/05592fe/  
 

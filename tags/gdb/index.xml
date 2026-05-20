@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GDB - Tag - &lt;/&gt;7M7&#39;s blog</title>
+    <title>GDB - 标签 - 7M7 的博客</title>
     <link>http://localhost:1313/tags/gdb/</link>
-    <description>7M7的技术博客，分享编程知识和生活感悟</description>
+    <description>7M7 的技术博客，记录编程学习、CSAPP 实验和课程笔记</description>
     <generator>Hugo 0.150.0 &amp; FixIt v0.3.20</generator>
-    <language>en</language>
+    <language>zh-CN</language>
     <managingEditor>237189315@qq.com (7M7)</managingEditor>
     <webMaster>237189315@qq.com (7M7)</webMaster>
     <lastBuildDate>Mon, 01 Dec 2025 21:07:51 +0800</lastBuildDate>
@@ -17,7 +17,7 @@
       <guid>http://localhost:1313/posts/05592fe/</guid>
       <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
       <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>X命令解析</description>
+      <description>&lt;p&gt;从 &lt;code&gt;x/24dw&lt;/code&gt; 这个例子切入，整理 GDB &lt;code&gt;x&lt;/code&gt; 命令的格式、单位、显示方式和内存查看技巧。&lt;/p&gt;</description>
     </item>
     <item>
       <title>CSAPP Bomb Lab 详细解析与复习笔记</title>
@@ -26,7 +26,7 @@
       <guid>http://localhost:1313/posts/017d597/</guid>
       <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
       <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>深入理解计算机系统(CSAPP) Bomb Lab 实验的详细通关解析，涵盖汇编指令分析、GDB调试技巧及6个关卡的解题思路。</description>
+      <description>&lt;p&gt;这篇整理 Bomb Lab 的拆解流程：从 GDB 和反汇编入手，按阶段分析字符串、循环、递归、链表等典型机器级代码模式。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

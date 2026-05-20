@@ -1,7 +1,10 @@
 # CSAPP Bomb Lab 详细解析与复习笔记
 
 
+这篇整理 Bomb Lab 的拆解流程：从 GDB 和反汇编入手，按阶段分析字符串、循环、递归、链表等典型机器级代码模式。
+
 <!--more-->
+
 # CSAPP Bomb Lab 复习笔记
 
 ## 一、实验简介：不止于“拆弹”的底层修炼
@@ -454,6 +457,6 @@ check_sorted:
 
 ---
 
-> Author: 7M7  
+> 作者: 7M7  
 > URL: http://localhost:1313/posts/017d597/  
 

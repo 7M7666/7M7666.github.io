@@ -1,6 +1,10 @@
 # DataLab详解
 
 
+整理 CSAPP Data Lab 的位运算题目，把每一关的限制、思路和实现放在一起，方便复习补码、移位和浮点表示。
+
+<!--more-->
+
 # DataLab 位运算实验详解
 
 ## 实验概述
@@ -474,10 +478,8 @@ int isPositive(int x) {
 ---
 
 
-
-
 ---
 
-> Author: 7M7  
+> 作者: 7M7  
 > URL: http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/  
 

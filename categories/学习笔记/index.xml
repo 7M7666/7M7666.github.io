@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>学习笔记 - Category - &lt;/&gt;7M7&#39;s blog</title>
+    <title>学习笔记 - 分类 - 7M7 的博客</title>
     <link>http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-    <description>7M7的技术博客，分享编程知识和生活感悟</description>
+    <description>7M7 的技术博客，记录编程学习、CSAPP 实验和课程笔记</description>
     <generator>Hugo 0.150.0 &amp; FixIt v0.3.20</generator>
-    <language>en</language>
+    <language>zh-CN</language>
     <managingEditor>237189315@qq.com (7M7)</managingEditor>
     <webMaster>237189315@qq.com (7M7)</webMaster>
     <lastBuildDate>Mon, 08 Dec 2025 17:16:33 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Attacklab</title>
+      <title>CSAPP Attack Lab：栈溢出与 ROP 实验笔记</title>
       <link>http://localhost:1313/posts/02fead5/</link>
       <pubDate>Mon, 08 Dec 2025 17:16:33 +0800</pubDate><author>237189315@qq.com (7M7)</author>
       <guid>http://localhost:1313/posts/02fead5/</guid>
       <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>Attacklab</description>
+      <description>&lt;p&gt;记录 CSAPP Attack Lab 的栈溢出、代码注入和 ROP 解题思路，整理实验过程里最容易混淆的地址、传参和栈布局问题。&lt;/p&gt;</description>
     </item>
     <item>
       <title>X命令解析</title>
@@ -25,7 +25,7 @@
       <guid>http://localhost:1313/posts/05592fe/</guid>
       <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
       <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>X命令解析</description>
+      <description>&lt;p&gt;从 &lt;code&gt;x/24dw&lt;/code&gt; 这个例子切入，整理 GDB &lt;code&gt;x&lt;/code&gt; 命令的格式、单位、显示方式和内存查看技巧。&lt;/p&gt;</description>
     </item>
     <item>
       <title>CSAPP Bomb Lab 详细解析与复习笔记</title>
@@ -34,39 +34,40 @@
       <guid>http://localhost:1313/posts/017d597/</guid>
       <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
       <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>深入理解计算机系统(CSAPP) Bomb Lab 实验的详细通关解析，涵盖汇编指令分析、GDB调试技巧及6个关卡的解题思路。</description>
+      <description>&lt;p&gt;这篇整理 Bomb Lab 的拆解流程：从 GDB 和反汇编入手，按阶段分析字符串、循环、递归、链表等典型机器级代码模式。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>8086 汇编系统笔记：内存分段、栈、寻址与控制转移</title>
+      <title>8086 汇编与 Debug 笔记：分段、栈、寻址与调试</title>
       <link>http://localhost:1313/posts/017d599/</link>
       <pubDate>Sun, 30 Nov 2025 22:00:41 +0800</pubDate><author>237189315@qq.com (7M7)</author>
       <guid>http://localhost:1313/posts/017d599/</guid>
       <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>&lt;h2 class=&#34;heading-element&#34; id=&#34;8086-汇编系统笔记内存分段栈寻址与控制转移超详细&#34;&gt;&lt;span&gt;8086 汇编系统笔记：内存分段、栈、寻址与控制转移（超详细）&lt;/span&gt;&#xA;  &lt;a href=&#34;#8086-%e6%b1%87%e7%bc%96%e7%b3%bb%e7%bb%9f%e7%ac%94%e8%ae%b0%e5%86%85%e5%ad%98%e5%88%86%e6%ae%b5%e6%a0%88%e5%af%bb%e5%9d%80%e4%b8%8e%e6%8e%a7%e5%88%b6%e8%bd%ac%e7%a7%bb%e8%b6%85%e8%af%a6%e7%bb%86&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;blockquote&gt;&#xA;&lt;p&gt;以 8086 为例，从“内存地址怎么算”一路讲到“多字节加法”“大小写转换”。&lt;/p&gt;</description>
+      <description>&lt;p&gt;这篇把原来的两篇 8086 笔记合成一篇，保留复习时最常用的内容：分段地址、栈、寻址规则、跳转、标志位、多字节运算，以及 DOS Debug 的常用命令。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>8086 汇编 &#43; Debug 调试：TRUEAD 命令与常用指令系统笔记</title>
-      <link>http://localhost:1313/posts/017d598/</link>
-      <pubDate>Tue, 25 Nov 2025 22:00:41 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/017d598/</guid>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>&lt;hr&gt;&#xA;&lt;h2 class=&#34;heading-element&#34; id=&#34;8086-汇编--debug-调试truead-命令与常用指令系统笔记&#34;&gt;&lt;span&gt;8086 汇编 + Debug 调试：TRUEAD 命令与常用指令系统笔记&lt;/span&gt;&#xA;  &lt;a href=&#34;#8086-%e6%b1%87%e7%bc%96--debug-%e8%b0%83%e8%af%95truead-%e5%91%bd%e4%bb%a4%e4%b8%8e%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4%e7%b3%bb%e7%bb%9f%e7%ac%94%e8%ae%b0&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;h2 class=&#34;heading-element&#34; id=&#34;1-8086-的基本世界观&#34;&gt;&lt;span&gt;1. 8086 的基本“世界观”&lt;/span&gt;&#xA;  &lt;a href=&#34;#1-8086-%e7%9a%84%e5%9f%ba%e6%9c%ac%e4%b8%96%e7%95%8c%e8%a7%82&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;h3 class=&#34;heading-element&#34; id=&#34;11-字长与内存&#34;&gt;&lt;span&gt;1.1 字长与内存&lt;/span&gt;&#xA;  &lt;a href=&#34;#11-%e5%ad%97%e9%95%bf%e4%b8%8e%e5%86%85%e5%ad%98&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;字节（Byte）&lt;/strong&gt;：8 位，范围 0~255 (&lt;code&gt;00H ~ FFH&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;字（Word）&lt;/strong&gt;：16 位，由 2 个字节组成&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;8086 特性&lt;/strong&gt;：16 位 CPU&#xA;&lt;ul&gt;&#xA;&lt;li&gt;寄存器宽度一般是 16 位&lt;/li&gt;&#xA;&lt;li&gt;部分寄存器可以拆成两个 8 位使用&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;内存模型：&lt;/strong&gt;&#xA;内存可以想象成一条长长的字节数组：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Java笔记3.0</title>
-      <link>http://localhost:1313/posts/86f3bbb/</link>
-      <pubDate>Mon, 17 Nov 2025 21:25:39 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/86f3bbb/</guid>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>Java笔记3.0</description>
-    </item>
-    <item>
-      <title>Java笔记2.0</title>
+      <title>JavaSE 基础笔记（二）：继承、多态、异常与集合</title>
       <link>http://localhost:1313/posts/54c6db0/</link>
       <pubDate>Mon, 17 Nov 2025 21:14:46 +0800</pubDate><author>237189315@qq.com (7M7)</author>
       <guid>http://localhost:1313/posts/54c6db0/</guid>
       <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>Java笔记2.0</description>
+      <description>&lt;p&gt;这一篇接着整理 JavaSE 后半段：&lt;code&gt;this&lt;/code&gt; / &lt;code&gt;super&lt;/code&gt;、&lt;code&gt;static&lt;/code&gt;、继承、多态、抽象类、接口、异常、常用类和集合框架。重点放在“什么时候用”和“容易错在哪里”。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JavaSE 基础笔记（一）：输入、方法、数组与面向对象入门</title>
+      <link>http://localhost:1313/posts/java%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 11 Nov 2025 23:20:50 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>http://localhost:1313/posts/java%E7%AC%94%E8%AE%B0/</guid>
+      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <description>&lt;p&gt;这篇只保留 JavaSE 入门阶段最容易忘、最容易写错的部分：控制台输入、可变参数、内存模型、数组，以及面向对象的基本写法。它不是完整教材，更像复习时能快速翻到重点的笔记。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DataLab详解</title>
+      <link>http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Wed, 29 Oct 2025 20:50:43 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/</guid>
+      <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
+      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <description>&lt;p&gt;整理 CSAPP Data Lab 的位运算题目，把每一关的限制、思路和实现放在一起，方便复习补码、移位和浮点表示。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
