@@ -2,48 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CSAPP - 标签 - 7M7 的博客</title>
-    <link>http://localhost:1313/tags/csapp/</link>
+    <link>https://7m7666.github.io/tags/csapp/</link>
     <description>7M7 的技术博客，记录编程学习、CSAPP 实验和课程笔记</description>
     <generator>Hugo 0.150.0 &amp; FixIt v0.3.20</generator>
     <language>zh-CN</language>
     <managingEditor>237189315@qq.com (7M7)</managingEditor>
     <webMaster>237189315@qq.com (7M7)</webMaster>
     <lastBuildDate>Mon, 08 Dec 2025 17:16:33 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/csapp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://7m7666.github.io/tags/csapp/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>CSAPP Attack Lab：栈溢出与 ROP 实验笔记</title>
-      <link>http://localhost:1313/posts/02fead5/</link>
-      <pubDate>Mon, 08 Dec 2025 17:16:33 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/02fead5/</guid>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>&lt;p&gt;记录 CSAPP Attack Lab 的栈溢出、代码注入和 ROP 解题思路，整理实验过程里最容易混淆的地址、传参和栈布局问题。&lt;/p&gt;</description>
+      <title>CSAPP Data Lab：位运算与浮点数实验详解</title>
+      <link>https://7m7666.github.io/posts/datalab%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Wed, 29 Oct 2025 20:50:43 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>https://7m7666.github.io/posts/datalab%E8%AF%A6%E8%A7%A3/</guid>
+      <category domain="https://7m7666.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</category>
+      <description>&lt;p&gt;整理 CSAPP Data Lab 的位运算题目，把每一关的限制、思路和实现放在一起，方便复习补码、移位和浮点表示。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>X命令解析</title>
-      <link>http://localhost:1313/posts/05592fe/</link>
-      <pubDate>Mon, 01 Dec 2025 21:07:51 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/05592fe/</guid>
-      <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>&lt;p&gt;从 &lt;code&gt;x/24dw&lt;/code&gt; 这个例子切入，整理 GDB &lt;code&gt;x&lt;/code&gt; 命令的格式、单位、显示方式和内存查看技巧。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CSAPP Bomb Lab 详细解析与复习笔记</title>
-      <link>http://localhost:1313/posts/017d597/</link>
+      <title>CSAPP Bomb Lab：GDB 调试与六阶段拆解</title>
+      <link>https://7m7666.github.io/posts/017d597/</link>
       <pubDate>Mon, 01 Dec 2025 19:23:27 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/017d597/</guid>
-      <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <guid>https://7m7666.github.io/posts/017d597/</guid>
+      <category domain="https://7m7666.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</category>
       <description>&lt;p&gt;这篇整理 Bomb Lab 的拆解流程：从 GDB 和反汇编入手，按阶段分析字符串、循环、递归、链表等典型机器级代码模式。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>DataLab详解</title>
-      <link>http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/</link>
-      <pubDate>Wed, 29 Oct 2025 20:50:43 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/</guid>
-      <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
-      <description>&lt;p&gt;整理 CSAPP Data Lab 的位运算题目，把每一关的限制、思路和实现放在一起，方便复习补码、移位和浮点表示。&lt;/p&gt;</description>
+      <title>CSAPP Attack Lab：栈溢出与 ROP 实验笔记</title>
+      <link>https://7m7666.github.io/posts/02fead5/</link>
+      <pubDate>Mon, 08 Dec 2025 17:16:33 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>https://7m7666.github.io/posts/02fead5/</guid>
+      <category domain="https://7m7666.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</category>
+      <description>&lt;p&gt;记录 CSAPP Attack Lab 的栈溢出、代码注入和 ROP 解题思路，整理实验过程里最容易混淆的地址、传参和栈布局问题。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

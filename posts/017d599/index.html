@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
     <title>8086 汇编与 Debug 笔记：分段、栈、寻址与调试 - 7M7 的博客</title><meta name="author" content="7M7">
-<meta name="description" content="把 8086 汇编和 DOS Debug 常用内容合成一篇，重点整理分段地址、栈、寻址、跳转、标志位和调试命令。"><meta name="keywords" content='汇编语言, 8086, Debug, 计算机组成原理'>
+<meta name="description" content="把 8086 汇编和 DOS Debug 常用内容合成一篇，重点整理分段地址、栈、寻址、跳转、标志位和调试命令。"><meta name="keywords" content='8086, 汇编语言, DOS Debug, 计算机组成原理'>
   <meta itemprop="name" content="8086 汇编与 Debug 笔记：分段、栈、寻址与调试">
   <meta itemprop="description" content="把 8086 汇编和 DOS Debug 常用内容合成一篇，重点整理分段地址、栈、寻址、跳转、标志位和调试命令。">
   <meta itemprop="datePublished" content="2025-11-30T22:00:41+08:00">
   <meta itemprop="dateModified" content="2025-11-30T22:00:41+08:00">
-  <meta itemprop="wordCount" content="1518">
-  <meta itemprop="keywords" content="汇编语言,8086,Debug,计算机组成原理"><meta property="og:url" content="http://localhost:1313/posts/017d599/">
+  <meta itemprop="wordCount" content="1541">
+  <meta itemprop="keywords" content="8086,汇编语言,DOS Debug,计算机组成原理"><meta property="og:url" content="https://7m7666.github.io/posts/017d599/">
   <meta property="og:site_name" content="7M7 的博客">
   <meta property="og:title" content="8086 汇编与 Debug 笔记：分段、栈、寻址与调试">
   <meta property="og:description" content="把 8086 汇编和 DOS Debug 常用内容合成一篇，重点整理分段地址、栈、寻址、跳转、标志位和调试命令。">
@@ -21,16 +21,16 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-11-30T22:00:41+08:00">
     <meta property="article:modified_time" content="2025-11-30T22:00:41+08:00">
-    <meta property="article:tag" content="汇编语言">
     <meta property="article:tag" content="8086">
-    <meta property="article:tag" content="Debug">
+    <meta property="article:tag" content="汇编语言">
+    <meta property="article:tag" content="DOS Debug">
     <meta property="article:tag" content="计算机组成原理">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="8086 汇编与 Debug 笔记：分段、栈、寻址与调试">
   <meta name="twitter:description" content="把 8086 汇编和 DOS Debug 常用内容合成一篇，重点整理分段地址、栈、寻址、跳转、标志位和调试命令。">
 <meta name="application-name" content="7M7 的博客">
-<meta name="apple-mobile-web-app-title" content="7M7 的博客"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/c.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/017d599/" title="8086 汇编与 Debug 笔记：分段、栈、寻址与调试 - 7M7 的博客" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/54c6db0/" title="JavaSE 基础笔记（二）：继承、多态、异常与集合" /><link rel="next" type="text/html" href="http://localhost:1313/posts/017d597/" title="CSAPP Bomb Lab 详细解析与复习笔记" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/017d599/index.md" title="8086 汇编与 Debug 笔记：分段、栈、寻址与调试 - 7M7 的博客"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="7M7 的博客"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/c.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="https://7m7666.github.io/posts/017d599/" title="8086 汇编与 Debug 笔记：分段、栈、寻址与调试 - 7M7 的博客" /><link rel="prev" type="text/html" href="https://7m7666.github.io/posts/javaseexp-02/" title="Java 扑克牌实验：枚举、集合与轮流发牌" /><link rel="next" type="text/html" href="https://7m7666.github.io/posts/05592fe/" title="GDB x 命令详解：格式、单位与内存查看" /><link rel="alternate" type="text/markdown" href="https://7m7666.github.io/posts/017d599/index.md" title="8086 汇编与 Debug 笔记：分段、栈、寻址与调试 - 7M7 的博客"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -40,9 +40,9 @@
     "inLanguage": "zh-CN",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "http:\/\/localhost:1313\/posts\/017d599\/"
-    },"genre": "posts","keywords": "汇编语言, 8086, Debug, 计算机组成原理","wordcount":  1518 ,
-    "url": "http:\/\/localhost:1313\/posts\/017d599\/","datePublished": "2025-11-30T22:00:41+08:00","dateModified": "2025-11-30T22:00:41+08:00","publisher": {
+      "@id": "https:\/\/7m7666.github.io\/posts\/017d599\/"
+    },"genre": "posts","keywords": "8086, 汇编语言, DOS Debug, 计算机组成原理","wordcount":  1541 ,
+    "url": "https:\/\/7m7666.github.io\/posts\/017d599\/","datePublished": "2025-11-30T22:00:41+08:00","dateModified": "2025-11-30T22:00:41+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -118,7 +118,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>8086 汇编与 Debug 笔记：分段、栈、寻址与调试</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">从地址计算到 Debug 常用命令</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/my-notion-face-portrait.png' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 学习笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 学习笔记</a></span></div><div class="post-meta-line"><span title="发布于 2025-11-30 22:00:41"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-30">2025-11-30</time></span>&nbsp;<span title="1518 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1600 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/my-notion-face-portrait.png' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" class="post-category" title="分类 - 计算机系统"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 计算机系统</a></span></div><div class="post-meta-line"><span title="发布于 2025-11-30 22:00:41"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-30">2025-11-30</time></span>&nbsp;<span title="1541 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1600 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -138,14 +138,11 @@
     <li><a href="#10-汇编程序骨架">10. 汇编程序骨架</a></li>
     <li><a href="#11-ascii-大小写转换">11. ASCII 大小写转换</a></li>
     <li><a href="#12-小结">12. 小结</a></li>
+    <li><a href="#相关文章">相关文章</a></li>
   </ul>
 </nav></div>
       </div><div class="content" id="content"><p>这篇把原来的两篇 8086 笔记合成一篇，保留复习时最常用的内容：分段地址、栈、寻址规则、跳转、标志位、多字节运算，以及 DOS Debug 的常用命令。</p>
-<h2 class="heading-element" id="8086-汇编与-debug-笔记分段栈寻址与调试"><span>8086 汇编与 Debug 笔记：分段、栈、寻址与调试</span>
-  <a href="#8086-%e6%b1%87%e7%bc%96%e4%b8%8e-debug-%e7%ac%94%e8%ae%b0%e5%88%86%e6%ae%b5%e6%a0%88%e5%af%bb%e5%9d%80%e4%b8%8e%e8%b0%83%e8%af%95" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h2><h2 class="heading-element" id="1-8086-的基本模型"><span>1. 8086 的基本模型</span>
+<h2 class="heading-element" id="1-8086-的基本模型"><span>1. 8086 的基本模型</span>
   <a href="#1-8086-%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a8%a1%e5%9e%8b" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
@@ -691,7 +688,14 @@
 <li>然后记住 <code>BX/BP/SI/DI</code> 的寻址规则。</li>
 <li>条件跳转看 <code>cmp</code> 后的标志位。</li>
 <li>用 Debug 的 <code>R</code>、<code>U</code>、<code>T</code>、<code>D</code> 观察寄存器、代码和内存。</li>
-</ol></div><div class="post-footer" id="post-footer">
+</ol>
+<h2 class="heading-element" id="相关文章"><span>相关文章</span>
+  <a href="#%e7%9b%b8%e5%85%b3%e6%96%87%e7%ab%a0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li><a href="/posts/05592fe/">GDB x 命令详解：格式、单位与内存查看</a>：对比现代 GDB 查看内存时的格式和单位写法。</li>
+</ul></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -701,17 +705,17 @@
           </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/017d599/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/017d599/" data-title="8086 汇编与 Debug 笔记：分段、栈、寻址与调试"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://7m7666.github.io/posts/017d599/" data-title="8086 汇编与 Debug 笔记：分段、栈、寻址与调试"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
   </span>
         </div>
       </div></div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" class="post-tag" title="标签 - 汇编语言">汇编语言</a><a href="/tags/8086/" class="post-tag" title="标签 - 8086">8086</a><a href="/tags/debug/" class="post-tag" title="标签 - Debug">Debug</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-tag" title="标签 - 计算机组成原理">计算机组成原理</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/8086/" class="post-tag" title="标签 - 8086">8086</a><a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" class="post-tag" title="标签 - 汇编语言">汇编语言</a><a href="/tags/dos-debug/" class="post-tag" title="标签 - DOS Debug">DOS Debug</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-tag" title="标签 - 计算机组成原理">计算机组成原理</a></section>
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/54c6db0/" class="post-nav-item" rel="prev" title="JavaSE 基础笔记（二）：继承、多态、异常与集合"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>JavaSE 基础笔记（二）：继承、多态、异常与集合</a><a href="/posts/017d597/" class="post-nav-item" rel="next" title="CSAPP Bomb Lab 详细解析与复习笔记">CSAPP Bomb Lab 详细解析与复习笔记<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/javaseexp-02/" class="post-nav-item" rel="prev" title="Java 扑克牌实验：枚举、集合与轮流发牌"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Java 扑克牌实验：枚举、集合与轮流发牌</a><a href="/posts/05592fe/" class="post-nav-item" rel="next" title="GDB X 命令详解：格式、单位与内存查看">GDB X 命令详解：格式、单位与内存查看<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="giscus" class="comment">
           <script

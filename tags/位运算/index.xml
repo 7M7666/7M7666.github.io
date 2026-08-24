@@ -2,21 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>位运算 - 标签 - 7M7 的博客</title>
-    <link>http://localhost:1313/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
+    <link>https://7m7666.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
     <description>7M7 的技术博客，记录编程学习、CSAPP 实验和课程笔记</description>
     <generator>Hugo 0.150.0 &amp; FixIt v0.3.20</generator>
     <language>zh-CN</language>
     <managingEditor>237189315@qq.com (7M7)</managingEditor>
     <webMaster>237189315@qq.com (7M7)</webMaster>
     <lastBuildDate>Wed, 29 Oct 2025 20:50:43 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://7m7666.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>DataLab详解</title>
-      <link>http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/</link>
+      <title>CSAPP Data Lab：位运算与浮点数实验详解</title>
+      <link>https://7m7666.github.io/posts/datalab%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Wed, 29 Oct 2025 20:50:43 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/</guid>
-      <category domain="http://localhost:1313/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</category>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <guid>https://7m7666.github.io/posts/datalab%E8%AF%A6%E8%A7%A3/</guid>
+      <category domain="https://7m7666.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</category>
       <description>&lt;p&gt;整理 CSAPP Data Lab 的位运算题目，把每一关的限制、思路和实现放在一起，方便复习补码、移位和浮点表示。&lt;/p&gt;</description>
     </item>
   </channel>

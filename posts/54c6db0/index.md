@@ -5,8 +5,6 @@
 
 <!--more-->
 
-# JavaSE 基础笔记（二）：继承、多态、异常与集合
-
 ## 1. `this` 与 `super`
 
 `this` 指当前对象，`super` 指当前对象中的父类部分。
@@ -346,9 +344,13 @@ JavaSE 后半段可以按这条线复习：
 4. 异常处理让程序能面对错误输入和运行失败。
 5. 集合框架是日常写 Java 最常用的数据容器。
 
+## 系列导航
+
+- [上一篇：JavaSE 基础笔记（一）]({{< relref "posts/java笔记.md" >}})
+
 
 ---
 
 > 作者: 7M7  
-> URL: http://localhost:1313/posts/54c6db0/  
+> URL: https://7m7666.github.io/posts/54c6db0/  
 

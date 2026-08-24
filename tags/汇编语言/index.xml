@@ -2,28 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>汇编语言 - 标签 - 7M7 的博客</title>
-    <link>http://localhost:1313/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link>
+    <link>https://7m7666.github.io/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link>
     <description>7M7 的技术博客，记录编程学习、CSAPP 实验和课程笔记</description>
     <generator>Hugo 0.150.0 &amp; FixIt v0.3.20</generator>
     <language>zh-CN</language>
     <managingEditor>237189315@qq.com (7M7)</managingEditor>
     <webMaster>237189315@qq.com (7M7)</webMaster>
     <lastBuildDate>Mon, 08 Dec 2025 17:16:33 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://7m7666.github.io/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSAPP Bomb Lab：GDB 调试与六阶段拆解</title>
+      <link>https://7m7666.github.io/posts/017d597/</link>
+      <pubDate>Mon, 01 Dec 2025 19:23:27 +0800</pubDate><author>237189315@qq.com (7M7)</author>
+      <guid>https://7m7666.github.io/posts/017d597/</guid>
+      <category domain="https://7m7666.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</category>
+      <description>&lt;p&gt;这篇整理 Bomb Lab 的拆解流程：从 GDB 和反汇编入手，按阶段分析字符串、循环、递归、链表等典型机器级代码模式。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>CSAPP Attack Lab：栈溢出与 ROP 实验笔记</title>
-      <link>http://localhost:1313/posts/02fead5/</link>
+      <link>https://7m7666.github.io/posts/02fead5/</link>
       <pubDate>Mon, 08 Dec 2025 17:16:33 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/02fead5/</guid>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <guid>https://7m7666.github.io/posts/02fead5/</guid>
+      <category domain="https://7m7666.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</category>
       <description>&lt;p&gt;记录 CSAPP Attack Lab 的栈溢出、代码注入和 ROP 解题思路，整理实验过程里最容易混淆的地址、传参和栈布局问题。&lt;/p&gt;</description>
     </item>
     <item>
       <title>8086 汇编与 Debug 笔记：分段、栈、寻址与调试</title>
-      <link>http://localhost:1313/posts/017d599/</link>
+      <link>https://7m7666.github.io/posts/017d599/</link>
       <pubDate>Sun, 30 Nov 2025 22:00:41 +0800</pubDate><author>237189315@qq.com (7M7)</author>
-      <guid>http://localhost:1313/posts/017d599/</guid>
-      <category domain="http://localhost:1313/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</category>
+      <guid>https://7m7666.github.io/posts/017d599/</guid>
+      <category domain="https://7m7666.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">计算机系统</category>
       <description>&lt;p&gt;这篇把原来的两篇 8086 笔记合成一篇，保留复习时最常用的内容：分段地址、栈、寻址规则、跳转、标志位、多字节运算，以及 DOS Debug 的常用命令。&lt;/p&gt;</description>
     </item>
   </channel>

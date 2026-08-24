@@ -1,11 +1,9 @@
-# DataLab详解
+# CSAPP Data Lab：位运算与浮点数实验详解
 
 
 整理 CSAPP Data Lab 的位运算题目，把每一关的限制、思路和实现放在一起，方便复习补码、移位和浮点表示。
 
 <!--more-->
-
-# DataLab 位运算实验详解
 
 ## 实验概述
 
@@ -115,28 +113,33 @@ int getByte(int x, int n) {
 #### 知识点
 - **位统计：** 统计二进制表示中1的个数
 - **位掩码：** 使用左移操作生成位掩码
-- **循环思想：** 通过重复操作实现循环效果
+- **分组累加：** 按 2 位、4 位、8 位逐级合并计数
 
 #### 任务要求
 补充函数`bitCount()`，统计x的二进制表示中1的数量
 
 #### 解题思路
-使用暴力方法，遍历每一位并统计1的个数：
-1. 初始化计数器为0
-2. 对于每一位i（0-31）：
-   - 生成位掩码：`1 << i`
-   - 与x进行与运算：`x & (1 << i)`
-   - 如果结果非0，计数器加1
+使用分组累加法：先统计每 2 位中的 1，再合并到 4 位、8 位、16 位和 32 位。这样不需要循环，也符合 Data Lab 对操作符的限制。
 
 #### 代码实现
 ```c
-    int ret = 0;
-    for(int i=0; i<32; i++){  
-        if(x & (1<<i)){       
-            ret++;
-        }
-    }
-    return ret;
+int bitCount(int x) {
+    int m1 = 0x55 | (0x55 << 8);
+    int m2 = 0x33 | (0x33 << 8);
+    int m4 = 0x0F | (0x0F << 8);
+    int m8 = 0xFF | (0xFF << 16);
+    int m16 = 0xFF | (0xFF << 8);
+
+    m1 = m1 | (m1 << 16);
+    m2 = m2 | (m2 << 16);
+    m4 = m4 | (m4 << 16);
+
+    x = (x & m1) + ((x >> 1) & m1);
+    x = (x & m2) + ((x >> 2) & m2);
+    x = (x + (x >> 4)) & m4;
+    x = (x + (x >> 8)) & m8;
+    return (x + (x >> 16)) & m16;
+}
 ```
 
 ---
@@ -216,7 +219,8 @@ int tmin(void) {
 #### 代码实现
 ```c
 int fitsBits(int x, int n) {
-    return x == ((x << (32 - n)) >> (32 - n));
+    int shift = 32 + (~n + 1);
+    return !((((x << shift) >> shift) ^ x));
 }
 ```
 
@@ -242,7 +246,7 @@ int fitsBits(int x, int n) {
 #### 代码实现
 ```c
 int divpwr2(int x, int n) {
-    int bias = (x >> 31) & ((1 << n) - 1);
+    int bias = (x >> 31) & ((1 << n) + ~0);
     return (x + bias) >> n;
 }
 ```
@@ -337,21 +341,30 @@ int isPositive(int x) {
 补充函数`ilog2()`，返回x以2为底的对数的整数部分
 
 #### 解题思路
-使用二分法定位最高位1的位置：
-1. 检查高16位是否有1
-2. 检查高8位是否有1
-3. 继续检查4位、2位、1位
-4. 就是不断逼近逼近
+使用二分法定位最高位 1 的位置。每次用双重逻辑非把“高位是否非零”压缩成 0 或 1，再把它换算成下一次需要右移的位数。
 
 #### 代码实现
 ```c
- int ret = 0;
-    if (x >= (1 << 16)) { ret += 16; x >>= 16; }
-    if (x >= (1 << 8))  { ret += 8;  x >>= 8;  }
-    if (x >= (1 << 4))  { ret += 4;  x >>= 4;  }
-    if (x >= (1 << 2))  { ret += 2;  x >>= 2;  }
-    if (x >= (1 << 1))  { ret += 1;  x >>= 1;  }
-    return ret;
+int ilog2(int x) {
+    int result = 0;
+    int shift = (!!(x >> 16)) << 4;
+    result = result + shift;
+    x = x >> shift;
+
+    shift = (!!(x >> 8)) << 3;
+    result = result + shift;
+    x = x >> shift;
+
+    shift = (!!(x >> 4)) << 2;
+    result = result + shift;
+    x = x >> shift;
+
+    shift = (!!(x >> 2)) << 1;
+    result = result + shift;
+    x = x >> shift;
+
+    return result + (x >> 1);
+}
 ```
 
 ---
@@ -402,41 +415,43 @@ int isPositive(int x) {
 
 #### 代码实现
 ```c
-    unsigned sign=0,enow=0,fnow=0,abx=x,
-    shiftleft=0,tail=0,result=0;
-    unsigned pos=1<<31;//制造符号为1的掩码
-    if(x==0){
-        return 0;
-    }
-    if(x<0){
-        abx=-x;
-        sign=pos;//符号位1
-    }
-    while((abx&pos)==0)
-    {
-        abx<<=1;
-        shiftleft++;找到最左边是1
-    }
-    enow=127+31-shiftleft;//31-shiftleft就是阶数
-    tail=abx&0xFF;
-    fnow=(abx>>8)&(~(pos>>8));//取后23
-    result=sign|(enow<<23)|fnow;
-    if(tail>0x80)
-    {
-        result+=1;
-    }else if(tail==0x80)
-    {
-        if(fnow&1)
-        {
-            result+=1;
+unsigned float_i2f(int x) {
+    unsigned sign;
+    unsigned value;
+    unsigned exp;
+    unsigned frac;
+    unsigned lost;
+    unsigned half;
+    int msb = 31;
+    int shift;
+
+    if (x == 0) return 0;
+
+    sign = x & 0x80000000u;
+    value = sign ? (unsigned)(~x + 1) : (unsigned)x;
+    while ((value & (1u << msb)) == 0) msb--;
+
+    exp = msb + 127;
+    if (msb <= 23) {
+        frac = (value << (23 - msb)) & 0x7FFFFFu;
+    } else {
+        shift = msb - 23;
+        frac = (value >> shift) & 0x7FFFFFu;
+        lost = value & ((1u << shift) - 1);
+        half = 1u << (shift - 1);
+
+        if (lost > half || (lost == half && (frac & 1))) {
+            frac++;
+            if (frac >> 23) {
+                exp++;
+                frac = frac & 0x7FFFFFu;
+            }
         }
     }
-    return result;
 
+    return sign | (exp << 23) | frac;
 }
 ```
-
----
 
 ### 第15关：float_twice - 浮点数乘以2
 
@@ -477,9 +492,14 @@ int isPositive(int x) {
 
 ---
 
+## 相关文章
+
+- [CSAPP Bomb Lab：GDB 调试与六阶段拆解]({{< relref "posts/Bomblab.md" >}})
+- [CSAPP Attack Lab：栈溢出与 ROP 实验笔记]({{< relref "posts/attacklab.md" >}})
+
 
 ---
 
 > 作者: 7M7  
-> URL: http://localhost:1313/posts/datalab%E8%AF%A6%E8%A7%A3/  
+> URL: https://7m7666.github.io/posts/datalab%E8%AF%A6%E8%A7%A3/  
 

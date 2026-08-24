@@ -1,14 +1,14 @@
-# CSAPP Bomb Lab 详细解析与复习笔记
+# CSAPP Bomb Lab：GDB 调试与六阶段拆解
 
 
 这篇整理 Bomb Lab 的拆解流程：从 GDB 和反汇编入手，按阶段分析字符串、循环、递归、链表等典型机器级代码模式。
 
 <!--more-->
 
-# CSAPP Bomb Lab 复习笔记
-
 ## 一、实验简介：不止于“拆弹”的底层修炼
 Bomb Lab 是《深入理解计算机系统》（CSAPP）第三章「程序的机器级表示」的核心配套实验。实验核心是通过反汇编二进制程序 `bomb`，分析 x86-64 汇编代码的逻辑，推断出 6 个“炸弹阶段”的输入字符串，解除炸弹。
+
+> 本文中的地址、常量和最终输入来自一次具体实验。不同课程或不同实验包可能生成不同数据，请以自己的 `bomb`、反汇编结果和 GDB 输出为准。
 
 **实验价值**：  
 - 不是死记硬背答案，而是掌握「汇编指令解析」「栈帧结构」「函数调用约定」「控制流（循环、switch、递归、链表）底层实现」等核心知识；  
@@ -84,7 +84,7 @@ x86-64 汇编指令众多，重点掌握易混淆、高频出现的指令，避�
 | `je 0x400ef7`         | ZF=1                                                                     | 相等则跳转（jump equal）                                                 |
 | `jne 0x400f3c`        | ZF=0                                                                     | 不等则跳转（jump not equal）                                             |
 | `ja 0x400fad`         | CF=0 且 ZF=0                                                            | 无符号数大于则跳转（jump above）                                         |
-| `jle 0x400f80`        | CF=1 或 ZF=1                                                            | 无符号数小于等于则跳转（jump less or equal）                              |
+| `jle 0x400f80`        | ZF=1 或 SF≠OF                                                           | 有符号数小于等于则跳转（jump less or equal）                              |
 
 ## 三、逐阶段拆弹：从易到难深度解析
 ### 3.1 Phase 1：字符串比较（热身题）
@@ -454,9 +454,15 @@ check_sorted:
 #### 答案（需按实际链表值调整）
 `4 3 2 5 1 6`
 
+## 相关文章
+
+- [GDB x 命令详解：格式、单位与内存查看]({{< relref "posts/xnotes.md" >}})
+- [CSAPP Data Lab：位运算与浮点数实验详解]({{< relref "posts/DataLab详解.md" >}})
+- [CSAPP Attack Lab：栈溢出与 ROP 实验笔记]({{< relref "posts/attacklab.md" >}})
+
 
 ---
 
 > 作者: 7M7  
-> URL: http://localhost:1313/posts/017d597/  
+> URL: https://7m7666.github.io/posts/017d597/  
 

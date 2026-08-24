@@ -5,8 +5,6 @@
 
 <!--more-->
 
-# JavaSE 基础笔记（一）：输入、方法、数组与面向对象入门
-
 ## 1. Scanner：控制台输入
 
 `Scanner` 用来从控制台读取用户输入。基本流程是导包、创建对象、读取数据，最后关闭资源。
@@ -265,9 +263,13 @@ public User(String name) {
 
 下一篇继续整理继承、多态、异常、常用类和集合框架。
 
+## 下一篇
+
+- [JavaSE 基础笔记（二）：继承、多态、异常与集合]({{< relref "posts/java笔记2.0.md" >}})
+
 
 ---
 
 > 作者: 7M7  
-> URL: http://localhost:1313/posts/java%E7%AC%94%E8%AE%B0/  
+> URL: https://7m7666.github.io/posts/java%E7%AC%94%E8%AE%B0/  
 
