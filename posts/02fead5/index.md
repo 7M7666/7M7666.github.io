@@ -223,7 +223,6 @@
 
 - [CSAPP Bomb Lab：GDB 调试与六阶段拆解]({{< relref "posts/Bomblab.md" >}})
 - [CSAPP Data Lab：位运算与浮点数实验详解]({{< relref "posts/DataLab详解.md" >}})
-- [GDB x 命令详解：格式、单位与内存查看]({{< relref "posts/xnotes.md" >}})
 
 
 ---

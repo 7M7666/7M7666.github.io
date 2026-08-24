@@ -11,7 +11,7 @@
   <meta itemprop="description" content="深入理解计算机系统(CSAPP) Bomb Lab 实验的详细通关解析，涵盖汇编指令分析、GDB调试技巧及6个关卡的解题思路。">
   <meta itemprop="datePublished" content="2025-12-01T19:23:27+08:00">
   <meta itemprop="dateModified" content="2025-12-01T19:23:27+08:00">
-  <meta itemprop="wordCount" content="6400">
+  <meta itemprop="wordCount" content="6383">
   <meta itemprop="keywords" content="CSAPP,X86-64,汇编语言,GDB"><meta property="og:url" content="https://7m7666.github.io/posts/017d597/">
   <meta property="og:site_name" content="7M7 的博客">
   <meta property="og:title" content="CSAPP Bomb Lab：GDB 调试与六阶段拆解">
@@ -30,7 +30,7 @@
   <meta name="twitter:title" content="CSAPP Bomb Lab：GDB 调试与六阶段拆解">
   <meta name="twitter:description" content="深入理解计算机系统(CSAPP) Bomb Lab 实验的详细通关解析，涵盖汇编指令分析、GDB调试技巧及6个关卡的解题思路。">
 <meta name="application-name" content="7M7 的博客">
-<meta name="apple-mobile-web-app-title" content="7M7 的博客"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/c.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="https://7m7666.github.io/posts/017d597/" title="CSAPP Bomb Lab：GDB 调试与六阶段拆解 - 7M7 的博客" /><link rel="prev" type="text/html" href="https://7m7666.github.io/posts/54c6db0/" title="JavaSE 基础笔记（二）：继承、多态、异常与集合" /><link rel="next" type="text/html" href="https://7m7666.github.io/posts/datalab%E8%AF%A6%E8%A7%A3/" title="CSAPP Data Lab：位运算与浮点数实验详解" /><link rel="alternate" type="text/markdown" href="https://7m7666.github.io/posts/017d597/index.md" title="CSAPP Bomb Lab：GDB 调试与六阶段拆解 - 7M7 的博客"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="7M7 的博客"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/c.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="https://7m7666.github.io/posts/017d597/" title="CSAPP Bomb Lab：GDB 调试与六阶段拆解 - 7M7 的博客" /><link rel="prev" type="text/html" href="https://7m7666.github.io/posts/54c6db0/" title="JavaSE 基础笔记（二）：继承、多态、异常与集合" /><link rel="next" type="text/html" href="https://7m7666.github.io/posts/02fead5/" title="CSAPP Attack Lab：栈溢出与 ROP 实验笔记" /><link rel="alternate" type="text/markdown" href="https://7m7666.github.io/posts/017d597/index.md" title="CSAPP Bomb Lab：GDB 调试与六阶段拆解 - 7M7 的博客"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -41,7 +41,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/7m7666.github.io\/posts\/017d597\/"
-    },"genre": "posts","keywords": "CSAPP, x86-64, 汇编语言, GDB","wordcount":  6400 ,
+    },"genre": "posts","keywords": "CSAPP, x86-64, 汇编语言, GDB","wordcount":  6383 ,
     "url": "https:\/\/7m7666.github.io\/posts\/017d597\/","datePublished": "2025-12-01T19:23:27+08:00","dateModified": "2025-12-01T19:23:27+08:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -129,7 +129,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>CSAPP Bomb Lab：GDB 调试与六阶段拆解</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/my-notion-face-portrait.png' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" class="post-category" title="分类 - 计算机系统"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 计算机系统</a> 和 <a href="/collections/csapp-%E5%AE%9E%E9%AA%8C/" class="post-collection" title="合集 - CSAPP 实验"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> CSAPP 实验</a></span></div><div class="post-meta-line"><span title="发布于 2025-12-01 19:23:27"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-12-01">2025-12-01</time></span>&nbsp;<span title="6400 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 6500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 13 分钟</span>&nbsp;</div>
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img class="avatar" src='/img/my-notion-face-portrait.png' alt="7M7" height="16" width="16">&nbsp;7M7</span></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" class="post-category" title="分类 - 计算机系统"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 计算机系统</a> 和 <a href="/collections/csapp-%E5%AE%9E%E9%AA%8C/" class="post-collection" title="合集 - CSAPP 实验"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> CSAPP 实验</a></span></div><div class="post-meta-line"><span title="发布于 2025-12-01 19:23:27"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-12-01">2025-12-01</time></span>&nbsp;<span title="6383 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 6400 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 13 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -1241,7 +1241,6 @@
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h2><ul>
-<li><a href="/posts/05592fe/">GDB x 命令详解：格式、单位与内存查看</a></li>
 <li><a href="/posts/datalab%E8%AF%A6%E8%A7%A3/">CSAPP Data Lab：位运算与浮点数实验详解</a></li>
 <li><a href="/posts/02fead5/">CSAPP Attack Lab：栈溢出与 ROP 实验笔记</a></li>
 </ul></div><div class="collection-card">
@@ -1270,7 +1269,7 @@
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/54c6db0/" class="post-nav-item" rel="prev" title="JavaSE 基础笔记（二）：继承、多态、异常与集合"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>JavaSE 基础笔记（二）：继承、多态、异常与集合</a><a href="/posts/datalab%E8%AF%A6%E8%A7%A3/" class="post-nav-item" rel="next" title="CSAPP Data Lab：位运算与浮点数实验详解">CSAPP Data Lab：位运算与浮点数实验详解<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/54c6db0/" class="post-nav-item" rel="prev" title="JavaSE 基础笔记（二）：继承、多态、异常与集合"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>JavaSE 基础笔记（二）：继承、多态、异常与集合</a><a href="/posts/02fead5/" class="post-nav-item" rel="next" title="CSAPP Attack Lab：栈溢出与 ROP 实验笔记">CSAPP Attack Lab：栈溢出与 ROP 实验笔记<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="giscus" class="comment">
           <script

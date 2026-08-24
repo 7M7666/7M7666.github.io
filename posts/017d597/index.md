@@ -456,7 +456,6 @@ check_sorted:
 
 ## 相关文章
 
-- [GDB x 命令详解：格式、单位与内存查看]({{< relref "posts/xnotes.md" >}})
 - [CSAPP Data Lab：位运算与浮点数实验详解]({{< relref "posts/DataLab详解.md" >}})
 - [CSAPP Attack Lab：栈溢出与 ROP 实验笔记]({{< relref "posts/attacklab.md" >}})
 
