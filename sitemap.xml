@@ -49,12 +49,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://7m7666.github.io/tags/rop/</loc>
-    <lastmod>2025-12-08T17:16:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://7m7666.github.io/tags/</loc>
     <lastmod>2025-12-08T17:16:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -62,12 +56,6 @@
   </url>
   <url>
     <loc>https://7m7666.github.io/tags/x86-64/</loc>
-    <lastmod>2025-12-08T17:16:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://7m7666.github.io/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</loc>
     <lastmod>2025-12-08T17:16:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -109,49 +97,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://7m7666.github.io/tags/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2025-11-17T21:14:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://7m7666.github.io/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2025-11-17T21:14:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://7m7666.github.io/posts/java%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2025-11-11T23:20:50+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://7m7666.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
-    <lastmod>2025-11-11T23:20:50+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://7m7666.github.io/tags/c-%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2025-10-29T20:50:43+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://7m7666.github.io/posts/datalab%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2025-10-29T20:50:43+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://7m7666.github.io/tags/ieee-754/</loc>
-    <lastmod>2025-10-29T20:50:43+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://7m7666.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</loc>
     <lastmod>2025-10-29T20:50:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
