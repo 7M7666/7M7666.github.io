@@ -1,9 +1,32 @@
-/* assets/css/custom.css */
-
 /* 鼠标选中文字时的颜色 */
 ::selection {
-    background: #ff79c6;
+    background: #2f6f9f;
     color: #fff;
+}
+
+/* 防止长标题、标签和正文把移动端页面撑出视口 */
+body {
+    overflow-x: hidden;
+}
+
+.wrapper,
+.container,
+.page,
+.summary,
+.single .content {
+    min-width: 0;
+}
+
+.aside-collection:empty {
+    display: none;
+}
+
+.single-title,
+.single-title a,
+.summary .content,
+.post-tags,
+.breadcrumb {
+    overflow-wrap: anywhere;
 }
 
 /* 正文图片做轻微修饰，不影响头像和站点 Logo */
@@ -15,7 +38,7 @@
 .home-avatar img,
 .author .avatar {
     object-fit: cover;
-    object-position: 50% 68%;
+    object-position: center;
     background: #fff;
     box-shadow: none;
 }
@@ -28,18 +51,165 @@
 
 .home-avatar a {
     display: inline-block;
-    width: 96px;
-    height: 96px;
+    width: 80px;
+    height: 80px;
 }
 
 .home-avatar img {
     width: 100%;
     height: 100%;
-    object-position: 50% 72%;
-    transform: scale(1.75);
-    transform-origin: 50% 72%;
+    transform: none;
 }
 
 .header-title .logo {
     box-shadow: none;
+    border-radius: 50%;
+}
+
+/* 首页首屏和文章列表 */
+.home.posts .home-profile {
+    padding: 1.25rem 0 1.5rem;
+}
+
+.home.posts .summary {
+    position: relative;
+    padding-block: 1.25rem;
+}
+
+.home.posts .summary:not(:last-of-type)::after {
+    height: 1px;
+    padding: 0;
+    transform: translateY(1.25rem);
+    background: var(--fi-hr-background-color);
+}
+
+.home.posts .summary .post-meta .author {
+    display: none;
+}
+
+.home.posts .summary .post-meta {
+    color: #667085;
+}
+
+.home.posts .summary .content {
+    color: #4b5563;
+    line-height: 1.75;
+}
+
+[data-theme='dark'] .home.posts .summary .post-meta {
+    color: #a6abb5;
+}
+
+[data-theme='dark'] .home.posts .summary .content {
+    color: #c3c7cf;
+}
+
+.home.posts .summary .post-footer {
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+}
+
+.home.posts .summary .post-tags {
+    min-width: 0;
+    max-width: 100%;
+    text-align: right;
+}
+
+/* 文章页：保留舒适正文宽度，同时保证长内容可滚动 */
+.single .content pre,
+.single .content .table-wrapper,
+.single .content table {
+    max-width: 100%;
+}
+
+.single .content pre,
+.single .content .table-wrapper {
+    overflow-x: auto;
+}
+
+.single .post-footer .post-tags {
+    min-width: 0;
+}
+
+.breadcrumb-container {
+    color: #667085;
+}
+
+/* 评论服务加载时也保留可见区域，避免看起来像评论区消失 */
+#comments {
+    margin-top: 2rem;
+}
+
+#giscus {
+    width: 100%;
+    min-height: 260px;
+}
+
+.giscus-frame {
+    width: 100%;
+}
+
+@media only screen and (max-width: 680px) {
+    .wrapper main.container {
+        box-sizing: border-box;
+        width: 100%;
+        padding-inline: 1rem;
+    }
+
+    #header-mobile .header-wrapper .header-title {
+        min-width: 0;
+    }
+
+    #header-mobile .menu-toggle {
+        display: flex;
+        flex: 0 0 1.5rem;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .home.posts .home-profile {
+        padding: 0.75rem 0 1rem;
+    }
+
+    .home-avatar a {
+        width: 72px;
+        height: 72px;
+    }
+
+    .home.posts .summary .post-footer {
+        align-items: flex-start;
+    }
+
+    .home.posts .summary .post-tags {
+        flex-basis: 100%;
+        text-align: left;
+    }
+
+    .single .single-title {
+        padding-top: 0.75rem;
+        font-size: 1.45rem;
+    }
+
+    .single .post-meta {
+        line-height: 1.7;
+    }
+
+    .single .content {
+        line-height: 1.75;
+    }
+
+    .single .content ul,
+    .single .content ol {
+        padding-left: 1.4rem;
+    }
+
+    .single .post-footer .post-info-line,
+    .single .post-footer .post-info-more,
+    .single .post-footer .post-nav {
+        flex-wrap: wrap;
+    }
+
+    .single .post-footer .post-tags {
+        max-width: 100%;
+    }
 }
