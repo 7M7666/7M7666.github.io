@@ -17,10 +17,6 @@ body {
     min-width: 0;
 }
 
-.aside-collection:empty {
-    display: none;
-}
-
 .single-title,
 .single-title a,
 .summary .content,
